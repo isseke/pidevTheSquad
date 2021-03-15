@@ -21,7 +21,7 @@ public class PidevTheSquad extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vue/FXMLTeste.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/FXMLTeste.fxml"));
         Scene s = new Scene(root);
         stage.setScene(s);
         stage.show();

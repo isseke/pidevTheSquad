@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLPromotionPrincipaleController">
+   <children>
+      <TableView fx:id="promotion_table" layoutY="100.0" prefHeight="200.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <columns>
+          <TableColumn fx:id="id_promo" prefWidth="59.0" text="ID" />
+          <TableColumn fx:id="promotion" prefWidth="91.0" text="PROMOTION" />
+            <TableColumn fx:id="apprenant" prefWidth="102.0" text="APPRENNANT" />
+            <TableColumn fx:id="professeur" prefWidth="119.0" text="PROFESSEUR" />
+            <TableColumn fx:id="raison" prefWidth="122.0" text="RAISON" />
+            <TableColumn fx:id="date" prefWidth="106.0" text="DATE" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn_ajoute_prmotion" layoutX="60.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#AjouterPromotion" prefHeight="25.0" prefWidth="63.0" text="Ajouter" />
+      <Button fx:id="btn_rafraichir_promotion" layoutX="143.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#RachaichirPromo" prefHeight="25.0" prefWidth="77.0" text="Rafraichir" />
+      <Button fx:id="btn_supprimer_promo" layoutX="246.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#supprimer_promo" text="supprimer" />
+      <Button fx:id="btn_modifier_promo" layoutX="343.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#modifier_promo" prefHeight="25.0" prefWidth="70.0" text="Modifier" />
+   </children>
+</AnchorPane>
