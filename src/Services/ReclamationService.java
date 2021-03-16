@@ -7,7 +7,6 @@ package Services;
 
 import Entities.Reclamation;
 import Interfaces.IReclamation;
-import Utils.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +18,7 @@ import java.util.List;
  *
  * @author ASUS
  */
-public class ReclamationService implements IReclamation<Reclamation>{
+/*public class ReclamationService implements IReclamation<Reclamation>{
 
     @Override
     public void ajouterReclamation(Reclamation r) {
@@ -90,4 +89,4 @@ public class ReclamationService implements IReclamation<Reclamation>{
         }
         return reclamationList;
 }
-}
+} */

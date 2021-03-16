@@ -1,9 +1,8 @@
 /* USER */
 
-package GUI;
+
 
 import Entities.Reclamation;
-import Services.ReclamationService;
 import java.io.IOException;
 
 import java.net.URL;
@@ -39,7 +38,7 @@ import javafx.stage.Stage;
  *
  * @author ASUS
  */
-public class FXMLDocumentController implements Initializable {
+/* public class FXMLDocumentController implements Initializable {
     
     private Label label;
     @FXML
@@ -87,7 +86,7 @@ public class FXMLDocumentController implements Initializable {
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("BackFXML.fxml"));
             Parent root= loader.load();
-            BackFXMLController r= loader.getController();
+           // BackFXMLController r= loader.getController();
             EXIT.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println(ex.getMessage()); }
@@ -141,7 +140,7 @@ public class FXMLDocumentController implements Initializable {
         tfDate.setText(r.getDate()); }
 }
 
-
+*/
 
 
 

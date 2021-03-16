@@ -2,7 +2,6 @@ package Services;
 
 import Entities.ReclamationProf;
 import Interfaces.IReclamation;
-import Utils.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ReclamationServiceProf implements IReclamation<ReclamationProf> {
+/*public class ReclamationServiceProf implements IReclamation<ReclamationProf> {
 
     @Override
     public void ajouterReclamation(ReclamationProf r) {
@@ -48,7 +47,7 @@ public class ReclamationServiceProf implements IReclamation<ReclamationProf> {
         }
     }
 
-    @Override
+   /* @Override
     public void updateReclamation(ReclamationProf r,int id) {
         try {
             String req = "UPDATE `reclamationprof` SET `title`=?,`description`=?,`id_professeur`=? WHERE id='"+id+"'";
@@ -65,8 +64,8 @@ public class ReclamationServiceProf implements IReclamation<ReclamationProf> {
             System.out.println(ex.getMessage());
         }
     }
-
-    @Override
+*/
+  /*  @Override
     public List<ReclamationProf> displayReclamation() {
         List<ReclamationProf> reclamationListProf = new ArrayList<>();
         try {
@@ -94,5 +93,5 @@ public class ReclamationServiceProf implements IReclamation<ReclamationProf> {
         return reclamationListProf;
 
     }
-}
+}*/
 

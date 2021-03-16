@@ -1,9 +1,8 @@
 /* PROFESSEIR */
 
-package GUI;
+
 
 import Entities.ReclamationProf;
-import Services.ReclamationServiceProf;
 import java.io.IOException;
 
 import java.net.URL;
@@ -33,7 +32,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
-public class FXMLControllerProf implements Initializable {
+/*public class FXMLControllerProf implements Initializable {
     
     private Label label;
     @FXML
@@ -81,7 +80,7 @@ public class FXMLControllerProf implements Initializable {
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("BackFXML.fxml"));
             Parent root= loader.load();
-            BackFXMLController r= loader.getController();
+         //   BackFXMLController r= loader.getController();
             EXIT.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println(ex.getMessage()); }
@@ -133,3 +132,4 @@ public class FXMLControllerProf implements Initializable {
         tfTitle.setText(r.getTitle());
         tfDate.setText(r.getDescription()); }
 }
+*/
