@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLModifierController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLModifierEventController">
    <children>
       <TextField fx:id="mtheme" layoutX="100.0" layoutY="111.0" promptText="Theme de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
       <TextField fx:id="mlien" layoutX="100.0" layoutY="215.0" promptText="Lien de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />

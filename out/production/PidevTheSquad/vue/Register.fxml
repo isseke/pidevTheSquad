@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="700.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Authentification">
+   <children>
+      <AnchorPane prefHeight="120.0" prefWidth="1352.0" style="-fx-background-color: #0D1824;">
+         <children>
+            <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="47.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../iconspicture/icons8_protect_30px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="113.0" layoutY="27.0" text="Registration" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="350.0" layoutY="174.0" prefHeight="21.0" prefWidth="92.0" text="Nom">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="tfnom" layoutX="350.0" layoutY="213.0" prefHeight="34.0" prefWidth="391.0" />
+      <Label layoutX="350.0" layoutY="459.0" prefHeight="21.0" prefWidth="92.0" text="Password">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="350.0" layoutY="373.0" prefHeight="21.0" prefWidth="92.0" text="Email">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="350.0" layoutY="263.0" prefHeight="21.0" prefWidth="92.0" text="Prenom">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfpassword" layoutX="350.0" layoutY="491.0" prefHeight="34.0" prefWidth="391.0" />
+      <TextField fx:id="tfemail" layoutX="350.0" layoutY="405.0" prefHeight="34.0" prefWidth="391.0" />
+      <TextField fx:id="tfprenom" layoutX="350.0" layoutY="306.0" prefHeight="34.0" prefWidth="391.0" />
+      <Button id="button" fx:id="BtnChoose" layoutX="852.0" layoutY="247.0" mnemonicParsing="false" onAction="#FileChooser" prefHeight="32.0" prefWidth="146.0" text="Upload File" />
+      <ImageView fx:id="imageTactor" fitHeight="141.0" fitWidth="164.0" layoutX="843.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true" />
+
+      <Button fx:id="btnregister" layoutX="350.0" layoutY="591.0" mnemonicParsing="false" onMouseClicked="#registerdone" prefHeight="34.0" prefWidth="671.0" style="-fx-background-color: #0D1824;" text="Register" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="idreturn" layoutX="350.0" layoutY="642.0" mnemonicParsing="false" onMouseClicked="#gobackbro" prefHeight="34.0" prefWidth="671.0" style="-fx-background-color: #0D1824;" text="Return" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

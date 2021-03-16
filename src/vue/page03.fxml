@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1370.0" style="-fx-background-color: #14242B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Authentification">
+   <children>
+      <TableView fx:id="tvapp" layoutX="256.0" layoutY="43.0" onMouseClicked="#mouseclickgogogogogo2" prefHeight="327.0" prefWidth="665.0">
+          <columns>
+              <TableColumn fx:id="colid" prefWidth="64.0" text="id_apprenant  " />
+              <TableColumn fx:id="colnom" prefWidth="143.0" text="nom" />
+              <TableColumn fx:id="colprenom" prefWidth="112.0" text="prenom" />
+              <TableColumn fx:id="colphoto" prefWidth="81.0" text="photo" />
+              <TableColumn fx:id="colemail" prefWidth="85.0" text="email" />
+              <TableColumn fx:id="colpassword" minWidth="0.0" prefWidth="91.0" text="password" />
+              <TableColumn fx:id="colstatus" maxWidth="648.0" prefWidth="84.0" text="Status" />
+
+          </columns>
+      </TableView>
+      <Button layoutX="512.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#Unblockblock" prefHeight="38.0" prefWidth="113.0" text="Unblock" />
+      <ImageView fx:id="imageTactor" fitHeight="201.0" fitWidth="257.0" layoutX="1035.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="658.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#ListerNonactive" prefHeight="38.0" prefWidth="113.0" text="Lister" />
+      <Label layoutX="963.0" layoutY="449.0" prefHeight="29.0" prefWidth="72.0" text="Nom" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfnom1" disable="true" layoutX="1077.0" layoutY="449.0" prefHeight="29.0" prefWidth="149.0" />
+      <TextField fx:id="tfprenom1" disable="true" layoutX="1077.0" layoutY="501.0" prefHeight="29.0" prefWidth="149.0" />
+      <Label layoutX="963.0" layoutY="501.0" prefHeight="29.0" prefWidth="72.0" text="Prenom" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfid1" disable="true" layoutX="1077.0" layoutY="397.0" prefHeight="29.0" />
+      <Label layoutX="963.0" layoutY="397.0" prefHeight="29.0" prefWidth="72.0" text="Id" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+       <Button fx:id="testpro" layoutX="1070.0" layoutY="630.0" mnemonicParsing="false" onMouseClicked="#homeClick" prefHeight="63.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Return" textFill="WHITE">
+           <font>
+               <Font size="16.0" />
+           </font>
+           <graphic>
+               <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@../iconspicture/icons8_exit_24px.png" />
+                   </image>
+               </ImageView>
+           </graphic>
+       </Button>
+   </children>
+</AnchorPane>

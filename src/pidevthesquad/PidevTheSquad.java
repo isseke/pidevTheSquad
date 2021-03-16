@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -25,13 +26,24 @@ public class PidevTheSquad extends Application{
     @Override
     public void start(Stage stage) throws Exception {
 
-        //URL url = Paths.get("./src/vue/FXMLTeste.fxml").toUri().toURL();
+       // URL url = Paths.get("./src/iconspicture/img.png").toUri().toURL();
        // Parent root = FXMLLoader.load(url);
 
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/FXMLTeste.fxml"));
-        Scene s = new Scene(root);
-        stage.setScene(s);
+
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/login.fxml"));
+
+        Image image=new Image(getClass().getResourceAsStream("/iconspicture/img.png"));
+        stage.getIcons().add(image);
+
+        Scene scene = new Scene(root,1370,700);
+        stage.setTitle("Polyways Learning ");
+        stage.setScene(scene);
         stage.show();
+
+
+
+
+
     }
     
       /**
