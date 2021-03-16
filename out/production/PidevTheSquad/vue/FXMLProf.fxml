@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="920.0" styleClass="#0D1824" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLControllerProf">
+   <children>
+      <TextField fx:id="tfTitle" layoutX="78.0" layoutY="79.0" />
+      <TextArea fx:id="tfDescription" layoutX="62.0" layoutY="153.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="28.0" layoutY="83.0" text="Title" />
+      <Label layoutX="122.0" layoutY="126.0" text="Description" />
+      <TableView fx:id="tableReclamationProf" layoutX="339.0" layoutY="79.0" onMouseClicked="#selected" prefHeight="438.0" prefWidth="561.0">
+        <columns>
+          <TableColumn fx:id="tabTitle" prefWidth="135.0" text="Title" />
+          <TableColumn fx:id="tabDescription" prefWidth="220.0" text="Description" />
+            <TableColumn fx:id="tabAnswer" prefWidth="205.0" text="Answer" />
+        </columns>
+      </TableView>
+      <Button layoutX="78.0" layoutY="370.0" mnemonicParsing="false" onAction="#addReclamationProf" text="Add" />
+      <Button layoutX="135.0" layoutY="370.0" mnemonicParsing="false" onAction="#modifyReclamationProf" text="Modify" />
+      <Button layoutX="202.0" layoutY="370.0" mnemonicParsing="false" onAction="#deleteReclamationProf" text="Delete" />
+      <Label layoutX="300.0" layoutY="27.0" prefHeight="33.0" prefWidth="571.0" text="LISTE DES RECLAMATIONS DES PROFESSEURS" textAlignment="CENTER" textFill="#da2121">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="EXIT" layoutX="9.0" layoutY="8.0" mnemonicParsing="false" onAction="#directEXIT" text="EXIT" />
+   </children>
+</AnchorPane>
