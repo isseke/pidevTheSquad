@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1370.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Authentification">
+<AnchorPane prefHeight="700.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Authentification">
     <children>
         <AnchorPane prefHeight="120.0" prefWidth="1370.0" style="-fx-background-color: #0D1824;">
             <children>
@@ -21,25 +21,25 @@
                 </Label>
             </children>
         </AnchorPane>
-        <Label layoutX="500.0" layoutY="243.0" prefHeight="21.0" prefWidth="92.0" text="Nom">
+        <Label layoutX="491.0" layoutY="198.0" prefHeight="21.0" prefWidth="92.0" text="Nom">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <TextField fx:id="tfnom" layoutX="500.0" layoutY="293.0" prefHeight="34.0" prefWidth="391.0" />
-        <Label layoutX="497.0" layoutY="443.0" prefHeight="21.0" prefWidth="92.0" text="Email">
+        <TextField fx:id="tfnomreset" layoutX="483.0" layoutY="226.0" prefHeight="34.0" prefWidth="391.0" />
+        <Label layoutX="483.0" layoutY="361.0" prefHeight="21.0" prefWidth="92.0" text="Email">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label layoutX="500.0" layoutY="340.0" prefHeight="21.0" prefWidth="92.0" text="Prenom">
+        <Label layoutX="483.0" layoutY="282.0" prefHeight="21.0" prefWidth="92.0" text="Prenom">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="tfemail" layoutX="497.0" layoutY="493.0" prefHeight="34.0" prefWidth="391.0" />
-        <TextField fx:id="tfprenom" layoutX="497.0" layoutY="391.0" prefHeight="34.0" prefWidth="391.0" />
+        <TextField fx:id="tfemailreset" layoutX="483.0" layoutY="389.0" prefHeight="34.0" prefWidth="391.0" />
+        <TextField fx:id="tfprenom" layoutX="483.0" layoutY="309.0" prefHeight="34.0" prefWidth="391.0" />
 
-        <Button fx:id="btnregister" layoutX="350.0" layoutY="591.0" mnemonicParsing="false" onMouseClicked="#registerdone" prefHeight="34.0" prefWidth="671.0" style="-fx-background-color: #0D1824;" text="Reset" textFill="WHITE">
+        <Button fx:id="btnregister" layoutX="350.0" layoutY="591.0" mnemonicParsing="false" onMouseClicked="#RestPasswordoneApprenant" prefHeight="34.0" prefWidth="671.0" style="-fx-background-color: #0D1824;" text="Reset" textFill="WHITE">
             <font>
                 <Font size="17.0" />
             </font>
@@ -52,8 +52,22 @@
         <HBox layoutX="553.0" layoutY="151.0" prefHeight="57.0" prefWidth="285.0" spacing="10.0">
             <children>
                 <Button fx:id="resetteacherlink" mnemonicParsing="false" onMouseClicked="#GoToresetPasswordTeacher" prefHeight="25.0" prefWidth="134.0" text="Teacher Space" />
-                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #DC143C;" text="Apprenant Space" />
+                <Button fx:id="passwordforgetButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#GoToApprenantRestPasswrd2" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #DC143C;" text="Apprenant Space" />
             </children>
         </HBox>
+        <TextField fx:id="tfpasswordreset" layoutX="483.0" layoutY="469.0" prefHeight="34.0" prefWidth="391.0" />
+        <Label layoutX="483.0" layoutY="436.0" prefHeight="21.0" prefWidth="134.0" text="New Password">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tfconfirmpassword" layoutX="476.0" layoutY="544.0" prefHeight="34.0" prefWidth="391.0" />
+        <Label layoutX="483.0" layoutY="517.0" prefHeight="21.0" prefWidth="175.0" text="Confirm your password">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+
+
     </children>
 </AnchorPane>
