@@ -4,7 +4,7 @@ module PidevTheSquad {
     requires javafx.graphics;
     requires java.logging;
     requires java.sql;
-    // requires controlsfx;
+    requires TrayTester;
     requires java.transaction.xa;
     requires javafx.media;
     requires javafx.swing;

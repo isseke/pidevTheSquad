@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1370.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Authentification">
+    <children>
+        <AnchorPane prefHeight="120.0" prefWidth="1370.0" style="-fx-background-color: #0D1824;">
+            <children>
+                <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="47.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../iconspicture/icons8_password_30px.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="113.0" layoutY="27.0" text="Reset Your Password" textFill="WHITE">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <Label layoutX="500.0" layoutY="243.0" prefHeight="21.0" prefWidth="92.0" text="Nom">
+            <font>
+                <Font size="15.0" />
+            </font></Label>
+        <TextField fx:id="tfnom" layoutX="500.0" layoutY="293.0" prefHeight="34.0" prefWidth="391.0" />
+        <Label layoutX="497.0" layoutY="443.0" prefHeight="21.0" prefWidth="92.0" text="Email">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <Label layoutX="500.0" layoutY="340.0" prefHeight="21.0" prefWidth="92.0" text="Prenom">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tfemail" layoutX="497.0" layoutY="493.0" prefHeight="34.0" prefWidth="391.0" />
+        <TextField fx:id="tfprenom" layoutX="497.0" layoutY="391.0" prefHeight="34.0" prefWidth="391.0" />
+
+        <Button fx:id="btnregister" layoutX="350.0" layoutY="591.0" mnemonicParsing="false" onMouseClicked="#registerdone" prefHeight="34.0" prefWidth="671.0" style="-fx-background-color: #0D1824;" text="Reset" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Button>
+        <Button fx:id="idreturn" layoutX="350.0" layoutY="642.0" mnemonicParsing="false" onMouseClicked="#gobackbro" prefHeight="34.0" prefWidth="671.0" style="-fx-background-color: #0D1824;" text="Return" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Button>
+        <HBox layoutX="553.0" layoutY="151.0" prefHeight="57.0" prefWidth="285.0" spacing="10.0">
+            <children>
+                <Button fx:id="resetteacherlink" mnemonicParsing="false" onMouseClicked="#GoToresetPasswordTeacher" prefHeight="25.0" prefWidth="134.0" text="Teacher Space" />
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #DC143C;" text="Apprenant Space" />
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

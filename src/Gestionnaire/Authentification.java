@@ -6,6 +6,7 @@ import Modele.administrateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -21,6 +22,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 
 import java.io.File;
@@ -33,13 +36,16 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
+
 public class Authentification {
 
-
+@FXML
+public Hyperlink passwordforget;
     @FXML
     public TextField tfid;
 
-
+@FXML
+public Button resetteacherlink;
     @FXML
     public TextField tfnom;
 
@@ -73,7 +79,8 @@ public class Authentification {
 
     @FXML
     public ImageView imageTactor;
-
+@FXML
+public Button passwordforgetButton;
 
     @FXML
     public PasswordField pswfieldlogin;
@@ -278,35 +285,19 @@ public class Authentification {
 
         if(executeQuery(query))
         {
-            Stage window=new Stage();
-            window.initModality(Modality.APPLICATION_MODAL);
-            window.initStyle(StageStyle.DECORATED);
 
-            window.setTitle("NOTIFICATION");
-            window.setWidth(350);
-            window.setHeight(150);
+            String title = "Congratulations sir";
+            String message = "You've successfully created your Account ";
+            NotificationType notification = NotificationType.CUSTOM.SUCCESS;
 
-
-
-
-
-            Label label2= new Label("Bravo : Votre insciption a été bien affectué");
-            label2.setPrefWidth(250);
-
-            HBox layout=new HBox(10);
-            layout.getChildren().addAll(label2);
-            layout.setAlignment(Pos.CENTER);
-            Scene scne=new Scene(layout);
-
-            window.setScene(scne);
-
-            window.show();
-
-
-
-
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndWait();
 
         }
+
 
 
     }
@@ -341,26 +332,15 @@ public class Authentification {
 
         if (list2.isEmpty() && list.isEmpty() && list3.isEmpty())
         {
-            Stage window=new Stage();
-            window.initModality(Modality.APPLICATION_MODAL);
-            window.initStyle(StageStyle.DECORATED);
+            String title = "Congratulations sir";
+            String message = "You've successfully Failed to login ";
+            NotificationType notification = NotificationType.ERROR;
 
-            window.setTitle("NOTIFICATION");
-            window.setWidth(550);
-            window.setHeight(150);
-
-
-            Label label2= new Label("Désolée vous avez entrée un mdp ou un login erronée sinon votre compte est bloquée  ");
-            label2.setPrefWidth(500);
-
-            HBox layout=new HBox(10);
-            layout.getChildren().addAll(label2);
-            layout.setAlignment(Pos.CENTER);
-            Scene scne=new Scene(layout);
-
-            window.setScene(scne);
-
-            window.show();
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndWait();
         }
 
             else if(list2.isEmpty() && list3.isEmpty())
@@ -441,5 +421,37 @@ else
         getNonactiveList();
 
 
+    }
+
+    public void GoToApprenantRestPasswrd(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/MotdePasseoublieApprenant.fxml"));
+
+        //  URL url = Paths.get("./src/sample/Views/login.fxml").toUri().toURL();
+        //  Parent root = FXMLLoader.load(url);
+
+        Stage window=(Stage) passwordforget.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700));
+
+    }
+    public void GoToApprenantRestPasswrd2(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/MotdePasseoublieApprenant.fxml"));
+
+        //  URL url = Paths.get("./src/sample/Views/login.fxml").toUri().toURL();
+        //  Parent root = FXMLLoader.load(url);
+
+        Stage window=(Stage) passwordforgetButton.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700));
+
+    }
+
+    public void GoToresetPasswordTeacher(MouseEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/MotdePasseoublieProf.fxml"));
+
+        //  URL url = Paths.get("./src/sample/Views/login.fxml").toUri().toURL();
+        //  Parent root = FXMLLoader.load(url);
+
+        Stage window=(Stage) resetteacherlink.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700));
     }
 }
