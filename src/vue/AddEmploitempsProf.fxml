@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #14242B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Emploidetemps">
+   <children>
+      <Label layoutX="155.0" layoutY="65.0" prefHeight="40.0" prefWidth="151.0" text="Date Debut Validite" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="189.0" prefHeight="40.0" prefWidth="151.0" text="Date Fin Validite" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="320.0" prefHeight="40.0" prefWidth="151.0" text="Date Ajout Emploi" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dp3" editable="false" layoutX="144.0" layoutY="375.0" prefHeight="40.0" prefWidth="242.0" />
+      <DatePicker fx:id="dp2" editable="false" layoutX="144.0" layoutY="250.0" prefHeight="40.0" prefWidth="242.0" />
+      <DatePicker fx:id="dp1" editable="false" layoutX="144.0" layoutY="118.0" prefHeight="40.0" prefWidth="242.0" />
+       
+      <ImageView fitHeight="187.0" fitWidth="291.0" layoutX="512.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="541.0" layoutY="78.0" prefHeight="40.0" prefWidth="151.0" text="Upload" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+
+
+    <Button fx:id="testpro" layoutX="345.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#insertButton" prefHeight="48.0" prefWidth="212.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 2px 2px 2px;" text="   Ajout " textFill="WHITE">
+        <font>
+            <Font size="16.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="33.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+               <Image url="@../iconspicture/iconadd.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+      <Label layoutX="386.0" layoutY="25.0" text="Ajout Emploi de temps " textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -271,7 +271,7 @@ public class Authentification {
         //     Parent root = FXMLLoader.load(url);
 
         Stage window = (Stage) testpro.getScene().getWindow();
-        window.setScene(new Scene(root, 1350, 700));
+        window.setScene(new Scene(root, 1370, 700));
 
 
     }

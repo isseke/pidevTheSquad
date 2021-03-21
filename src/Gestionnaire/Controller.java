@@ -258,7 +258,7 @@ public class Controller implements Initializable {
 
 
         Stage window=(Stage) testpro.getScene().getWindow();
-        window.setScene(new Scene(root,1350,700));
+        window.setScene(new Scene(root,1370,700));
 
 
     }
@@ -273,7 +273,7 @@ public class Controller implements Initializable {
 
 
         Stage window=(Stage) testpro.getScene().getWindow();
-        window.setScene(new Scene(root,1350,700));
+        window.setScene(new Scene(root,1370,700));
 
 
     }
@@ -286,7 +286,7 @@ public class Controller implements Initializable {
         // Parent root = FXMLLoader.load(url);
 
         Stage window=(Stage) testapp.getScene().getWindow();
-        window.setScene(new Scene(root,1350,700));
+        window.setScene(new Scene(root,1370,700));
     }
     @FXML
     public void page03Click(MouseEvent event) throws IOException {
@@ -297,7 +297,7 @@ public class Controller implements Initializable {
        // Parent root = FXMLLoader.load(url);
 
         Stage window=(Stage) testapp3.getScene().getWindow();
-        window.setScene(new Scene(root,1350,700));
+        window.setScene(new Scene(root,1370,700));
 
     }
 
