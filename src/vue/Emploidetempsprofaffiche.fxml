@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1370.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Emploidetemps">
    <children>
-      <TableView fx:id="tvemploi" layoutX="35.0" layoutY="40.0" prefHeight="300.0" prefWidth="879.0">
+      <TableView fx:id="tvemploi" layoutX="35.0" layoutY="40.0" onMouseClicked="#mouseclickgogogogogo" prefHeight="300.0" prefWidth="879.0">
         <columns>
           <TableColumn fx:id="idemploi" prefWidth="75.0" text="Id emploi" />
           <TableColumn fx:id="datedebutvalidite" prefWidth="169.0" text="Date Debut Validite" />
@@ -16,7 +16,7 @@
             <TableColumn fx:id="idprof" minWidth="0.0" prefWidth="99.0" text="Id prof " />
         </columns>
       </TableView>
-      <ImageView fitHeight="300.0" fitWidth="879.0" layoutX="35.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageTactor" fitHeight="300.0" fitWidth="879.0" layoutX="35.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true" />
       <HBox layoutX="994.0" layoutY="140.0" prefHeight="100.0" prefWidth="323.0" spacing="10.0">
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#Listbouton" prefHeight="33.0" prefWidth="137.0" text="  Liste">
@@ -37,5 +37,6 @@
                </graphic></Button>
          </children>
       </HBox>
+      <Label fx:id="test998" layoutX="987.0" layoutY="52.0" prefHeight="33.0" prefWidth="122.0" text="Label" textFill="WHITE" />
    </children>
 </AnchorPane>

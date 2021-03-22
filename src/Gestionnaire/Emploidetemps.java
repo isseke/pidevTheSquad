@@ -1,19 +1,24 @@
 package Gestionnaire;
 
+import Modele.ApprenantEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,6 +42,16 @@ public class Emploidetemps {
     @FXML
     public DatePicker dp3;
 
+    @FXML
+    public Label test999;
+    @FXML
+    public Label test998;
+
+
+
+    @FXML
+    public ImageView imageTactor;
+    String imagePath = null;
 
 
     @FXML
@@ -60,11 +75,18 @@ public class Emploidetemps {
     public TableColumn<Emploidetemps, Integer> idprof;
 
 
-    public void GoToEmploideTempsprof(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/Emploidetempsprofaffiche.fxml"));
 
-        //  URL url = Paths.get("./src/sample/Views/login.fxml").toUri().toURL();
-        //  Parent root = FXMLLoader.load(url);
+
+    public void GoToEmploideTempsprof(MouseEvent event) throws IOException {
+       // Parent root = FXMLLoader.load(getClass().getResource("/vue/Emploidetempsprofaffiche.fxml"));
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Emploidetempsprofaffiche.fxml"));
+        Parent root = loader.load();
+        Emploidetemps pc = loader.getController();
+       pc.setid2(test999.getText());
+
+
 
         Stage window = (Stage) gogotoemploiteacher.getScene().getWindow();
         window.setScene(new Scene(root, 1370, 700));
@@ -101,9 +123,11 @@ public class Emploidetemps {
     }
 
     private ObservableList<Modele.Emploidetemps> getEmploiList() {
+        String idprof=test998.getText();
+
         ObservableList<Modele.Emploidetemps> EmploiList = FXCollections.observableArrayList();
         Connection connection = getConnection();
-        String query = "SELECT * FROM emploidetemps ";
+        String query = "SELECT * FROM emploidetemps where emploidetemps.idprof =(select professeur.Id_professeur from professeur where email ='"+idprof+"')";
         Statement st;
         ResultSet rs;
 
@@ -156,10 +180,18 @@ stage.show();
         String idtest2="29";
 
         // String query = "insert into professeur values (nom='"+tfnom.getText()+"',prenom='"+tfprenom.getText()+"',photo='"+tfphoto.getText()+"',email='"+tfemail.getText()+",password='"+tfpassword.getText()+"',specialite='"+tfspecialite.getText()+"',profil='"+tfprofil.getText()+"')";
-        String query = "insert into emploidetemps (datedebutvalidite,datefinvalidite,dateajoutemploi,emploi,idprof) values ('"+dp1.getValue()+"','"+dp2.getValue()+"','"+dp3.getValue()+"','"+idtest+"','"+idtest2+"')";
-
-
+        String query = "insert into emploidetemps (datedebutvalidite,datefinvalidite,dateajoutemploi,emploi,idprof) values ('"+dp1.getValue()+"','"+dp2.getValue()+"','"+dp3.getValue()+"','"+imagePath+"','"+idtest2+"')";
         executeQuery(query);
+        String title = "Congratulations sir";
+        String message = "You've successfully Add your planning   ";
+        NotificationType notification = NotificationType.CUSTOM.SUCCESS;
+
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(notification);
+        tray.showAndWait();
+
     }
 
 
@@ -175,15 +207,42 @@ stage.show();
     }
 
 
+    public String FileChooser(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File("C:\\Users\\Benzarti\\Desktop\\projects\\javafx\\untitled5\\src\\sample\\iconspicture"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.*"));
 
 
+        File f = fc.showOpenDialog(null);
+        if(f != null)
+        {
+            System.out.println(f);
+        }
+        imagePath=f.getPath();
+        imagePath=imagePath.replace("\\","\\\\");
+        return f.getName();
+    }
+    @FXML
+    public void mouseclickgogogogogo(){
+        Modele.Emploidetemps emploi= tvemploi.getSelectionModel().getSelectedItem();
+
+        Image image = new Image("file:///"+emploi.getEmploi());
+        imageTactor.setImage(image);
+        imagePath=emploi.getEmploi();
 
 
+    }
 
 
+    public void setid(String text)
+    {
+        this.test999.setText(""+text);
+    }
 
-
-
+    public void setid2(String text)
+    {
+        this.test998.setText(""+text);
+    }
 
 
 }

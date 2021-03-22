@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,10 +35,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
 
-
-public class Authentification {
+public class Authentification implements Initializable {
 
     @FXML
     public Hyperlink passwordforget;
@@ -78,6 +79,9 @@ public class Authentification {
     @FXML
     public TextField tfpasswordreset2;
 
+
+    @FXML
+    public Label test999;
 
     @FXML
     public Hyperlink testbutton;
@@ -342,20 +346,34 @@ public class Authentification {
             tray.showAndWait();
         } else if (list2.isEmpty() && list3.isEmpty()) {
 
+
+
             Parent root = FXMLLoader.load(getClass().getResource("/vue/SideBar.fxml"));
-            //  URL url = Paths.get("./src/vue/SideBar.fxml").toUri().toURL();
-            // Parent root = FXMLLoader.load(url);
 
             Stage window = (Stage) btnlogin.getScene().getWindow();
             window.setScene(new Scene(root, 1370, 700));
+
 
         } else if
         (list.isEmpty() && list3.isEmpty()) {
-            Parent root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
-            //  URL url = Paths.get("./src/sample/Views/Professeurhome.fxml").toUri().toURL();
-            // Parent root = FXMLLoader.load(url);
+
+
+          //  Parent root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
+
+
+
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Professeurhome.fxml"));
+                Parent root = loader.load();
+                Emploidetemps pc = loader.getController();
+                pc.setid(tfemaillogin.getText());
+
+
+
+
             Stage window = (Stage) btnlogin.getScene().getWindow();
             window.setScene(new Scene(root, 1370, 700));
+
 
         } else if (list2.isEmpty() && list.isEmpty()) {
             Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
@@ -445,50 +463,47 @@ public class Authentification {
     }
 
     public void RestPasswordoneApprenant(MouseEvent event) throws IOException {
-      if(tfconfirmpassword.getText().equals(tfpasswordreset.getText()))
-      {    String query = "UPDATE apprenant SET password='"+tfpasswordreset.getText()+"' WHERE nom = '"+tfnomreset.getText()+"' and prenom ='"+tfprenom.getText()+"' and email ='"+tfemailreset.getText()+"';";
+        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText())) {
+            String query = "UPDATE apprenant SET password='" + tfpasswordreset.getText() + "' WHERE nom = '" + tfnomreset.getText() + "' and prenom ='" + tfprenom.getText() + "' and email ='" + tfemailreset.getText() + "';";
 
 
+            executeQuery(query);
 
+            if (executeQuery(query)) {
 
-        executeQuery(query);
+                String title = "Congratulations sir";
+                String message = "You've successfully Changed your Password  ";
+                NotificationType notification = NotificationType.CUSTOM.SUCCESS;
 
-        if (executeQuery(query)) {
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndWait();
 
+            }
+        } else {
             String title = "Congratulations sir";
-            String message = "You've successfully Changed your Password  ";
-            NotificationType notification = NotificationType.CUSTOM.SUCCESS;
+            String message = "You've successfully Entred wrong password  or your accound dont exist    ";
+            NotificationType notification = NotificationType.ERROR;
 
             TrayNotification tray = new TrayNotification();
             tray.setTitle(title);
             tray.setMessage(message);
             tray.setNotificationType(notification);
             tray.showAndWait();
-
         }
-    }else {
-          String title = "Congratulations sir";
-          String message = "You've successfully Entred wrong password  or your accound dont exist    ";
-          NotificationType notification = NotificationType.ERROR;
-
-          TrayNotification tray = new TrayNotification();
-          tray.setTitle(title);
-          tray.setMessage(message);
-          tray.setNotificationType(notification);
-          tray.showAndWait();
-      }
     }
 
     public void RestPasswordoneProf(MouseEvent event) {
-        if(tfconfirmpassword2.getText().equals(tfpasswordreset2.getText()))  {
+        if (tfconfirmpassword2.getText().equals(tfpasswordreset2.getText())) {
 
             String query = "UPDATE professeur SET password='" + tfpasswordreset2.getText() + "' WHERE nom = '" + tfnomreset.getText() + "' and prenom ='" + tfprenom.getText() + "' and email ='" + tfemailreset.getText() + "';";
 
 
-
             executeQuery(query);
 
-            if (executeQuery(query))  {
+            if (executeQuery(query)) {
 
                 String title = "Congratulations sir";
                 String message = "You've successfully Changed your Password  ";
@@ -504,4 +519,9 @@ public class Authentification {
         }
     }
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
