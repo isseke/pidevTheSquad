@@ -46,6 +46,8 @@ public class Emploidetemps {
     public Label test999;
     @FXML
     public Label test998;
+    @FXML
+    public Label test997;
 
 
 
@@ -157,31 +159,28 @@ public class Emploidetemps {
             return null;
         }
     }
-    @FXML
-    public void homeClick(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
 
-
-        Stage window=(Stage) testpro.getScene().getWindow();
-        window.setScene(new Scene(root,1370,700));
-    }
 
     public void GoToaddpageemploi(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/AddEmploitempsProf.fxml"));
 
-Stage stage=new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/AddEmploitempsProf.fxml"));
+        Parent root = loader.load();
+        Emploidetemps pc = loader.getController();
+        pc.setid3(test998.getText());
+
+       Stage stage=new Stage();
 stage.setScene(new Scene(root,850,500));
 stage.show();
     }
 
     @FXML
     public void insertButton() {
-        Integer idtest=29;
-        String idtest2="29";
+       Integer i=testquery();
 
-        // String query = "insert into professeur values (nom='"+tfnom.getText()+"',prenom='"+tfprenom.getText()+"',photo='"+tfphoto.getText()+"',email='"+tfemail.getText()+",password='"+tfpassword.getText()+"',specialite='"+tfspecialite.getText()+"',profil='"+tfprofil.getText()+"')";
-        String query = "insert into emploidetemps (datedebutvalidite,datefinvalidite,dateajoutemploi,emploi,idprof) values ('"+dp1.getValue()+"','"+dp2.getValue()+"','"+dp3.getValue()+"','"+imagePath+"','"+idtest2+"')";
-        executeQuery(query);
+
+
+       String query = "insert into emploidetemps (datedebutvalidite,datefinvalidite,dateajoutemploi,emploi,idprof) values ('"+dp1.getValue()+"','"+dp2.getValue()+"','"+dp3.getValue()+"','"+imagePath+"','"+i+"')";
+       executeQuery(query);
         String title = "Congratulations sir";
         String message = "You've successfully Add your planning   ";
         NotificationType notification = NotificationType.CUSTOM.SUCCESS;
@@ -191,6 +190,8 @@ stage.show();
         tray.setMessage(message);
         tray.setNotificationType(notification);
         tray.showAndWait();
+
+
 
     }
 
@@ -243,6 +244,36 @@ stage.show();
     {
         this.test998.setText(""+text);
     }
+    public void setid3(String text)
+    {
+        this.test997.setText(""+text);
+    }
 
 
+    public Integer testquery() {
+        Connection connection = getConnection();
+        String query = "SELECT Id_professeur FROM professeur where email =('" + test997.getText() + "')";
+        Statement st;
+        ResultSet rs;
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                Integer lool = rs.getInt("Id_professeur");
+                return lool;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public void homeClickProf(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
+
+
+        Stage window=(Stage) testpro.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700));
+    }
 }
