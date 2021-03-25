@@ -9,6 +9,7 @@ module PidevTheSquad {
     requires javafx.media;
     requires javafx.swing;
     requires javafx.web;
+    requires AnimateFX;
     //requires kotlin.stdlib;
 
     exports pidevthesquad;

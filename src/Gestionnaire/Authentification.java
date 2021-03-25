@@ -3,6 +3,7 @@ package Gestionnaire;
 import Modele.ApprenantEntity;
 import Modele.Professeur;
 import Modele.administrateur;
+import animatefx.animation.FadeIn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -85,6 +86,7 @@ public class Authentification implements Initializable {
 
     @FXML
     public Hyperlink testbutton;
+
 
     @FXML
     public Button idreturn;
@@ -347,41 +349,38 @@ public class Authentification implements Initializable {
         } else if (list2.isEmpty() && list3.isEmpty()) {
 
 
-
             Parent root = FXMLLoader.load(getClass().getResource("/vue/SideBar.fxml"));
 
             Stage window = (Stage) btnlogin.getScene().getWindow();
             window.setScene(new Scene(root, 1370, 700));
+            new FadeIn(root).play();
 
 
         } else if
         (list.isEmpty() && list3.isEmpty()) {
 
 
-          //  Parent root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
-
-
-
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Professeurhome.fxml"));
-                Parent root = loader.load();
-                Emploidetemps pc = loader.getController();
-                pc.setid(tfemaillogin.getText());
-
-
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Professeurhome.fxml"));
+            Parent root = loader.load();
+            Emploidetemps pc = loader.getController();
+            pc.setid(tfemaillogin.getText());
 
             Stage window = (Stage) btnlogin.getScene().getWindow();
             window.setScene(new Scene(root, 1370, 700));
-
+            new FadeIn(root).play();
 
         } else if (list2.isEmpty() && list.isEmpty()) {
-            Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
-            // URL url = Paths.get("./src/sample/Views/Apprenanthome.fxml").toUri().toURL();
-            // Parent root = FXMLLoader.load(url);
+            //   Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
+
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Apprenanthome.fxml"));
+            Parent root = loader.load();
+            Emploidetemps pc = loader.getController();
+            pc.setid(tfemaillogin.getText());
 
             Stage window = (Stage) btnlogin.getScene().getWindow();
             window.setScene(new Scene(root, 1370, 700));
+            new FadeIn(root).play();
         } else
             System.out.println("ala8leb");
 
@@ -524,4 +523,6 @@ public class Authentification implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+
 }

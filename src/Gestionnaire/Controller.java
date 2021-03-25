@@ -1,8 +1,11 @@
 package Gestionnaire;
 
 import Modele.Professeur;
+import animatefx.animation.FadeIn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +41,9 @@ public class Controller implements Initializable {
     @FXML
     public TextField tfid;
 
+    @FXML
+    public TextField filterField;
+
 
     @FXML
     public TextField tfnom;
@@ -53,8 +59,7 @@ public class Controller implements Initializable {
     @FXML
     public TextField tfpassword;
 
-    @FXML
-    public TextField filterField;
+
     @FXML
     public TextField tfspecialite;
     @FXML
@@ -136,7 +141,6 @@ public class Controller implements Initializable {
     @FXML
     public void insertButton() {
 
-       // String query = "insert into professeur values (nom='"+tfnom.getText()+"',prenom='"+tfprenom.getText()+"',photo='"+tfphoto.getText()+"',email='"+tfemail.getText()+",password='"+tfpassword.getText()+"',specialite='"+tfspecialite.getText()+"',profil='"+tfprofil.getText()+"')";
         String query = "insert into professeur (nom,prenom,photo,email,password,specialite,profil) values ('"+tfnom.getText()+"','"+tfprenom.getText()+"','"+imagePath+"','"+tfemail.getText()+"','"+tfpassword.getText()+"','"+tfspecialite.getText()+"','"+tfprofil.getText()+"')";
 
 
@@ -256,8 +260,8 @@ public class Controller implements Initializable {
        // URL url = Paths.get("./src/sample/Views/SideBar.fxml").toUri().toURL();
         // Parent root = FXMLLoader.load(url);
 
-
         Stage window=(Stage) testpro.getScene().getWindow();
+
         window.setScene(new Scene(root,1370,700));
 
 
@@ -315,7 +319,7 @@ public class Controller implements Initializable {
         Stage window=(Stage) disconnectButton.getScene().getWindow();
 window.setScene(new Scene(root,1370,700));
 
-
+        new FadeIn(root).play();
 
 
     }
@@ -324,6 +328,49 @@ window.setScene(new Scene(root,1370,700));
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
+
+
+
+    }
+    public void setSearchProf(MouseEvent event)
+    {
+        ObservableList<Professeur> list = getProfList();
+
+        FilteredList<Professeur> filteredData = new FilteredList<>(list, b -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(prof -> {
+                // If filter text is empty, display all persons.
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (prof.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    return true; // Filter matches first name.
+                } else if (prof.getPrenom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches last name.
+                }
+                else if (String.valueOf(prof.getEmail()).indexOf(lowerCaseFilter)!=-1)
+                    return true;
+                else
+                    return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<Professeur> sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        // 	  Otherwise, sorting the TableView would have no effect.
+        sortedData.comparatorProperty().bind(tvprof.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        tvprof.setItems(sortedData);
 
     }
 

@@ -11,6 +11,7 @@
       <root url="jar://$PROJECT_DIR$/../projects/javafx/javafx-sdk-15.0.1/lib/javafx.web.jar!/" />
       <root url="file://$PROJECT_DIR$/../PiDev" />
       <root url="jar://$PROJECT_DIR$/../TrayTester.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AnimateFX-1.2.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

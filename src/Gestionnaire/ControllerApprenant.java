@@ -1,11 +1,15 @@
 package Gestionnaire;
 
 import Modele.ApprenantEntity;
+import Modele.Professeur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,8 +32,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
-public class ControllerApprenant {
+public class ControllerApprenant implements Initializable {
     @FXML
     public TextField tfid;
 
@@ -42,6 +47,10 @@ public class ControllerApprenant {
 
     @FXML
     public TextField tfphoto;
+
+    @FXML
+    public TextField filterField;
+
 
     @FXML
     public TextField tfemail;
@@ -234,4 +243,50 @@ public class ControllerApprenant {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+    }
+
+    public void Search_apprenant(MouseEvent event)
+    {
+        ObservableList<ApprenantEntity> list = getApprenantList();
+
+        FilteredList<ApprenantEntity> filteredData = new FilteredList<>(list, b -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(prof -> {
+                // If filter text is empty, display all persons.
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (prof.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    return true; // Filter matches first name.
+                } else if (prof.getPrenom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches last name.
+                }
+                else if (String.valueOf(prof.getEmail()).indexOf(lowerCaseFilter)!=-1)
+                    return true;
+                else
+                    return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<ApprenantEntity> sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        // 	  Otherwise, sorting the TableView would have no effect.
+        sortedData.comparatorProperty().bind(tvappr.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        tvappr.setItems(sortedData);
+    }
 }

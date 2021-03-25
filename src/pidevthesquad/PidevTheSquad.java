@@ -5,6 +5,9 @@
  */
 package pidevthesquad;
 
+import animatefx.animation.AnimationFX;
+import animatefx.animation.FadeIn;
+import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,6 +42,7 @@ public class PidevTheSquad extends Application{
         stage.setTitle("Polyways Learning ");
         stage.setScene(scene);
         stage.show();
+        new FadeIn(root).play();
 
 
 

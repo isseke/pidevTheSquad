@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1370.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Emploidetemps">
+   <children>
+      <TableView fx:id="tvemploi" layoutX="255.0" layoutY="38.0" onMouseClicked="#mouseclickgogogogogo2" prefHeight="312.0" prefWidth="835.0">
+        <columns>
+          <TableColumn fx:id="idemploi" prefWidth="75.0" text="id emploi " />
+          <TableColumn fx:id="datedebutvalidite" prefWidth="180.0" text="date debut validite" />
+            <TableColumn fx:id="datefinvalidite" prefWidth="138.0" text="date fin validite" />
+            <TableColumn fx:id="dateajoutemploi" prefWidth="206.0" text="date ajout emploi" />
+            <TableColumn fx:id="emploi" prefWidth="135.0" text="emploi" />
+            <TableColumn fx:id="idprof" prefWidth="99.0" text="idprof " />
+        </columns>
+      </TableView>
+      <Button layoutX="1176.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#ListerEmploibouton" prefHeight="37.0" prefWidth="107.0" text="  Lister" />
+      <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="1190.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../iconspicture/icons8_list_26px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="295.0" fitWidth="835.0" layoutX="255.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="test998" layoutX="1176.0" layoutY="115.0" prefHeight="24.0" prefWidth="70.0" />
+   </children>
+</AnchorPane>

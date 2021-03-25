@@ -34,6 +34,8 @@ public class Emploidetemps {
     @FXML
     public Button testpro;
     @FXML
+    public Button emploidetempsapprenant;
+    @FXML
     public Button addemploiprof;
     @FXML
     public DatePicker dp1;
@@ -275,5 +277,108 @@ stage.show();
 
         Stage window=(Stage) testpro.getScene().getWindow();
         window.setScene(new Scene(root,1370,700));
+
+    }
+
+    public void ListerEmploibouton(MouseEvent event) {
+        ObservableList<Modele.Emploidetemps> list = getEmploiListApprenant();
+
+        idemploi.setCellValueFactory(new PropertyValueFactory<Emploidetemps, Integer>("idemploi"));
+        datedebutvalidite.setCellValueFactory(new PropertyValueFactory<Emploidetemps, Date>("datedebutvalidite"));
+        datefinvalidite.setCellValueFactory(new PropertyValueFactory<Emploidetemps, Date>("datefinvalidite"));
+        dateajoutemploi.setCellValueFactory(new PropertyValueFactory<Emploidetemps, Date>("dateajoutemploi"));
+        emploi.setCellValueFactory(new PropertyValueFactory<Emploidetemps, Date>("emploi"));
+
+        idprof.setCellValueFactory(new PropertyValueFactory<Emploidetemps, Integer>("idprof"));
+
+        tvemploi.setItems(list);
+
+    }
+
+
+
+
+
+
+
+
+
+
+    private ObservableList<Modele.Emploidetemps> getEmploiListApprenant() {
+        String idApprenant=test998.getText();
+
+        ObservableList<Modele.Emploidetemps> EmploiList = FXCollections.observableArrayList();
+        Connection connection = getConnection();
+        String query = "SELECT * FROM emploidetemps where emploidetemps.idprof =(select professeur.Id_professeur from professeur where email ='"+idprof+"')";
+        Statement st;
+        ResultSet rs;
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            Modele.Emploidetemps emplois;
+            while(rs.next()) {
+                emplois = new Modele.Emploidetemps(rs.getInt("idemploi"),rs.getDate("datedebutvalidite"),rs.getDate("datefinvalidite"),rs.getDate("dateajoutemploi"),rs.getString("emploi"),rs.getInt("idprof"));
+                EmploiList.add(emplois);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return EmploiList;
+    }
+
+    public void mouseclickgogogogogo2(MouseEvent event) {
+    }
+    public void GoToemploidetempsApprenant(MouseEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/AfficheEmploiTempsApprenant.fxml"));
+        Parent root = loader.load();
+        Emploidetemps pc = loader.getController();
+        pc.setid2(test999.getText());
+
+
+
+        Stage window = (Stage) emploidetempsapprenant.getScene().getWindow();
+        window.setScene(new Scene(root, 1370, 700));
+    }
+
+    public Integer testquery2() {
+        Connection connection = getConnection();
+        Integer idapprenant=testquery3();
+        System.out.println(idapprenant);
+        String query = "SELECT Id_professeur FROM interactiontwhoways where id_apprenant =('" +idapprenant+ "')";
+        Statement st;
+        ResultSet rs;
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                Integer lool = rs.getInt("Id_professeur");
+                return lool;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public Integer testquery3() {
+        Connection connection = getConnection();
+        String query = "SELECT id_apprenant FROM apprenant where email =('" + test998.getText() + "')";
+        Statement st;
+        ResultSet rs;
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                Integer lool = rs.getInt("Id_professeur");
+                return lool;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

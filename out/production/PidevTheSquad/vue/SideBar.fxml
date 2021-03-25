@@ -4,6 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Controller">
    <children>
       <BorderPane fx:id="bp" prefHeight="700.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -63,7 +64,7 @@
                   </Button>
                   <Pane prefHeight="262.0" prefWidth="300.0">
                      <children>
-                        <Button fx:id="testapp3" onMouseClicked="#page03Click" mnemonicParsing="false"  prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="  Approval Requests" textFill="WHITE">
+                        <Button fx:id="testapp3" mnemonicParsing="false" onMouseClicked="#page03Click" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="  Approval Requests" textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -92,7 +93,7 @@
             </VBox>
          </left>
          <center>
-            <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
                <children>
                   <Text fill="WHITE" layoutX="230.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="279.39208984375" AnchorPane.topAnchor="250.0">
                      <font>
