@@ -5,6 +5,7 @@
  */
 package Gestionnaire;
 
+import Modele.Evenement;
 import Modele.Promotion;
 import Services.ServicePromotion;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.IntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -100,7 +102,7 @@ public class FXMLPromotionPrincipaleController implements Initializable {
     @FXML
     void RachaichirPromo(MouseEvent event) {
         
-       // miseAjour();
+        miseAjour();
 
     }
 
@@ -122,7 +124,8 @@ public class FXMLPromotionPrincipaleController implements Initializable {
              FXMLModifierPromotionController mf = loader.getController();    
        
              mf.setMpromotion(selection.get(0).getPromotion());
-
+             mf.setMlabel_promo(String.valueOf(selection.get(0).getId_promotion()));
+             mf.setMraison(selection.get(0).getRaison());
              mf.setMapprenant(s.afficheApprenant());
              mf.setMprofesseur(s.afficheProff());
              mf.setMdate(selection.get(0).getDate());

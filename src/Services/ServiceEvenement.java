@@ -30,6 +30,10 @@ public class ServiceEvenement implements InterCrud <Evenement>{
     }
     
     private ObservableList<Evenement> evenementList = FXCollections.observableArrayList();
+    private ObservableList<Evenement> prochainEvent = FXCollections.observableArrayList();
+    private ObservableList<Evenement> prochainEvents = FXCollections.observableArrayList();
+    private ObservableList<Evenement> semaineEvent = FXCollections.observableArrayList();
+    private ObservableList<Evenement> rechercheEvent = FXCollections.observableArrayList();
 
     @Override
     public void ajouter(Evenement e) {
@@ -99,5 +103,90 @@ public class ServiceEvenement implements InterCrud <Evenement>{
         }
     return evenementList;
     }
+    
+    /**
+     * 
+     * La liste de tous les evenements
+     */
+    public ObservableList<Evenement> prochainEvenement(){
+        
+        try {
+            PreparedStatement prEvt = cnx.prepareStatement("SELECT * from evenement");
+            ResultSet prochainEvenementSelect = prEvt.executeQuery();
+            while(prochainEvenementSelect.next()){
+      
+                prochainEvent.add(new Evenement(prochainEvenementSelect.getString("theme"),prochainEvenementSelect.getString("lien"),prochainEvenementSelect.getString("presentateur"),prochainEvenementSelect.getString("date_evenement")));   
+             }
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return prochainEvent;
+    }
+    
+    /**
+     * la liste des prochains evenement
+     */
+    public ObservableList<Evenement> prochainEvenements(){
+        
+        try {
+            PreparedStatement prEvt = cnx.prepareStatement("SELECT * from evenement where date_evenement > CURRENT_DATE ");
+            ResultSet prochainEvenementSelect = prEvt.executeQuery();
+            while(prochainEvenementSelect.next()){
+      
+                prochainEvents.add(new Evenement(prochainEvenementSelect.getString("theme"),prochainEvenementSelect.getString("lien"),prochainEvenementSelect.getString("presentateur"),prochainEvenementSelect.getString("date_evenement")));   
+             }
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return prochainEvents;
+    }
+    
+    /**
+     * les evenements recherché par date
+     */
+    public ObservableList<Evenement> rechercheEvenements(String date){
+        
+        try {
+            PreparedStatement prEvt = cnx.prepareStatement("SELECT * from evenement where date_evenement = ? ");
+            prEvt.setString(1, date);
+            
+            ResultSet prochainEvenementSelect = prEvt.executeQuery();
+            while(prochainEvenementSelect.next()){
+      
+                rechercheEvent.add(new Evenement(prochainEvenementSelect.getString("theme"),prochainEvenementSelect.getString("lien"),prochainEvenementSelect.getString("presentateur"),prochainEvenementSelect.getString("date_evenement")));   
+             }
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rechercheEvent;
+    }
+    
+    public ObservableList<Evenement> SemainEvenements(String date){
+        
+        try {
+            PreparedStatement prEvt = cnx.prepareStatement("SELECT * from evenement where date_evenement = ? ");
+            prEvt.setString(1, date);
+            
+            ResultSet prochainEvenementSelect = prEvt.executeQuery();
+            while(prochainEvenementSelect.next()){
+      
+                semaineEvent.add(new Evenement(prochainEvenementSelect.getString("theme"),prochainEvenementSelect.getString("lien"),prochainEvenementSelect.getString("presentateur"),prochainEvenementSelect.getString("date_evenement")));   
+             }
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return semaineEvent;
+    }
+    
+    
+    
     
 }

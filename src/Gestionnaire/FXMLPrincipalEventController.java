@@ -67,11 +67,11 @@ public class FXMLPrincipalEventController implements Initializable {
          
              Stage stage = new Stage();
             
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/FXMLModifierEvent.fxml"));
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/FXMLModifier.fxml"));
             
              Parent root = loader.load();
              
-             FXMLModifierEventController mf = loader.getController();
+             FXMLModifierController mf = loader.getController();
              
              
              mf.setIl_label(String.valueOf(selection.get(0).getId_evenement()));

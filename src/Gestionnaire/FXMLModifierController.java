@@ -17,13 +17,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author gicke
  */
-public class FXMLModifierEventController implements Initializable {
+public class FXMLModifierController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -98,7 +99,8 @@ public class FXMLModifierEventController implements Initializable {
 
     @FXML
     void mAnnuler(MouseEvent event) {
-
+        Stage stage = (Stage) mbtnAnnuler.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

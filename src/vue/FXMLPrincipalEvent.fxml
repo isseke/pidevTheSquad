@@ -5,20 +5,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="635.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLPrincipalEventController">
+<AnchorPane id="AnchorPane" prefHeight="557.0" prefWidth="746.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLPrincipalEventController">
    <children>
-      <TableView fx:id="EvenementTable" layoutX="14.0" layoutY="72.0" prefHeight="285.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <TableView fx:id="EvenementTable" layoutX="14.0" layoutY="191.0" prefHeight="356.0" prefWidth="726.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="191.0">
         <columns>
           <TableColumn fx:id="fId" prefWidth="57.0" text="ID" />
           <TableColumn fx:id="fTheme" prefWidth="145.0" text="THEME" />
             <TableColumn fx:id="fPrensentation" prefWidth="159.0" text="PRENSENTATEUR" />
             <TableColumn fx:id="fDate" prefWidth="103.0" text="DATE" />
-            <TableColumn fx:id="fLien" prefWidth="135.0" text="LIEN" />
+            <TableColumn fx:id="fLien" prefWidth="261.0" text="LIEN" />
         </columns>
       </TableView>
-      <Button fx:id="btnAjouter" layoutX="14.0" layoutY="68.0" mnemonicParsing="false" onMouseClicked="#Ajouter" text="Ajouter Event" />
-      <Button layoutX="112.0" layoutY="68.0" mnemonicParsing="false" onMouseClicked="#rafraichir" prefHeight="25.0" prefWidth="82.0" text="rafraîchir" />
-      <Button fx:id="btnSuppimer" layoutX="210.0" layoutY="68.0" mnemonicParsing="false" onMouseClicked="#suppimerEvent" text="Supprimer" />
-      <Button layoutX="300.0" layoutY="68.0" mnemonicParsing="false" onMouseClicked="#modifierEven" text="Modifier" />
+      <Button fx:id="btnAjouter" layoutX="24.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#Ajouter" prefHeight="25.0" prefWidth="140.0" text="Ajouter Event" />
+      <Button layoutX="187.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#rafraichir" prefHeight="25.0" prefWidth="150.0" text="rafraîchir" />
+      <Button fx:id="btnSuppimer" layoutX="366.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#suppimerEvent" prefHeight="25.0" prefWidth="150.0" text="Supprimer" />
+      <Button layoutX="546.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#modifierEven" prefHeight="25.0" prefWidth="169.0" text="Modifier" />
    </children>
 </AnchorPane>

@@ -17,6 +17,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -48,6 +49,9 @@ public class FXMLEnregistrerPromoController implements Initializable {
 
     @FXML
     void annuler_enreg(MouseEvent event) {
+        
+        Stage stage = (Stage) annuler_enre_promo.getScene().getWindow();
+        stage.close();
 
     }
 

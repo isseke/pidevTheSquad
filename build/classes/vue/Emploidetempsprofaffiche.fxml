@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1370.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Emploidetemps">
+   <children>
+      <TableView fx:id="tvemploi" layoutX="35.0" layoutY="40.0" onMouseClicked="#mouseclickgogogogogo" prefHeight="300.0" prefWidth="879.0">
+        <columns>
+          <TableColumn fx:id="idemploi" prefWidth="75.0" text="Id emploi" />
+          <TableColumn fx:id="datedebutvalidite" prefWidth="169.0" text="Date Debut Validite" />
+            <TableColumn fx:id="datefinvalidite" prefWidth="202.0" text="Date Fin Validite" />
+            <TableColumn fx:id="dateajoutemploi" prefWidth="203.0" text="Date Ajout Emploi" />
+            <TableColumn fx:id="emploi" prefWidth="129.0" text="Emploi" />
+            <TableColumn fx:id="idprof" minWidth="0.0" prefWidth="99.0" text="Id prof " />
+        </columns>
+      </TableView>
+      <ImageView fx:id="imageTactor" fitHeight="300.0" fitWidth="879.0" layoutX="35.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox layoutX="994.0" layoutY="140.0" prefHeight="100.0" prefWidth="323.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#Listbouton" prefHeight="33.0" prefWidth="137.0" text="  Liste">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconspicture/icons8_list_26px.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="addemploiprof" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#GoToaddpageemploi" prefHeight="33.0" prefWidth="137.0" text="  Add">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconspicture/iconadd.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </HBox>
+      <Label fx:id="test998" layoutX="987.0" layoutY="52.0" prefHeight="33.0" prefWidth="122.0" text="Label" textFill="#111111" />
+       <Button fx:id="testpro" layoutX="1063.0" layoutY="626.0" mnemonicParsing="false" onMouseClicked="#homeClickProf" prefHeight="63.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Return" textFill="WHITE">
+           <font>
+               <Font size="16.0" />
+           </font>
+           <graphic>
+               <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@../iconspicture/icons8_exit_24px.png" />
+                   </image>
+               </ImageView>
+           </graphic>
+       </Button>
+   </children>
+</AnchorPane>

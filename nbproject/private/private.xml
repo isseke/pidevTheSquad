@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/pidev/PidevTheSquad/src/Gestionnaire/FXMLPromotionPrincipaleController.java</file>
-            <file>file:/C:/pidev/PidevTheSquad/src/Gestionnaire/FXMLEnregistrerEventController.java</file>
-            <file>file:/C:/pidev/PidevTheSquad/src/Services/ServicePromotion.java</file>
-            <file>file:/C:/pidev/PidevTheSquad/src/Modele/Promotion.java</file>
-            <file>file:/C:/pidev/PidevTheSquad/src/pidevthesquad/PidevTheSquad.java</file>
-            <file>file:/C:/pidev/PidevTheSquad/src/Gestionnaire/FXMLEnregistrerPromoController.java</file>
+            <file>file:/C:/Final_Intregration/pidevTheSquad/src/Gestionnaire/Emploidetemps.java</file>
+            <file>file:/C:/Final_Intregration/pidevTheSquad/src/Modele/Promotion.java</file>
+            <file>file:/C:/Final_Intregration/pidevTheSquad/src/Gestionnaire/FXMLProchaineEvenementController.java</file>
+            <file>file:/C:/Final_Intregration/pidevTheSquad/src/Gestionnaire/FXMLModifierPromotionController.java</file>
+            <file>file:/C:/Final_Intregration/pidevTheSquad/src/Gestionnaire/ProchainPromotionController.java</file>
+            <file>file:/C:/Final_Intregration/pidevTheSquad/nbproject/build-impl.xml</file>
+            <file>file:/C:/Final_Intregration/pidevTheSquad/src/pidevthesquad/PidevTheSquad.java</file>
         </group>
     </open-files>
 </project-private>

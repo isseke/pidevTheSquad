@@ -11,24 +11,26 @@ module PidevTheSquad {
     requires javafx.web;
     requires AnimateFX;
     //requires kotlin.stdlib;
-
+    requires javafx.swt;
+    requires javafx.base;
+    requires mysql.connector.java;
     exports pidevthesquad;
-   opens pidevthesquad to javafx.graphics;
+    opens pidevthesquad to javafx.graphics, javafx.controls, javafx.fxml;
 
     exports ConnectDB;
     opens ConnectDB to javafx.graphics;
 
     exports Gestionnaire;
-    opens Gestionnaire to javafx.graphics;
+    opens Gestionnaire to javafx.graphics, javafx.fxml;
 
     exports Interface;
-    opens Interface to javafx.graphics;
+    opens Interface to javafx.graphics, javafx.fxml;
 
     exports Modele;
-    opens Modele to javafx.graphics;
+    opens Modele to javafx.graphics, javafx.fxml;
 
     exports Services;
-    opens Services to javafx.graphics;
+    opens Services to javafx.graphics, javafx.fxml;
 
 
 

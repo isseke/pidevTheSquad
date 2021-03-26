@@ -5,6 +5,8 @@
  */
 package Gestionnaire;
 
+import Modele.Promotion;
+import Services.ServicePromotion;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -17,6 +19,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -77,22 +80,48 @@ public class FXMLModifierPromotionController implements Initializable {
         this.annuler_modification_promo = annuler_modification_promo;
     }
 
-    public void setMlabel_promo(Label mlabel_promo) {
-        this.mlabel_promo = mlabel_promo;
+   public void setMlabel_promo(String mlabel_promo) {
+        this.mlabel_promo.setText(mlabel_promo);
     }
-    
-    
-    
-    
-    
+
 
     @FXML
     void annuler_modification_promo(MouseEvent event) {
-
+        Stage stage = (Stage) annuler_modification_promo.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     void modifier_promo(MouseEvent event) {
+        String promotion = mpromotion.getText();
+        int id_promotion = Integer.parseInt(mlabel_promo.getText());
+        String raison = mraison.getText();
+        String date = mdate.getValue().toString();
+        String aprenant = mapprenant.getValue().toString();
+        String prof = mprofesseur.getValue().toString();
+        
+        String [] profSplit = prof.split("  ");
+        String [] apprenantSplet = aprenant.split("  ");
+        String profNom = profSplit[0];
+        String profprenNom = profSplit[1];
+        String apprenantNom = apprenantSplet[0];
+        String apprenantpreNom = apprenantSplet[1];
+        
+        Promotion p = new Promotion(id_promotion,promotion, date, raison, apprenantNom, apprenantpreNom, profNom, profprenNom);
+        
+        ServicePromotion service = new ServicePromotion();
+        
+       
+             try{
+             service.modifier(p);
+            //JDialog jDialog = new J
+
+        }
+
+        catch (Exception e){
+            System.out.println(e.getMessage());
+
+        }
 
     }
 

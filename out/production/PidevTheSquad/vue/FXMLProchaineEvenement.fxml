@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="752.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLProchaineEvenementController">
+   <children>
+      <TableView fx:id="prochainEvnt" layoutX="14.0" layoutY="166.0" prefHeight="366.0" prefWidth="746.0">
+        <columns>
+          <TableColumn fx:id="ProchainThemeEvent" prefWidth="216.0" text="THEME" />
+          <TableColumn fx:id="ProchainPresentateurEvent" prefWidth="207.0" text="PRENSENTATEUR" />
+            <TableColumn fx:id="ProchainDateEvent" prefWidth="149.0" text="DATE" />
+            <TableColumn fx:id="ProchainLienEvent" prefWidth="182.0" resizable="false" text="LIEN" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button fx:id="prEvenement" layoutX="14.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#prochainEvenements" prefHeight="25.0" prefWidth="139.0" text="Prochain Evenement" />
+      <DatePicker fx:id="dateRechercheEvenement" layoutX="458.0" layoutY="98.0" prefHeight="25.0" prefWidth="145.0" />
+      <Button fx:id="seEvenement" layoutX="184.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#semaineEvenement" text="Evenement Semaine" />
+      <Button fx:id="btnRecherche" layoutX="603.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#rechercheEvenement" prefHeight="25.0" prefWidth="123.0" text="Recherche" />
+      <Text fx:id="labelevt" fill="WHITE" layoutX="300.0" layoutY="60.0" onMouseClicked="#labelActualiserEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Evenements">
+         <font>
+            <Font name="Monotype Corsiva" size="36.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

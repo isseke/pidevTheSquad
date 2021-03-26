@@ -25,7 +25,7 @@ import javax.swing.*;
  *
  * @author gicke
  */
-public class FXMLEnregistrerEventController implements Initializable {
+public class FXMLEnregistrerController implements Initializable {
         @FXML
     private TextField etheme;
 

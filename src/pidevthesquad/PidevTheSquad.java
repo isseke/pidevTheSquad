@@ -33,19 +33,16 @@ public class PidevTheSquad extends Application{
        // Parent root = FXMLLoader.load(url);
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
 
         Image image=new Image(getClass().getResourceAsStream("/iconspicture/img.png"));
         stage.getIcons().add(image);
 
-        Scene scene = new Scene(root,1370,700);
+        Scene scene = new Scene(root);
         stage.setTitle("Polyways Learning ");
         stage.setScene(scene);
         stage.show();
         new FadeIn(root).play();
-
-
-
 
 
     }

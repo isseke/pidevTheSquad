@@ -348,13 +348,11 @@ public class Authentification implements Initializable {
             tray.showAndWait();
         } else if (list2.isEmpty() && list3.isEmpty()) {
 
-
             Parent root = FXMLLoader.load(getClass().getResource("/vue/SideBar.fxml"));
 
             Stage window = (Stage) btnlogin.getScene().getWindow();
             window.setScene(new Scene(root, 1370, 700));
             new FadeIn(root).play();
-
 
         } else if
         (list.isEmpty() && list3.isEmpty()) {
@@ -384,7 +382,6 @@ public class Authentification implements Initializable {
         } else
             System.out.println("ala8leb");
 
-
     }
 
     public void ListerNonactive() {
@@ -395,12 +392,8 @@ public class Authentification implements Initializable {
         colprenom.setCellValueFactory(new PropertyValueFactory<ApprenantEntity, String>("prenom"));
         colphoto.setCellValueFactory(new PropertyValueFactory<ApprenantEntity, String>("photo"));
         colemail.setCellValueFactory(new PropertyValueFactory<ApprenantEntity, String>("email"));
-
-
         colpassword.setCellValueFactory(new PropertyValueFactory<ApprenantEntity, String>("password"));
         colstatus.setCellValueFactory(new PropertyValueFactory<ApprenantEntity, String>("status"));
-
-
         tvapp.setItems(list);
     }
 
@@ -410,12 +403,9 @@ public class Authentification implements Initializable {
         tfnom1.setText(apprenant.getNom());
         tfprenom1.setText(apprenant.getPrenom());
         tfid1.setText(" " + apprenant.getId_apprenant());
-
-
         Image image = new Image("file:///" + apprenant.getPhoto());
         imageTactor.setImage(image);
         imagePath = apprenant.getPhoto();
-
 
     }
 
@@ -424,8 +414,6 @@ public class Authentification implements Initializable {
 
         executeQuery(query);
         getNonactiveList();
-
-
     }
 
     public void GoToApprenantRestPasswrd(MouseEvent event) throws IOException {
@@ -473,13 +461,11 @@ public class Authentification implements Initializable {
                 String title = "Congratulations sir";
                 String message = "You've successfully Changed your Password  ";
                 NotificationType notification = NotificationType.CUSTOM.SUCCESS;
-
                 TrayNotification tray = new TrayNotification();
                 tray.setTitle(title);
                 tray.setMessage(message);
                 tray.setNotificationType(notification);
                 tray.showAndWait();
-
             }
         } else {
             String title = "Congratulations sir";
@@ -493,12 +479,10 @@ public class Authentification implements Initializable {
             tray.showAndWait();
         }
     }
-
     public void RestPasswordoneProf(MouseEvent event) {
         if (tfconfirmpassword2.getText().equals(tfpasswordreset2.getText())) {
 
             String query = "UPDATE professeur SET password='" + tfpasswordreset2.getText() + "' WHERE nom = '" + tfnomreset.getText() + "' and prenom ='" + tfprenom.getText() + "' and email ='" + tfemailreset.getText() + "';";
-
 
             executeQuery(query);
 
@@ -513,16 +497,11 @@ public class Authentification implements Initializable {
                 tray.setMessage(message);
                 tray.setNotificationType(notification);
                 tray.showAndWait();
-
             }
         }
     }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
-
 }

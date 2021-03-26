@@ -8,18 +8,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0D1824;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLModifierPromotionController">
+<AnchorPane id="AnchorPane" prefHeight="534.0" prefWidth="739.0" style="-fx-background-color: #0D1824;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLModifierPromotionController">
     <stylesheets>
         <URL value="@fxmlmodifierpromotion.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="mpromotion" layoutX="100.0" layoutY="107.0" promptText="Promotion" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <TextField fx:id="mraison" layoutX="100.0" layoutY="155.0" promptText="Raison" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <ComboBox fx:id="mprofesseur" layoutX="100.0" layoutY="250.0" prefWidth="150.0" promptText="Professeur" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <ComboBox fx:id="mapprenant" layoutX="100.0" layoutY="293.0" prefWidth="150.0" promptText="Apprenant" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <DatePicker fx:id="mdate" layoutX="100.0" layoutY="200.0" promptText="Date" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <Button fx:id="btn_motion_promo" layoutX="100.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#modifier_promo" prefHeight="25.0" prefWidth="143.0" text="Modifier" AnchorPane.leftAnchor="100.0" />
-      <Button fx:id="annuler_modification_promo" layoutX="357.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#annuler_modification_promo" prefHeight="25.0" prefWidth="143.0" text="Annuler" AnchorPane.rightAnchor="100.0" />
+      <TextField fx:id="mpromotion" layoutX="100.0" layoutY="208.0" promptText="Promotion" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <TextField fx:id="mraison" layoutX="100.0" layoutY="255.0" promptText="Raison" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <ComboBox fx:id="mprofesseur" layoutX="100.0" layoutY="356.0" prefWidth="150.0" promptText="Professeur" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <ComboBox fx:id="mapprenant" layoutX="100.0" layoutY="407.0" prefWidth="150.0" promptText="Apprenant" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <DatePicker fx:id="mdate" layoutX="100.0" layoutY="305.0" promptText="Date" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <Button fx:id="btn_motion_promo" layoutX="100.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#modifier_promo" prefHeight="25.0" prefWidth="143.0" text="Modifier" AnchorPane.leftAnchor="100.0" />
+      <Button fx:id="annuler_modification_promo" layoutX="496.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#annuler_modification_promo" prefHeight="25.0" prefWidth="143.0" text="Annuler" AnchorPane.rightAnchor="100.0" />
       <Label fx:id="mlabel_promo" layoutX="100.0" layoutY="66.0" text="ID" />
    </children>
 </AnchorPane>

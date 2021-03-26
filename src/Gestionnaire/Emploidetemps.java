@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tray.notification.NotificationType;
@@ -53,6 +55,7 @@ public class Emploidetemps {
 
 
 
+
     @FXML
     public ImageView imageTactor;
     String imagePath = null;
@@ -77,6 +80,12 @@ public class Emploidetemps {
     public TableColumn<Emploidetemps, Date> emploi;
     @FXML
     public TableColumn<Emploidetemps, Integer> idprof;
+
+    @FXML
+    private BorderPane borderPane;
+
+
+
 
 
 
@@ -335,9 +344,6 @@ stage.show();
         Parent root = loader.load();
         Emploidetemps pc = loader.getController();
         pc.setid2(test999.getText());
-
-
-
         Stage window = (Stage) emploidetempsapprenant.getScene().getWindow();
         window.setScene(new Scene(root, 1370, 700));
     }
@@ -381,4 +387,29 @@ stage.show();
         }
         return 0;
     }
+
+    @FXML
+    void GoToEvenement(MouseEvent event) {
+    loadMainPane("FXMLProchaineEvenement");
+
+    }
+
+    @FXML
+    void GoToPromotion(MouseEvent event) {
+        loadMainPane("ProchainPromotion");
+
+    }
+    public void loadMainPane (String fichierFxml){
+        Parent root = null;
+        try {
+
+            root = FXMLLoader.load(getClass().getResource("/vue/"+fichierFxml+".fxml"));
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        borderPane.setCenter(root);
+
+    }
+
 }
