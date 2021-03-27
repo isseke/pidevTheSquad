@@ -225,6 +225,8 @@ public class ControllerApprenant implements Initializable {
 
 
         tvappr.setItems(list);
+        Search_apprenant();
+
 
     }
     public String FileChooser(ActionEvent event) { FileChooser fc = new FileChooser();
@@ -249,7 +251,7 @@ public class ControllerApprenant implements Initializable {
 
     }
 
-    public void Search_apprenant(MouseEvent event)
+    public void Search_apprenant()
     {
         ObservableList<ApprenantEntity> list = getApprenantList();
 

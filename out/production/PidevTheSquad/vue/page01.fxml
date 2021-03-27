@@ -137,7 +137,6 @@
                   <Image url="@../iconspicture/icons8_search_26px.png" />
                </image>
             </ImageView>
-            <Button layoutX="690.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#setSearchProf" prefHeight="30.0" prefWidth="177.0" text="Search" />
             </children>
 
         </AnchorPane>
