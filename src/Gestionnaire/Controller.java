@@ -249,7 +249,7 @@ public class Controller implements Initializable {
         colprofil.setCellValueFactory(new PropertyValueFactory<Professeur, String>("profil"));
 
         tvprof.setItems(list);
-
+        setSearchProf();
     }
 
 
@@ -332,7 +332,7 @@ window.setScene(new Scene(root,1370,700));
 
 
     }
-    public void setSearchProf(MouseEvent event)
+    public void setSearchProf()
     {
         ObservableList<Professeur> list = getProfList();
 

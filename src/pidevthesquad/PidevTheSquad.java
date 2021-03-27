@@ -33,7 +33,7 @@ public class PidevTheSquad extends Application{
        // Parent root = FXMLLoader.load(url);
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/login.fxml"));
 
         Image image=new Image(getClass().getResourceAsStream("/iconspicture/img.png"));
         stage.getIcons().add(image);
