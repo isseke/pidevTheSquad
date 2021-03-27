@@ -93,8 +93,8 @@ public class Controller implements Initializable {
 
     String imagePath = null;
 
-
-
+    @FXML
+    BorderPane borderPane;
 
     @FXML
     public TableView<Professeur> tvprof;
@@ -134,6 +134,36 @@ public class Controller implements Initializable {
 
     @FXML
     public ImageView imageTactor;
+
+    @FXML
+    private Button btnevenementAdmin;
+
+    @FXML
+    private Button btnPromotionAdmin;
+
+
+    @FXML
+    void GoToEvenementAdmin(MouseEvent event) {
+        loadMainPaneAdmin("FXMLPrincipalEvent");
+    }
+
+    @FXML
+    void GoToPromotionAdmin(MouseEvent event) {
+        loadMainPaneAdmin("FXMLPromotionPrincipale");
+    }
+
+    public void loadMainPaneAdmin(String fichierFxml){
+        Parent root = null;
+        try {
+
+            root = FXMLLoader.load(getClass().getResource("/vue/"+fichierFxml+".fxml"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        borderPane.setCenter(root);
+
+    }
 
 
 

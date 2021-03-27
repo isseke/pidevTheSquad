@@ -9,6 +9,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Hyperlink;
 
 /**
  *
@@ -17,15 +18,19 @@ import javafx.beans.property.StringProperty;
 public class Evenement {
     private IntegerProperty id_evenement;
     private StringProperty lien;
+    private Hyperlink hyperlinkLien ;
     private StringProperty theme;
     private StringProperty presentateur;
     private StringProperty date;
     private StringProperty afficheEvenement;
+
+
     public Evenement(String lien, String theme, String presentateur, String date) {
         this.lien = new SimpleStringProperty(lien);
         this.theme = new SimpleStringProperty(theme);
         this.presentateur = new SimpleStringProperty(presentateur);
         this.date = new SimpleStringProperty(date);
+        this.hyperlinkLien = new Hyperlink(lien);
         
     }
 
@@ -54,8 +59,12 @@ public class Evenement {
     public void setLien(String lien) {
         this.lien.set(lien);
     }
+
     public StringProperty LienProperty() {
 		return lien;
+    }
+    public Hyperlink hyperTextProperty(){
+        return hyperlinkLien;
     }
     public String getTheme() {
         return theme.get();

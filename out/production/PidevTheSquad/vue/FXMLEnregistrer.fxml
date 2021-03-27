@@ -2,16 +2,23 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="531.0" prefWidth="733.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLEnregistrerController">
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="678.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLEnregistrerController">
    <children>
-      <TextField fx:id="etheme" layoutX="100.0" layoutY="204.0" prefHeight="32.0" prefWidth="149.0" promptText="Le theme de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <TextField fx:id="elien" layoutX="100.0" layoutY="320.0" promptText="Lien de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <TextField fx:id="epresentateur" layoutX="100.0" layoutY="378.0" onAction="#bt" promptText="Presentateur de l'evenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <Button fx:id="btnenregistrer" layoutX="100.0" layoutY="429.0" mnemonicParsing="false" onMouseClicked="#fEnregistrer" prefHeight="25.0" prefWidth="155.0" text="Enregistrer" />
-      <Button fx:id="btnannuler" layoutX="459.0" layoutY="429.0" mnemonicParsing="false" onMouseClicked="#fAnnuler" prefHeight="25.0" prefWidth="174.0" text="Annuler" />
-      <DatePicker fx:id="edate" layoutX="100.0" layoutY="266.0" promptText="Date de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <TextField fx:id="etheme" layoutX="100.0" layoutY="128.0" prefHeight="32.0" prefWidth="149.0" promptText="Le theme de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <TextField fx:id="elien" layoutX="100.0" layoutY="244.0" promptText="Lien de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <TextField fx:id="epresentateur" layoutX="100.0" layoutY="302.0" onAction="#bt" promptText="Presentateur de l'evenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <Button fx:id="btnenregistrer" layoutX="100.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#fEnregistrer" prefHeight="25.0" prefWidth="155.0" text="Enregistrer" />
+      <Button fx:id="btnannuler" layoutX="404.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#fAnnuler" prefHeight="25.0" prefWidth="174.0" text="Annuler" />
+      <DatePicker fx:id="edate" layoutX="100.0" layoutY="190.0" promptText="Date de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <Label layoutX="216.0" layoutY="56.0" text="Enregister Evenement" textFill="WHITE">
+         <font>
+            <Font name="Monotype Corsiva" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

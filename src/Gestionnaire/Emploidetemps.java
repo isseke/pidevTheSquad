@@ -29,6 +29,12 @@ import java.sql.Statement;
 import java.util.Date;
 
 public class Emploidetemps {
+
+    @FXML
+    private Button btnevenementProf;
+
+    @FXML
+    private Button btnPromotionprof;
     @FXML
     public Button gogotoemploiteacher;
     @FXML
@@ -53,6 +59,8 @@ public class Emploidetemps {
     @FXML
     public Label test997;
 
+    @FXML
+    private BorderPane borderpanneProf;
 
 
 
@@ -399,6 +407,17 @@ stage.show();
         loadMainPane("ProchainPromotion");
 
     }
+
+    @FXML
+    void GoToEvenementProf(MouseEvent event) {
+        loadMainPaneProf("FXMLProchaineEvenement");
+    }
+
+    @FXML
+    void GoToPromotionProf(MouseEvent event) {
+
+    }
+
     public void loadMainPane (String fichierFxml){
         Parent root = null;
         try {
@@ -411,5 +430,16 @@ stage.show();
         borderPane.setCenter(root);
 
     }
+    public void loadMainPaneProf (String fichierFxml) {
+        Parent root = null;
+        try {
 
-}
+            root = FXMLLoader.load(getClass().getResource("/vue/" + fichierFxml + ".fxml"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        borderpanneProf.setCenter(root);
+    }
+
+    }

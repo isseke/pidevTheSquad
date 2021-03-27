@@ -14,10 +14,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -113,6 +110,7 @@ public class FXMLProchaineEvenementController extends AnchorPane implements Init
     }
     
     public void miseAjourProchainEvent(){
+
         ProchainThemeEvent.setCellValueFactory(cellData -> cellData.getValue().ThemeProperty());
         ProchainDateEvent.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
         ProchainPresentateurEvent.setCellValueFactory(cellData -> cellData.getValue().PresentateurProperty());

@@ -12,6 +12,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -167,7 +169,7 @@ public class FXMLPrincipalEventController implements Initializable {
         fTheme.setCellValueFactory(cellData -> cellData.getValue().ThemeProperty());
         fPrensentation.setCellValueFactory(cellData -> cellData.getValue().PresentateurProperty());
         fDate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
-        fLien.setCellValueFactory(cellData -> cellData.getValue().LienProperty());
+        fLien.setCellValueFactory(cellData -> (ObservableValue<String>) cellData.getValue().LienProperty());
        setListServ(new ServiceEvenement());
        
     }

@@ -19,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -134,6 +135,10 @@ public class Authentification implements Initializable {
     public TextField tfprenom1;
     @FXML
     public TextField tfid1;
+
+
+    @FXML
+    private BorderPane borderpanneProf;
 
 
     String status1 = "false";
