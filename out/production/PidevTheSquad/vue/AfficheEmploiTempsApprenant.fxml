@@ -3,10 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1370.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Emploidetemps">
    <children>
-      <TableView fx:id="tvemploi" layoutX="255.0" layoutY="38.0" onMouseClicked="#mouseclickgogogogogo2" prefHeight="312.0" prefWidth="835.0">
+      <TableView fx:id="tvemploi" layoutX="268.0" layoutY="26.0" onMouseClicked="#mouseclickgogogogogo" prefHeight="312.0" prefWidth="835.0">
         <columns>
           <TableColumn fx:id="idemploi" prefWidth="75.0" text="id emploi " />
           <TableColumn fx:id="datedebutvalidite" prefWidth="180.0" text="date debut validite" />
@@ -16,7 +17,7 @@
             <TableColumn fx:id="idprof" prefWidth="99.0" text="idprof " />
         </columns>
       </TableView>
-      <Button layoutX="1176.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#ListerEmploibouton" prefHeight="37.0" prefWidth="107.0" text="  Lister" />
+      <Button layoutX="1176.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#ListerEmploiboutonnownow" prefHeight="37.0" prefWidth="107.0" text="  Lister" />
       <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="1190.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../iconspicture/icons8_list_26px.png" />
@@ -24,5 +25,18 @@
       </ImageView>
       <ImageView fitHeight="295.0" fitWidth="835.0" layoutX="255.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="test998" layoutX="1176.0" layoutY="115.0" prefHeight="24.0" prefWidth="70.0" />
+       <Button fx:id="testpro" layoutX="1061.0" layoutY="630.0" mnemonicParsing="false" onMouseClicked="#homeClickApprenant" prefHeight="63.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Return" textFill="WHITE">
+           <font>
+               <Font size="16.0" />
+           </font>
+           <graphic>
+               <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@../iconspicture/icons8_exit_24px.png" />
+                   </image>
+               </ImageView>
+           </graphic>
+       </Button>
+      <ImageView fx:id="imageTactor" fitHeight="287.0" fitWidth="543.0" layoutX="460.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
