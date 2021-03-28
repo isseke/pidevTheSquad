@@ -289,7 +289,12 @@ stage.show();
     }
 
     public void homeClickProf(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
+       // Parent root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Professeurhome.fxml"));
+        Parent root = loader.load();
+        Emploidetemps pc = loader.getController();
+        pc.setid(test998.getText());
 
 
         Stage window=(Stage) testpro.getScene().getWindow();
@@ -297,7 +302,12 @@ stage.show();
 
     }
     public void homeClickApprenant(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
+      //  Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Apprenanthome.fxml"));
+        Parent root = loader.load();
+        Emploidetemps pc = loader.getController();
+        pc.setid(test998.getText());
+
 
 
         Stage window=(Stage) testpro.getScene().getWindow();
@@ -375,7 +385,6 @@ stage.show();
             rs = st.executeQuery(query);
             while (rs.next()) {
                 Integer lool = rs.getInt("Id_professeur");
-                System.out.println(lool);
                 return lool;
             }
         } catch (Exception e) {
@@ -401,7 +410,6 @@ stage.show();
             while(rs.next()) {
                 emplois = new Modele.Emploidetemps(rs.getInt("idemploi"),rs.getDate("datedebutvalidite"),rs.getDate("datefinvalidite"),rs.getDate("dateajoutemploi"),rs.getString("emploi"),rs.getInt("idprof"));
                 EmploiList.add(emplois);
-                System.out.println(EmploiList);
             }
         } catch (Exception e) {
             e.printStackTrace();
