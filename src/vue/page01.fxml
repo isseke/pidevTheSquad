@@ -137,6 +137,7 @@
                   <Image url="@../iconspicture/icons8_search_26px.png" />
                </image>
             </ImageView>
+            <Button layoutX="697.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#PDFProf" prefHeight="25.0" prefWidth="149.0" text="Convert to PDF" />
             </children>
 
         </AnchorPane>

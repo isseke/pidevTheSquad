@@ -1,6 +1,13 @@
 package Gestionnaire;
 
 import Modele.ApprenantEntity;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +16,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,23 +29,18 @@ import javafx.stage.Stage;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+import java.sql.*;
+import java.text.MessageFormat;
 import java.util.Date;
 
-public class Emploidetemps {
+public class Emploidetemps extends Component {
 
     @FXML
     private Button btnevenementProf;
 
-    @FXML
-    public Button directReclProf;
-    @FXML
-    public Button directRecl;
     @FXML
     private Button btnPromotionprof;
     @FXML
@@ -65,7 +69,6 @@ public class Emploidetemps {
 
     @FXML
     private BorderPane borderpanneProf;
-
 
 
     @FXML
@@ -97,35 +100,21 @@ public class Emploidetemps {
     private BorderPane borderPane;
 
 
-    @FXML
-    public void DirectRP(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/FXMLReclamationProf.fxml"));
-        Stage window=(Stage) directReclProf.getScene().getWindow();
-        window.setScene(new Scene(root,1370,700)); }
-
-    @FXML
-    public void DirectRU(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/FXMLReclamationUser.fxml"));
-        Stage window=(Stage) directRecl.getScene().getWindow();
-        window.setScene(new Scene(root,1370,700)); }
-
-
-
     public void GoToEmploideTempsprof(MouseEvent event) throws IOException {
-       // Parent root = FXMLLoader.load(getClass().getResource("/vue/Emploidetempsprofaffiche.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("/vue/Emploidetempsprofaffiche.fxml"));
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Emploidetempsprofaffiche.fxml"));
         Parent root = loader.load();
         Emploidetemps pc = loader.getController();
-       pc.setid2(test999.getText());
-
+        pc.setid2(test999.getText());
 
 
         Stage window = (Stage) gogotoemploiteacher.getScene().getWindow();
         window.setScene(new Scene(root, 1370, 700));
 
     }
+
     public void gobackbro(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/vue/login.fxml"));
 
@@ -157,11 +146,11 @@ public class Emploidetemps {
     }
 
     private ObservableList<Modele.Emploidetemps> getEmploiList() {
-        String idprof=test998.getText();
+        String idprof = test998.getText();
 
         ObservableList<Modele.Emploidetemps> EmploiList = FXCollections.observableArrayList();
         Connection connection = getConnection();
-        String query = "SELECT * FROM emploidetemps where emploidetemps.idprof =(select professeur.Id_professeur from professeur where email ='"+idprof+"')";
+        String query = "SELECT * FROM emploidetemps where emploidetemps.idprof =(select professeur.Id_professeur from professeur where email ='" + idprof + "')";
         Statement st;
         ResultSet rs;
 
@@ -169,8 +158,8 @@ public class Emploidetemps {
             st = connection.createStatement();
             rs = st.executeQuery(query);
             Modele.Emploidetemps emplois;
-            while(rs.next()) {
-                emplois = new Modele.Emploidetemps(rs.getInt("idemploi"),rs.getDate("datedebutvalidite"),rs.getDate("datefinvalidite"),rs.getDate("dateajoutemploi"),rs.getString("emploi"),rs.getInt("idprof"));
+            while (rs.next()) {
+                emplois = new Modele.Emploidetemps(rs.getInt("idemploi"), rs.getDate("datedebutvalidite"), rs.getDate("datefinvalidite"), rs.getDate("dateajoutemploi"), rs.getString("emploi"), rs.getInt("idprof"));
                 EmploiList.add(emplois);
             }
         } catch (Exception e) {
@@ -182,11 +171,10 @@ public class Emploidetemps {
     public Connection getConnection() {
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev","root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev", "root", "");
 
             return conn;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -200,19 +188,18 @@ public class Emploidetemps {
         Emploidetemps pc = loader.getController();
         pc.setid3(test998.getText());
 
-       Stage stage=new Stage();
-stage.setScene(new Scene(root,850,500));
-stage.show();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root, 850, 500));
+        stage.show();
     }
 
     @FXML
     public void insertButton() {
-       Integer i=testquery();
+        Integer i = testquery();
 
 
-
-       String query = "insert into emploidetemps (datedebutvalidite,datefinvalidite,dateajoutemploi,emploi,idprof) values ('"+dp1.getValue()+"','"+dp2.getValue()+"','"+dp3.getValue()+"','"+imagePath+"','"+i+"')";
-       executeQuery(query);
+        String query = "insert into emploidetemps (datedebutvalidite,datefinvalidite,dateajoutemploi,emploi,idprof) values ('" + dp1.getValue() + "','" + dp2.getValue() + "','" + dp3.getValue() + "','" + imagePath + "','" + i + "')";
+        executeQuery(query);
         String title = "Congratulations sir";
         String message = "You've successfully Add your planning   ";
         NotificationType notification = NotificationType.CUSTOM.SUCCESS;
@@ -222,7 +209,6 @@ stage.show();
         tray.setMessage(message);
         tray.setNotificationType(notification);
         tray.showAndWait();
-
 
 
     }
@@ -247,38 +233,36 @@ stage.show();
 
 
         File f = fc.showOpenDialog(null);
-        if(f != null)
-        {
+        if (f != null) {
             System.out.println(f);
         }
-        imagePath=f.getPath();
-        imagePath=imagePath.replace("\\","\\\\");
+        imagePath = f.getPath();
+        imagePath = imagePath.replace("\\", "\\\\");
         return f.getName();
     }
+
     @FXML
-    public void mouseclickgogogogogo(){
-        Modele.Emploidetemps emploi= tvemploi.getSelectionModel().getSelectedItem();
+    public void mouseclickgogogogogo() {
+        Modele.Emploidetemps emploi = tvemploi.getSelectionModel().getSelectedItem();
 
-        Image image = new Image("file:///"+emploi.getEmploi());
+        Image image = new Image("file:///" + emploi.getEmploi());
         imageTactor.setImage(image);
-        imagePath=emploi.getEmploi();
+        imagePath = emploi.getEmploi();
 
 
     }
 
 
-    public void setid(String text)
-    {
-        this.test999.setText(""+text);
+    public void setid(String text) {
+        this.test999.setText("" + text);
     }
 
-    public void setid2(String text)
-    {
-        this.test998.setText(""+text);
+    public void setid2(String text) {
+        this.test998.setText("" + text);
     }
-    public void setid3(String text)
-    {
-        this.test997.setText(""+text);
+
+    public void setid3(String text) {
+        this.test997.setText("" + text);
     }
 
 
@@ -302,28 +286,29 @@ stage.show();
     }
 
     public void homeClickProf(MouseEvent event) throws IOException {
-       // Parent root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Professeurhome.fxml"));
         Parent root = loader.load();
         Emploidetemps pc = loader.getController();
         pc.setid(test998.getText());
-        Stage window=(Stage) testpro.getScene().getWindow();
-        window.setScene(new Scene(root,1370,700));
+
+
+        Stage window = (Stage) testpro.getScene().getWindow();
+        window.setScene(new Scene(root, 1370, 700));
+
     }
 
-
     public void homeClickApprenant(MouseEvent event) throws IOException {
-      //  Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
+        //  Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Apprenanthome.fxml"));
         Parent root = loader.load();
         Emploidetemps pc = loader.getController();
         pc.setid(test998.getText());
 
 
-
-        Stage window=(Stage) testpro.getScene().getWindow();
-        window.setScene(new Scene(root,1370,700));
+        Stage window = (Stage) testpro.getScene().getWindow();
+        window.setScene(new Scene(root, 1370, 700));
 
     }
 
@@ -343,20 +328,12 @@ stage.show();
     }
 
 
-
-
-
-
-
-
-
-
     private ObservableList<Modele.Emploidetemps> getEmploiListApprenant() {
-        String idApprenant=test998.getText();
+        String idApprenant = test998.getText();
 
         ObservableList<Modele.Emploidetemps> EmploiList = FXCollections.observableArrayList();
         Connection connection = getConnection();
-        String query = "SELECT * FROM emploidetemps where emploidetemps.idprof =(select professeur.Id_professeur from professeur where email ='"+idprof+"')";
+        String query = "SELECT * FROM emploidetemps where emploidetemps.idprof =(select professeur.Id_professeur from professeur where email ='" + idprof + "')";
         Statement st;
         ResultSet rs;
 
@@ -364,8 +341,8 @@ stage.show();
             st = connection.createStatement();
             rs = st.executeQuery(query);
             Modele.Emploidetemps emplois;
-            while(rs.next()) {
-                emplois = new Modele.Emploidetemps(rs.getInt("idemploi"),rs.getDate("datedebutvalidite"),rs.getDate("datefinvalidite"),rs.getDate("dateajoutemploi"),rs.getString("emploi"),rs.getInt("idprof"));
+            while (rs.next()) {
+                emplois = new Modele.Emploidetemps(rs.getInt("idemploi"), rs.getDate("datedebutvalidite"), rs.getDate("datefinvalidite"), rs.getDate("dateajoutemploi"), rs.getString("emploi"), rs.getInt("idprof"));
                 EmploiList.add(emplois);
             }
         } catch (Exception e) {
@@ -387,8 +364,8 @@ stage.show();
 
     public Integer testquery2() {
         Connection connection = getConnection();
-        Integer idapprenant=testquery3();
-        String query = "SELECT Id_professeur FROM interactiontwhoways where id_apprenant =('" +idapprenant+ "')";
+        Integer idapprenant = testquery3();
+        String query = "SELECT Id_professeur FROM interactiontwhoways where id_apprenant =('" + idapprenant + "')";
         Statement st;
         ResultSet rs;
 
@@ -407,11 +384,11 @@ stage.show();
 
     @FXML
     private ObservableList<Modele.Emploidetemps> getEmploiListApprenanttNow() {
-        Integer idprof=testquery2();
+        Integer idprof = testquery2();
 
         ObservableList<Modele.Emploidetemps> EmploiList = FXCollections.observableArrayList();
         Connection connection = getConnection();
-        String query = "SELECT * FROM emploidetemps where idprof  =('" +idprof+ "')";
+        String query = "SELECT * FROM emploidetemps where idprof  =('" + idprof + "')";
         Statement st;
         ResultSet rs;
 
@@ -419,8 +396,8 @@ stage.show();
             st = connection.createStatement();
             rs = st.executeQuery(query);
             Modele.Emploidetemps emplois;
-            while(rs.next()) {
-                emplois = new Modele.Emploidetemps(rs.getInt("idemploi"),rs.getDate("datedebutvalidite"),rs.getDate("datefinvalidite"),rs.getDate("dateajoutemploi"),rs.getString("emploi"),rs.getInt("idprof"));
+            while (rs.next()) {
+                emplois = new Modele.Emploidetemps(rs.getInt("idemploi"), rs.getDate("datedebutvalidite"), rs.getDate("datefinvalidite"), rs.getDate("dateajoutemploi"), rs.getString("emploi"), rs.getInt("idprof"));
                 EmploiList.add(emplois);
             }
         } catch (Exception e) {
@@ -428,6 +405,7 @@ stage.show();
         }
         return EmploiList;
     }
+
     public void ListerEmploiboutonnownow(MouseEvent event) {
         ObservableList<Modele.Emploidetemps> list = getEmploiListApprenanttNow();
 
@@ -465,7 +443,7 @@ stage.show();
 
     @FXML
     void GoToEvenement(MouseEvent event) {
-    loadMainPane("FXMLProchaineEvenement");
+        loadMainPane("FXMLProchaineEvenement");
 
     }
 
@@ -485,19 +463,20 @@ stage.show();
 
     }
 
-    public void loadMainPane (String fichierFxml){
+    public void loadMainPane(String fichierFxml) {
         Parent root = null;
         try {
 
-            root = FXMLLoader.load(getClass().getResource("/vue/"+fichierFxml+".fxml"));
-            
+            root = FXMLLoader.load(getClass().getResource("/vue/" + fichierFxml + ".fxml"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
         borderPane.setCenter(root);
 
     }
-    public void loadMainPaneProf (String fichierFxml) {
+
+    public void loadMainPaneProf(String fichierFxml) {
         Parent root = null;
         try {
 
@@ -509,4 +488,7 @@ stage.show();
         borderpanneProf.setCenter(root);
     }
 
-    }
+
+
+
+}

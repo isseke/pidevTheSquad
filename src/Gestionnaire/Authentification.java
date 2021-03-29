@@ -29,6 +29,12 @@ import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
 
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +43,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Authentification implements Initializable {
@@ -55,6 +64,9 @@ public class Authentification implements Initializable {
     public TextField tfnomreset;
     @FXML
     public TextField tfemailreset;
+
+    @FXML
+    public TextField tfmail1;
 
 
     @FXML
@@ -408,18 +420,68 @@ public class Authentification implements Initializable {
         tfnom1.setText(apprenant.getNom());
         tfprenom1.setText(apprenant.getPrenom());
         tfid1.setText(" " + apprenant.getId_apprenant());
+        tfmail1.setText(" " + apprenant.getEmail());
+
         Image image = new Image("file:///" + apprenant.getPhoto());
         imageTactor.setImage(image);
         imagePath = apprenant.getPhoto();
 
     }
 
-    public void Unblockblock() {
+    public void Unblockblock() throws Exception {
         String query = "UPDATE apprenant SET status = 'True' WHERE id_apprenant =" + tfid1.getText() + "";
 
         executeQuery(query);
         getNonactiveList();
+        sendEmail();
+
     }
+    public void sendEmail(){
+String mail=tfmail1.getText();
+        String emailToField=mail;
+        String emailFromField="m.benzarti.1996@gmail.com";
+        String to = tfmail1.getText();
+        String from = emailFromField;
+        String host = "smtp.gmail.com";
+        final String username = "m.benzarti.1996@gmail.com";
+        final String password = "redtube96";
+
+        //setup mail server
+
+        Properties props = System.getProperties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try{
+
+            //create mail
+            MimeMessage m = new MimeMessage(session);
+            m.setFrom(new InternetAddress(from));
+            m.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(to));
+            m.setSubject("Activation Account");
+            m.setText("Votre Compte a ete bien debloque par le patron <3 ");
+
+            //send mail
+
+            Transport.send(m);
+
+            System.out.println("Message sent!");
+
+        }   catch (MessagingException e){
+            e.printStackTrace();
+        }
+
+    }
+
 
     public void GoToApprenantRestPasswrd(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/vue/MotdePasseoublieApprenant.fxml"));
@@ -471,6 +533,7 @@ public class Authentification implements Initializable {
                 tray.setMessage(message);
                 tray.setNotificationType(notification);
                 tray.showAndWait();
+                sendEmail2();
             }
         } else {
             String title = "Congratulations sir";
@@ -484,18 +547,78 @@ public class Authentification implements Initializable {
             tray.showAndWait();
         }
     }
-    public void RestPasswordoneProf(MouseEvent event) {
-        if (tfconfirmpassword2.getText().equals(tfpasswordreset2.getText())) {
+    public void sendEmail2(){
+        String mail=tfemailreset.getText();
 
-            String query = "UPDATE professeur SET password='" + tfpasswordreset2.getText() + "' WHERE nom = '" + tfnomreset.getText() + "' and prenom ='" + tfprenom.getText() + "' and email ='" + tfemailreset.getText() + "';";
+        String pass=tfconfirmpassword.getText();
+
+        String emailToField=mail;
+        String emailFromField="m.benzarti.1996@gmail.com";
+        String to = tfemailreset.getText();
+        String from = emailFromField;
+        String host = "smtp.gmail.com";
+        final String username = "m.benzarti.1996@gmail.com";
+        final String password = "redtube96";
+
+        //setup mail server
+
+        Properties props = System.getProperties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try{
+
+            //create mail
+            MimeMessage m = new MimeMessage(session);
+            m.setFrom(new InternetAddress(from));
+            m.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(to));
+            m.setSubject("Your password have been changed");
+            m.setText("Your Password have been changed to "+pass);
+
+            //send mail
+
+            Transport.send(m);
+
+            System.out.println("Message sent!");
+
+        }   catch (MessagingException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void RestPasswordoneProf(MouseEvent event) {
+        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText())) {
+
+            String query = "UPDATE professeur SET password='" + tfpasswordreset.getText() + "' WHERE nom = '" + tfnomreset.getText() + "' and prenom ='" + tfprenom.getText() + "' and email ='" + tfemailreset.getText() + "';";
 
             executeQuery(query);
 
-            if (executeQuery(query)) {
+            String title = "Congratulations sir";
+            String message = "You've successfully Changed your Password  ";
+            NotificationType notification = NotificationType.CUSTOM.SUCCESS;
 
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndWait();
+            sendEmail2();
+        }
+
+            else {
                 String title = "Congratulations sir";
-                String message = "You've successfully Changed your Password  ";
-                NotificationType notification = NotificationType.CUSTOM.SUCCESS;
+                String message = "You've successfully Entred wrong password  or your accound dont exist    ";
+                NotificationType notification = NotificationType.ERROR;
 
                 TrayNotification tray = new TrayNotification();
                 tray.setTitle(title);
@@ -503,7 +626,6 @@ public class Authentification implements Initializable {
                 tray.setNotificationType(notification);
                 tray.showAndWait();
             }
-        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -38,6 +38,7 @@
       </Label>
       <Label layoutX="350.0" layoutY="263.0" prefHeight="21.0" prefWidth="92.0" text="Prenom">
          <font>
+
             <Font size="15.0" />
          </font>
       </Label>

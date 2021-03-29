@@ -1,7 +1,14 @@
 package Gestionnaire;
 
 import Modele.ApprenantEntity;
-import Modele.Professeur;
+
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -24,14 +31,15 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
+
 import java.io.File;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class ControllerApprenant implements Initializable {
@@ -95,24 +103,25 @@ public class ControllerApprenant implements Initializable {
     @FXML
     public ImageView imageTactor;
     String imagePath = null;
-    String status="True";
+    String status = "True";
 
 
     @FXML
     public void insertButtonAdmin() {
 
         // String query = "insert into professeur values (nom='"+tfnom.getText()+"',prenom='"+tfprenom.getText()+"',photo='"+tfphoto.getText()+"',email='"+tfemail.getText()+",password='"+tfpassword.getText()+"',specialite='"+tfspecialite.getText()+"',profil='"+tfprofil.getText()+"')";
-        String query = "insert into apprenant (nom,prenom,photo,email,password,status) values ('"+tfnom.getText()+"','"+tfprenom.getText()+"','"+imagePath+"','"+tfemail.getText()+"','"+tfpassword.getText()+"','"+status+"')";
+        String query = "insert into apprenant (nom,prenom,photo,email,password,status) values ('" + tfnom.getText() + "','" + tfprenom.getText() + "','" + imagePath + "','" + tfemail.getText() + "','" + tfpassword.getText() + "','" + status + "')";
 
 
         executeQuery(query);
         showApprenant();
     }
+
     @FXML
     public void insertButton() {
 
         // String query = "insert into professeur values (nom='"+tfnom.getText()+"',prenom='"+tfprenom.getText()+"',photo='"+tfphoto.getText()+"',email='"+tfemail.getText()+",password='"+tfpassword.getText()+"',specialite='"+tfspecialite.getText()+"',profil='"+tfprofil.getText()+"')";
-        String query = "insert into apprenant (nom,prenom,photo,email,password) values ('"+tfnom.getText()+"','"+tfprenom.getText()+"','"+imagePath+"','"+tfemail.getText()+"','"+tfpassword.getText()+"')";
+        String query = "insert into apprenant (nom,prenom,photo,email,password) values ('" + tfnom.getText() + "','" + tfprenom.getText() + "','" + imagePath + "','" + tfemail.getText() + "','" + tfpassword.getText() + "')";
 
 
         executeQuery(query);
@@ -129,11 +138,11 @@ public class ControllerApprenant implements Initializable {
     @FXML
     public void homeClick(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/vue/SideBar.fxml"));
-      //  URL url = Paths.get("./src/sample/Views/SideBar.fxml").toUri().toURL();
-       // Parent root = FXMLLoader.load(url);
+        //  URL url = Paths.get("./src/sample/Views/SideBar.fxml").toUri().toURL();
+        // Parent root = FXMLLoader.load(url);
 
-        Stage window=(Stage) testpro.getScene().getWindow();
-        window.setScene(new Scene(root,1370,700));
+        Stage window = (Stage) testpro.getScene().getWindow();
+        window.setScene(new Scene(root, 1370, 700));
 
 
     }
@@ -141,7 +150,7 @@ public class ControllerApprenant implements Initializable {
 
     @FXML
     public void updateButton() {
-        String query = "UPDATE apprenant SET nom='"+tfnom.getText()+"',prenom='"+tfprenom.getText()+"',photo='"+imagePath+"',email='"+tfemail.getText()+"',password='"+tfpassword.getText()+"' WHERE id_apprenant ="+tfid.getText()+"";
+        String query = "UPDATE apprenant SET nom='" + tfnom.getText() + "',prenom='" + tfprenom.getText() + "',photo='" + imagePath + "',email='" + tfemail.getText() + "',password='" + tfpassword.getText() + "' WHERE id_apprenant =" + tfid.getText() + "";
 
         executeQuery(query);
         showApprenant();
@@ -149,21 +158,22 @@ public class ControllerApprenant implements Initializable {
 
     @FXML
     public void deleteButton() {
-        String query = "DELETE FROM apprenant WHERE id_apprenant ="+tfid.getText()+"";
+        String query = "DELETE FROM apprenant WHERE id_apprenant =" + tfid.getText() + "";
         executeQuery(query);
         showApprenant();
     }
+
     @FXML
-    public void mouseclickgogogogogo(){
-        ApprenantEntity apprenant= tvappr.getSelectionModel().getSelectedItem();
-        tfid.setText(" " +apprenant.getId_apprenant());
+    public void mouseclickgogogogogo() {
+        ApprenantEntity apprenant = tvappr.getSelectionModel().getSelectedItem();
+        tfid.setText(" " + apprenant.getId_apprenant());
         tfnom.setText(apprenant.getNom());
         tfprenom.setText(apprenant.getPrenom());
-      //  tfphoto.setText(" "+apprenant.getPhoto());
-        Image image = new Image("file:///"+apprenant.getPhoto());
+        //  tfphoto.setText(" "+apprenant.getPhoto());
+        Image image = new Image("file:///" + apprenant.getPhoto());
         imageTactor.setImage(image);
-        imagePath=apprenant.getPhoto();
-        tfemail.setText(" "+apprenant.getEmail());
+        imagePath = apprenant.getPhoto();
+        tfemail.setText(" " + apprenant.getEmail());
         tfpassword.setText(apprenant.getPassword());
 
     }
@@ -183,16 +193,16 @@ public class ControllerApprenant implements Initializable {
     public Connection getConnection() {
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev","root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev", "root", "");
 
             return conn;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-    public ObservableList<ApprenantEntity> getApprenantList(){
+
+    public ObservableList<ApprenantEntity> getApprenantList() {
         ObservableList<ApprenantEntity> ApprenantList = FXCollections.observableArrayList();
         Connection connection = getConnection();
         String query = "SELECT * FROM apprenant ";
@@ -203,8 +213,8 @@ public class ControllerApprenant implements Initializable {
             st = connection.createStatement();
             rs = st.executeQuery(query);
             ApprenantEntity appre;
-            while(rs.next()) {
-                appre = new ApprenantEntity(rs.getInt("id_apprenant"),rs.getString("nom"),rs.getString("prenom"),rs.getString("photo"),rs.getString("email"),rs.getString("password"),rs.getString("status"));
+            while (rs.next()) {
+                appre = new ApprenantEntity(rs.getInt("id_apprenant"), rs.getString("nom"), rs.getString("prenom"), rs.getString("photo"), rs.getString("email"), rs.getString("password"), rs.getString("status"));
                 ApprenantList.add(appre);
             }
         } catch (Exception e) {
@@ -212,6 +222,7 @@ public class ControllerApprenant implements Initializable {
         }
         return ApprenantList;
     }
+
     public void showApprenant() {
         ObservableList<ApprenantEntity> list = getApprenantList();
 
@@ -229,18 +240,19 @@ public class ControllerApprenant implements Initializable {
 
 
     }
-    public String FileChooser(ActionEvent event) { FileChooser fc = new FileChooser();
+
+    public String FileChooser(ActionEvent event) {
+        FileChooser fc = new FileChooser();
         fc.setInitialDirectory(new File("C:\\Users\\Benzarti\\Desktop\\projects\\javafx\\untitled5\\src\\sample\\iconspicture"));
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.*"));
 
 
         File f = fc.showOpenDialog(null);
-        if(f != null)
-        {
+        if (f != null) {
             System.out.println(f);
         }
-        imagePath=f.getPath();
-        imagePath=imagePath.replace("\\","\\\\");
+        imagePath = f.getPath();
+        imagePath = imagePath.replace("\\", "\\\\");
         return f.getName();
     }
 
@@ -251,8 +263,7 @@ public class ControllerApprenant implements Initializable {
 
     }
 
-    public void Search_apprenant()
-    {
+    public void Search_apprenant() {
         ObservableList<ApprenantEntity> list = getApprenantList();
 
         FilteredList<ApprenantEntity> filteredData = new FilteredList<>(list, b -> true);
@@ -269,12 +280,11 @@ public class ControllerApprenant implements Initializable {
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (prof.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                if (prof.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true; // Filter matches first name.
                 } else if (prof.getPrenom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true; // Filter matches last name.
-                }
-                else if (String.valueOf(prof.getEmail()).indexOf(lowerCaseFilter)!=-1)
+                } else if (String.valueOf(prof.getEmail()).indexOf(lowerCaseFilter) != -1)
                     return true;
                 else
                     return false; // Does not match.
@@ -291,4 +301,44 @@ public class ControllerApprenant implements Initializable {
         // 5. Add sorted (and filtered) data to the table.
         tvappr.setItems(sortedData);
     }
+    @FXML
+    private void PDFApprenant(MouseEvent event) throws SQLException, FileNotFoundException, DocumentException {
+        Connection connection = getConnection();
+
+        Statement stmt = connection.createStatement();
+        /* Define the SQL query */
+        ResultSet query_set = stmt.executeQuery("SELECT * FROM apprenant");
+        /* Step-2: Initialize PDF documents - logical objects */
+        Document my_pdf_report = new Document();
+        PdfWriter.getInstance(my_pdf_report, new FileOutputStream("Liste Apprenant.pdf"));
+        my_pdf_report.open();
+        //we have four columns in our table
+        PdfPTable my_report_table = new PdfPTable(4);
+        //create a cell object
+        PdfPCell table_cell;
+
+        while (query_set.next()) {
+            String dept_id = query_set.getString("nom");
+            table_cell=new PdfPCell(new Phrase(dept_id));
+            my_report_table.addCell(table_cell);
+            String dept_name=query_set.getString("prenom");
+            table_cell=new PdfPCell(new Phrase(dept_name));
+            my_report_table.addCell(table_cell);
+            String manager_id=query_set.getString("email");
+            table_cell=new PdfPCell(new Phrase(manager_id));
+            my_report_table.addCell(table_cell);
+            String location_id=query_set.getString("password");
+            table_cell=new PdfPCell(new Phrase(location_id));
+            my_report_table.addCell(table_cell);
+        }
+        /* Attach report table to PDF */
+        my_pdf_report.add(my_report_table);
+        my_pdf_report.close();
+
+        /* Close all DB related objects */
+        query_set.close();
+        stmt.close();
+        connection.close();
+    }
+
 }

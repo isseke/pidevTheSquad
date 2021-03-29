@@ -2,6 +2,12 @@ package Gestionnaire;
 
 import Modele.Professeur;
 import animatefx.animation.FadeIn;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -26,13 +32,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -427,6 +432,45 @@ window.setScene(new Scene(root,1370,700));
         imagePath=f.getPath();
         imagePath=imagePath.replace("\\","\\\\");
         return f.getName();
+    }
+    @FXML
+    private void PDFProf(MouseEvent event) throws SQLException, FileNotFoundException, DocumentException {
+        Connection connection = getConnection();
+
+        Statement stmt = connection.createStatement();
+        /* Define the SQL query */
+        ResultSet query_set = stmt.executeQuery("SELECT * FROM professeur");
+        /* Step-2: Initialize PDF documents - logical objects */
+        Document my_pdf_report = new Document();
+        PdfWriter.getInstance(my_pdf_report, new FileOutputStream("Liste Professeur.pdf"));
+        my_pdf_report.open();
+        //we have four columns in our table
+        PdfPTable my_report_table = new PdfPTable(4);
+        //create a cell object
+        PdfPCell table_cell;
+
+        while (query_set.next()) {
+            String dept_id = query_set.getString("nom");
+            table_cell=new PdfPCell(new Phrase(dept_id));
+            my_report_table.addCell(table_cell);
+            String dept_name=query_set.getString("prenom");
+            table_cell=new PdfPCell(new Phrase(dept_name));
+            my_report_table.addCell(table_cell);
+            String manager_id=query_set.getString("email");
+            table_cell=new PdfPCell(new Phrase(manager_id));
+            my_report_table.addCell(table_cell);
+            String location_id=query_set.getString("password");
+            table_cell=new PdfPCell(new Phrase(location_id));
+            my_report_table.addCell(table_cell);
+        }
+        /* Attach report table to PDF */
+        my_pdf_report.add(my_report_table);
+        my_pdf_report.close();
+
+        /* Close all DB related objects */
+        query_set.close();
+        stmt.close();
+        connection.close();
     }
 
 
