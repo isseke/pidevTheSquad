@@ -34,6 +34,10 @@ public class Emploidetemps {
     private Button btnevenementProf;
 
     @FXML
+    public Button directReclProf;
+    @FXML
+    public Button directRecl;
+    @FXML
     private Button btnPromotionprof;
     @FXML
     public Button gogotoemploiteacher;
@@ -93,8 +97,17 @@ public class Emploidetemps {
     private BorderPane borderPane;
 
 
+    @FXML
+    public void DirectRP(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/FXMLReclamationProf.fxml"));
+        Stage window=(Stage) directReclProf.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700)); }
 
-
+    @FXML
+    public void DirectRU(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/FXMLReclamationUser.fxml"));
+        Stage window=(Stage) directRecl.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700)); }
 
 
 
@@ -295,12 +308,11 @@ stage.show();
         Parent root = loader.load();
         Emploidetemps pc = loader.getController();
         pc.setid(test998.getText());
-
-
         Stage window=(Stage) testpro.getScene().getWindow();
         window.setScene(new Scene(root,1370,700));
-
     }
+
+
     public void homeClickApprenant(MouseEvent event) throws IOException {
       //  Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Apprenanthome.fxml"));

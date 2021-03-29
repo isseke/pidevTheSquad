@@ -79,18 +79,26 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnPromotionprof" layoutX="-14.0" layoutY="58.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#GoToPromotionProf" prefHeight="58.0" prefWidth="315.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="     Promotion" textFill="WHITE">
+                        <Button fx:id="btnPromotionprof" layoutX="-14.0" layoutY="58.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#GoToPromotionProf" prefHeight="58.0" prefWidth="315.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="              Promotion" textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../iconspicture/icons8_edit_property_26px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
                         </Button>
+                        <Button fx:id="directReclProf" layoutY="116.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#DirectRP" prefHeight="58.0" prefWidth="306.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="          Reclamation" textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="74.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconspicture/icons8_edit_property_26px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="74.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconspicture/icons8_edit_property_26px.png" />
+                           </image>
+                        </ImageView>
                      </children></Pane>
                   <Button fx:id="idreturn" layoutX="10.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#gobackbro" prefHeight="63.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text=" Disconnect" textFill="WHITE">
                      <font>

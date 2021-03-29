@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="AnimateFX-1.2.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/AnimateFX-1.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/itextpdf-5.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/mysql-connector-java-5.1.23-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/pdfbox-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/TrayTester.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/dist/lib/pdfbox-2.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/pdfbox-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

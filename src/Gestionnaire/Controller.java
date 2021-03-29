@@ -141,6 +141,10 @@ public class Controller implements Initializable {
     @FXML
     private Button btnPromotionAdmin;
 
+    @FXML
+    public Button directReclAdmin;
+
+
 
     @FXML
     void GoToEvenementAdmin(MouseEvent event) {
@@ -334,6 +338,12 @@ public class Controller implements Initializable {
         window.setScene(new Scene(root,1370,700));
 
     }
+
+    @FXML
+    public void DirectRA(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/FXMLReclamationAdmin.fxml"));
+        Stage window=(Stage) directReclAdmin.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700)); }
 
 
 

@@ -19,30 +19,30 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="111.0" layoutY="72.0" prefHeight="35.0" prefWidth="187.0" text="Polyways learning " textFill="#eeeeee">
+                        <Label layoutX="113.0" layoutY="26.0" prefHeight="35.0" prefWidth="187.0" text="Polyways learning " textFill="#eeeeee">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="103.0" fitWidth="93.0" layoutX="8.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="103.0" fitWidth="93.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../iconspicture/img.png" />
                            </image>
                         </ImageView>
+                        <Button layoutX="-7.0" layoutY="142.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#homeClick" prefHeight="58.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="      Home" textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../iconspicture/icons8_home_26px_3.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </Pane>
-                  <Button minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#homeClick" prefHeight="58.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="      Home" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../iconspicture/icons8_home_26px_3.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                   <Button fx:id="testpro" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#page01Click" prefHeight="58.0" prefWidth="305.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="    Gestion Professeur" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
@@ -87,7 +87,7 @@
                               <Font size="16.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../iconspicture/icons8_edit_property_26px.png" />
                                  </image>
@@ -99,7 +99,17 @@
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="61.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="61.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconspicture/icons8_edit_property_26px.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="directReclAdmin" layoutY="174.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#DirectRA" prefHeight="58.0" prefWidth="313.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="         Gestion Reclamation" textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="61.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../iconspicture/icons8_edit_property_26px.png" />
                            </image>

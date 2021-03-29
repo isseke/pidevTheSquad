@@ -14,6 +14,7 @@ module PidevTheSquad {
     requires javafx.swt;
     requires javafx.base;
     requires mysql.connector.java;
+    requires itextpdf;
     exports pidevthesquad;
     opens pidevthesquad to javafx.graphics, javafx.controls, javafx.fxml;
 

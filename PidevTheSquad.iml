@@ -7,9 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.22" level="project" />
-    <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="lib1" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.221" level="project" />
+    <orderEntry type="library" exported="" name="mysql-connector-java-8.0.22" level="project" />
+    <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="library" exported="" name="AnimateFX-1.2.1" level="project" />
+    <orderEntry type="library" exported="" name="javafx.web" level="project" />
   </component>
 </module>
