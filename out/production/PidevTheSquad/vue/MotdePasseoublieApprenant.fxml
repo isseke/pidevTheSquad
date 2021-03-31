@@ -67,7 +67,6 @@
                 <Font size="15.0" />
             </font>
         </Label>
-      <Button layoutX="231.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#testqueryEmailApprenant" text="Button" />
 
 
     </children>

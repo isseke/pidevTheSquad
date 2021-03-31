@@ -11,11 +11,19 @@ package Modele;
  */
 public class Reclamation {
     int id;
-    String title,etat,date,recl ,nom_user ,reclmodif ,exp ,msg ,msgA;
+    String title;
+    String etat;
+    String date;
+    String recl;
+    int id_user;
+    String reclmodif;
+    String exp;
+    String msg;
+    String msgA;
 
-    public Reclamation(int id, String title, String date, String etat, String nom_user ,String recl ,String reclmodif ,String exp ,String msg ,String msgA) {
+    public Reclamation(int id, String title, String date, String etat, int id_user ,String recl ,String reclmodif ,String exp ,String msg ,String msgA) {
         this.id = id;
-        this.nom_user = nom_user;
+        this.id_user = id_user;
         this.title = title;
         this.date = date;
         this.etat = etat;
@@ -26,8 +34,9 @@ public class Reclamation {
         this.msgA = msgA;
     }
 
-    public Reclamation(String etat ,String recl ,String date ,String reclmodif ,String exp ,String msg ,String msgA) {
-        this.etat = etat ;
+    public Reclamation(int id_user ,String title ,String date ,String recl ,String reclmodif ,String exp ,String msg ,String msgA) {
+        this.id_user = id_user;
+        this.title = title;
         this.recl = recl ;
         this.date = date ;
         this.reclmodif = reclmodif ;
@@ -44,10 +53,10 @@ public class Reclamation {
         this.id = id;
     }
 
-    public String getNom_user() {
-        return nom_user;
+    public int getId_user() {
+        return id_user;
     }
-    public void setNom_user(String nom_user) { this.nom_user = nom_user; }
+    public void setId_user(int id_user) { this.id_user = id_user; }
 
     public String getTitle() {
         return title;

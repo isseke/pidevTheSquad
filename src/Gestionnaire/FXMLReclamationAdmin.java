@@ -6,8 +6,10 @@
 package Gestionnaire;
 
 import Modele.AdminReclamation;
+import Modele.Reclamation;
 import Services.AdminReclamationService;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -21,6 +23,13 @@ import java.sql.Statement;
 import java.util.*;
 
 import ConnectDB.MyConnection;
+import Services.ReclamationService;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -30,6 +39,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
@@ -74,11 +84,14 @@ public class FXMLReclamationAdmin implements Initializable {
     private static int id ,id2 ,id3;
     private static String exp;
     ObservableList<String> list = FXCollections.observableArrayList("Non-Traitée" ,"En-Cours" ,"Traitée");
-
-
+    @FXML
+    public Button dreturn;
+    @FXML
+    public Label testrecl;
     @FXML void Select(ActionEvent event){ String s = comb.getSelectionModel().getSelectedItem().toString(); }
+    public void setid4(String text) { this.testrecl.setText("" + text); }
 
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<AdminReclamation> AdminReclamation = FXCollections.observableArrayList();
@@ -88,14 +101,10 @@ public class FXMLReclamationAdmin implements Initializable {
          tabTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
          tabDate.setCellValueFactory(new PropertyValueFactory<>("date"));
          tabExp.setCellValueFactory(new PropertyValueFactory<>("exp"));
-         tabNomUser.setCellValueFactory(new PropertyValueFactory<>("nom_user"));
+         tabNomUser.setCellValueFactory(new PropertyValueFactory<>("email"));
          tableReclamation.setItems(AdminReclamation);
-        try {
-            Notif();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
+        try { Notif(); } catch (MalformedURLException e) { e.printStackTrace(); }
+        SearchReclamation(); SearchReclamationCorbeille(); SearchReclamationArchive();}
 
 
     public void loadData() throws MalformedURLException {
@@ -106,8 +115,10 @@ public class FXMLReclamationAdmin implements Initializable {
         tabTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         tabDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         tabExp.setCellValueFactory(new PropertyValueFactory<>("exp"));
-        tabNomUser.setCellValueFactory(new PropertyValueFactory<>("nom_user"));
-        tableReclamation.setItems(AdminReclamation); Notif(); }
+        tabNomUser.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tableReclamation.setItems(AdminReclamation); SearchReclamation();
+    }
+
 
     public void loadDataCorbeille() {
         ObservableList<AdminReclamation> Reclamation = FXCollections.observableArrayList();
@@ -116,8 +127,8 @@ public class FXMLReclamationAdmin implements Initializable {
         tabTitle2.setCellValueFactory(new PropertyValueFactory<>("title"));
         tabDate2.setCellValueFactory(new PropertyValueFactory<>("date"));
         tabExp2.setCellValueFactory(new PropertyValueFactory<>("exp"));
-        tabNomUser2.setCellValueFactory(new PropertyValueFactory<>("nom_user"));
-        tableReclamation2.setItems(Reclamation); }
+        tabNomUser2.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tableReclamation2.setItems(Reclamation);SearchReclamationCorbeille(); }
 
     public void loadDataArchive() {
         ObservableList<AdminReclamation> Reclamation = FXCollections.observableArrayList();
@@ -126,8 +137,8 @@ public class FXMLReclamationAdmin implements Initializable {
         tabTitle3.setCellValueFactory(new PropertyValueFactory<>("title"));
         tabDate3.setCellValueFactory(new PropertyValueFactory<>("date"));
         tabExp3.setCellValueFactory(new PropertyValueFactory<>("exp"));
-        tabNomUser3.setCellValueFactory(new PropertyValueFactory<>("nom_user"));
-        tableReclamation3.setItems(Reclamation); }
+        tabNomUser3.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tableReclamation3.setItems(Reclamation);SearchReclamationArchive(); }
 
 
     public void Refrech() throws MalformedURLException { loadData(); loadDataCorbeille(); loadDataArchive();}
@@ -149,6 +160,7 @@ public class FXMLReclamationAdmin implements Initializable {
         String etat = comb.getValue(); String date = tfDate.getValue().toString();
         String recl = tfReclAdd.getText(); String reclmodif = r2.getRecl();
         String exp = "ADMIN"; String msgA = r2.getMsgA(); String msg = r2.getMsg();
+      //  String email = r2.getNom_User();
         AdminReclamation r = new AdminReclamation(etat, recl, date ,reclmodif ,exp ,msg ,msgA);
         if( verifsupp(msg) == true ) alertsupp(); else {
         String str; reclmodif = r2.getRecl(); recl = tfReclAdd.getText();
@@ -172,7 +184,7 @@ public class FXMLReclamationAdmin implements Initializable {
         String date = tfDate.getValue().toString();
         String recl = r2.getReclmodif();
         String reclmodif = r2.getReclmodif();
-        String exp="ADMIN";
+        String exp="ADMIN"; //String email = r2.getNom_User();
         String msgA= r2.getMsgA(); String msg = r2.getMsg();
         AdminReclamation r = new AdminReclamation(etat, recl ,date ,reclmodif ,exp ,msg ,msgA);
             if( verifsupp(msg) == true ) alertsupp(); else {
@@ -222,17 +234,33 @@ public class FXMLReclamationAdmin implements Initializable {
 
 
 
+    public String getEmailUser() {
+        try {
+            String req = "SELECT email FROM reclamation INNER JOIN apprenant ON reclamation.id_user = apprenant.id_apprenant";
+            Statement st = MyConnection.getInstance().getCnx().createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) { String e = rs.getString("email"); return e; }
+        }catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        return null ;}
 
-    public  List<String> getNomUserReclamation() {
+
+    public  List<String> getEUL() {
         List<String> TitleList = new ArrayList<>();
-        try { String req = "SELECT nom_user FROM reclamation WHERE (exp <> 'ADMIN')" ;
+        try { String req = "SELECT email FROM reclamation INNER JOIN professeur ON reclamation.id_prof = professeur.id_professeur WHERE (exp <> 'ADMIN')" ;
             Statement st = MyConnection.getInstance().getCnx().createStatement(); ResultSet rs = st.executeQuery(req);
-            while (rs.next()) { String A = rs.getString("nom_user");
-        TitleList.add(A); } } catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        return TitleList; }
+            while (rs.next()) { String A = rs.getString("email");  TitleList.add(A); } }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+
+        try { String req = "SELECT email FROM reclamation INNER JOIN apprenant ON reclamation.id_user = apprenant.id_apprenant WHERE (exp <> 'ADMIN')" ;
+            Statement st = MyConnection.getInstance().getCnx().createStatement(); ResultSet rs = st.executeQuery(req);
+            while (rs.next()) { String A = rs.getString("email");  TitleList.add(A); } }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+ return TitleList; }
+
 
     @FXML
-    private void Notif() throws MalformedURLException { int NB = 0;  List<String> NomUserL = new ArrayList<>(); NomUserL = getNomUserReclamation();
+    private void Notif() throws MalformedURLException {
+        int NB = 0;  List<String> NomUserL = new ArrayList<>(); NomUserL = getEUL();
         try { String req = "SELECT COUNT(exp) FROM `reclamation` WHERE (exp <> 'ADMIN')";
     Statement st = MyConnection.getInstance().getCnx().createStatement(); ResultSet rs = st.executeQuery(req);
         while (rs.next()) { NB = rs.getInt("COUNT(exp)"); }
@@ -246,9 +274,9 @@ public class FXMLReclamationAdmin implements Initializable {
         tray.setTitle(NB + " Nouveaux Message");
         tray.setMessage(ListeNU);
         tray.setRectangleFill(Paint.valueOf("#2A9A84"));
-       // tray.setAnimation(Animations.POPUP);
         tray.setImage(whatsAppImg);
         tray.showAndDismiss(Duration.seconds(60)); } }
+
 
     @FXML
     public void archiverReclamation(ActionEvent event) throws MalformedURLException {
@@ -268,6 +296,7 @@ public class FXMLReclamationAdmin implements Initializable {
             alert2.setTitle("Information"); alert2.setHeaderText(null);
             alert2.setContentText("la reclamation n'est pas encore traitée "); alert2.showAndWait(); } Refrech();} }
 
+
     @FXML
     public void corbeilleReclamation(ActionEvent event) throws MalformedURLException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -281,6 +310,7 @@ public class FXMLReclamationAdmin implements Initializable {
             pst.setString(1, msgA);
             int rowsUpdated = pst.executeUpdate(); if (rowsUpdated > 0) { System.out.println("Reclamation mis en corbeille"); }
         } catch (SQLException ex) { System.out.println(ex.getMessage()); }Refrech(); } }
+
 
     @FXML
     public void corbeilleReclamation2(ActionEvent event) throws MalformedURLException {
@@ -322,9 +352,10 @@ public class FXMLReclamationAdmin implements Initializable {
             AdminReclamation r2 = tableReclamation3.getSelectionModel().getSelectedItem();
             String msgA= "ABR"; String reclmodif = r2.getRecl(); String recl = tfReclAdd2.getText(); String msg = r2.getMsg();
             String str; String etat = "En-Cours"; String date = tfDate2.getValue().toString(); String exp = r2.getExp();
+           // String email = r2.getNom_User();
             AdminReclamation r = new AdminReclamation(etat, recl ,date ,reclmodif ,exp ,msg ,msgA);
             if(verifsupp(msg)) alertsupp(); else {
-                str = reclmodif +"\n" + "----------------------------- "+"USERNAME"+ " - " + date + " ---------------------------- "
+                str = reclmodif +"\n" + "----------------------------- "+"USER"+ " - " + date + " ---------------------------- "
                         + "\n" + recl ; r.setRecl(str);Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("AJOUT"); alert.setHeaderText(null);
                 alert.setContentText("voulez vous vraiment Ajouter la reclamation ? ");
@@ -399,6 +430,50 @@ public class FXMLReclamationAdmin implements Initializable {
         sortedData.comparatorProperty().bind(tableReclamation3.comparatorProperty());
         tableReclamation3.setItems(sortedData);
     }
+
+    public void homeClickApprenant(MouseEvent event) throws IOException {
+        //  Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/SideBar.fxml"));
+        Parent root = loader.load();
+        Stage window = (Stage) dreturn.getScene().getWindow();
+        window.setScene(new Scene(root, 1370, 700));  }
+
+
+    @FXML
+    private void PDF(ActionEvent event) {
+        Document document = new Document();
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("Liste des reclamations Admin " + ".pdf" ));
+            document.open();
+            Paragraph ph1 = new Paragraph("                                                           POLYWAYS-LEARNING"+ "\n"+ "\n");
+            Paragraph ph2 = new Paragraph("                                              LISTE DES RECLAMATIONS ADMIN : " + "\n"+ "\n");
+            Paragraph ph3 = new Paragraph(" ");
+            PdfPTable table = new PdfPTable(3);
+
+            PdfPCell cell;
+            table.addCell("Title");
+            table.addCell("Date");
+            table.addCell("Etat");
+
+
+            ObservableList<AdminReclamation> RL = FXCollections.observableArrayList();
+            AdminReclamationService rs = new AdminReclamationService();
+            for (AdminReclamation c : rs.displayReclamation()) RL.add(c);
+            System.out.println("Reclamation pdf");
+            RL.forEach(e -> {
+                table.addCell(e.getTitle());
+                table.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(String.valueOf(e.getDate()));
+                table.addCell(e.getEtat()); });
+
+
+            document.add(ph1);
+            document.add(ph2);
+            document.add(ph3);
+            document.add(table);
+            document.addAuthor("Polyways Learning");
+        } catch (Exception e) { System.out.println(e); }document.close(); }
+
 
 
 }

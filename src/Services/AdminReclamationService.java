@@ -66,8 +66,49 @@ public class AdminReclamationService implements IReclamationAdmin<AdminReclamati
             if (rowsUpdated > 0) { System.out.println("Reponse ajouté"); } } catch (SQLException ex) {
             System.out.println(ex.getMessage()); } }
 
-
     @Override
+    public List<AdminReclamation> displayReclamation() {
+        List<AdminReclamation> reclamationList = new ArrayList<>();
+        try { String req = "SELECT * FROM reclamation INNER JOIN apprenant ON reclamation.id_user = apprenant.id_apprenant WHERE (msgA = 'ABR') AND (id_prof IS NULL)" ;
+            Statement st = MyConnection.getInstance().getCnx().createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                AdminReclamation ct = new AdminReclamation();
+                ct.setId(rs.getInt("id"));
+                ct.setTitle(rs.getString("title"));
+                ct.setDate(rs.getString("date"));
+                ct.setEtat(rs.getString("etat"));
+                ct.setRecl(rs.getString("recl"));
+                ct.setReclmodif(rs.getString("reclmodif"));
+                ct.setId_prof(rs.getInt("id_user"));
+                ct.setNom_user(rs.getString("email"));
+                ct.setExp(rs.getString("exp"));
+                ct.setMsg(rs.getString("msg"));
+                ct.setMsgA(rs.getString("msgA"));
+                reclamationList.add(ct); }
+        } catch (SQLException ex) { System.out.println(ex.getMessage()); }
+
+        try { String req = "SELECT * FROM reclamation INNER JOIN professeur ON reclamation.id_prof = professeur.Id_professeur WHERE (msgA = 'ABR') AND (id_user IS NULL)" ;
+            Statement st = MyConnection.getInstance().getCnx().createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                AdminReclamation ct = new AdminReclamation();
+                ct.setId(rs.getInt("id"));
+                ct.setTitle(rs.getString("title"));
+                ct.setDate(rs.getString("date"));
+                ct.setEtat(rs.getString("etat"));
+                ct.setRecl(rs.getString("recl"));
+                ct.setReclmodif(rs.getString("reclmodif"));
+                ct.setId_prof(rs.getInt("id_prof"));
+                ct.setNom_user(rs.getString("email"));
+                ct.setExp(rs.getString("exp"));
+                ct.setMsg(rs.getString("msg"));
+                ct.setMsgA(rs.getString("msgA"));
+                reclamationList.add(ct); }
+        } catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        return reclamationList; }
+
+  /*  @Override
     public List<AdminReclamation> displayReclamation() {
                  List<AdminReclamation> reclamationList = new ArrayList<>();
         try {
@@ -82,7 +123,8 @@ public class AdminReclamationService implements IReclamationAdmin<AdminReclamati
                 ct.setEtat(rs.getString("etat"));
                 ct.setRecl(rs.getString("recl"));
                 ct.setReclmodif(rs.getString("reclmodif"));
-                ct.setNom_user(rs.getString("nom_user"));
+                ct.setId_user(rs.getInt("id_user"));
+                ct.setId_prof(rs.getInt("id_prof"));
                 ct.setExp(rs.getString("exp"));
                 ct.setMsg(rs.getString("msg"));
                 ct.setMsgA(rs.getString("msgA"));
@@ -91,7 +133,7 @@ public class AdminReclamationService implements IReclamationAdmin<AdminReclamati
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return reclamationList; }
+        return reclamationList; } */
 
 
     public List<AdminReclamation> displayRC() {
@@ -108,7 +150,8 @@ public class AdminReclamationService implements IReclamationAdmin<AdminReclamati
                 ct.setEtat(rs.getString("etat"));
                 ct.setRecl(rs.getString("recl"));
                 ct.setReclmodif(rs.getString("reclmodif"));
-                ct.setNom_user(rs.getString("nom_user"));
+                ct.setId_user(rs.getInt("id_user"));
+                ct.setId_prof(rs.getInt("id_prof"));
                 ct.setExp(rs.getString("exp"));
                 ct.setMsg(rs.getString("msg"));
                 ct.setMsgA(rs.getString("msgA"));
@@ -134,7 +177,8 @@ public class AdminReclamationService implements IReclamationAdmin<AdminReclamati
                 ct.setEtat(rs.getString("etat"));
                 ct.setRecl(rs.getString("recl"));
                 ct.setReclmodif(rs.getString("reclmodif"));
-                ct.setNom_user(rs.getString("nom_user"));
+                ct.setId_user(rs.getInt("id_user"));
+                ct.setId_prof(rs.getInt("id_prof"));
                 ct.setExp(rs.getString("exp"));
                 ct.setMsg(rs.getString("msg"));
                 ct.setMsgA(rs.getString("msgA"));

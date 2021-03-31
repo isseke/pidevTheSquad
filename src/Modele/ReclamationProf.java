@@ -10,12 +10,12 @@ package Modele;
  * @author ASUS
  */
 public class ReclamationProf {
-    int id;
+    int id ,id_prof;
     String title,etat,date,recl ,nom_user ,reclmodif ,exp ,msg ,msgA;
 
-    public ReclamationProf(int id, String title, String date, String etat, String nom_user ,String recl ,String reclmodif ,String exp ,String msg ,String msgA) {
+    public ReclamationProf(int id, String title, String date, String etat, int id_prof ,String recl ,String reclmodif ,String exp ,String msg ,String msgA) {
         this.id = id;
-        this.nom_user = nom_user;
+        this.id_prof = id_prof;
         this.title = title;
         this.date = date;
         this.etat = etat;
@@ -26,8 +26,9 @@ public class ReclamationProf {
         this.msgA = msgA;
     }
 
-    public ReclamationProf(String etat ,String recl ,String date ,String reclmodif ,String exp ,String msg ,String msgA) {
-        this.etat = etat ;
+    public ReclamationProf(int id_prof ,String title ,String date ,String recl ,String reclmodif ,String exp ,String msg ,String msgA) {
+        this.id_prof = id_prof;
+        this.title = title;
         this.recl = recl ;
         this.date = date ;
         this.reclmodif = reclmodif ;
@@ -44,10 +45,10 @@ public class ReclamationProf {
         this.id = id;
     }
 
-    public String getNom_user() {
-        return nom_user;
+    public int getId_prof() {
+        return id_prof;
     }
-    public void setNom_user(String nom_user) { this.nom_user = nom_user; }
+    public void setId_prof(int id_prof) { this.id_prof = id_prof; }
 
     public String getTitle() {
         return title;

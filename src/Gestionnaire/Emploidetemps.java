@@ -66,6 +66,8 @@ public class Emploidetemps extends Component {
     public Label test998;
     @FXML
     public Label test997;
+    @FXML
+    public Label testrecl;
 
     @FXML
     private BorderPane borderpanneProf;
@@ -98,6 +100,29 @@ public class Emploidetemps extends Component {
 
     @FXML
     private BorderPane borderPane;
+    @FXML
+    public Button directReclProf;
+    @FXML
+    public Button directRecl;
+
+
+    @FXML
+    public void DirectRP(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/FXMLReclamationProf.fxml"));
+        Parent root = loader.load();
+        FXMLReclamationProf ru = loader.getController();
+        ru.setid4(test999.getText());
+        Stage window=(Stage) directReclProf.getScene().getWindow();
+        window.setScene(new Scene(root,1370,720)); }
+
+    @FXML
+    public void DirectRU(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/FXMLReclamationUser.fxml"));
+        Parent root = loader.load();
+        FXMLReclamationUser ru = loader.getController();
+        ru.setid4(test999.getText());
+        Stage window=(Stage) directRecl.getScene().getWindow();
+        window.setScene(new Scene(root,1370,720)); }
 
 
     public void GoToEmploideTempsprof(MouseEvent event) throws IOException {
@@ -279,9 +304,7 @@ public class Emploidetemps extends Component {
                 Integer lool = rs.getInt("Id_professeur");
                 return lool;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) { e.printStackTrace(); }
         return 0;
     }
 
@@ -305,8 +328,6 @@ public class Emploidetemps extends Component {
         Parent root = loader.load();
         Emploidetemps pc = loader.getController();
         pc.setid(test998.getText());
-
-
         Stage window = (Stage) testpro.getScene().getWindow();
         window.setScene(new Scene(root, 1370, 700));
 
@@ -353,7 +374,6 @@ public class Emploidetemps extends Component {
 
 
     public void GoToemploidetempsApprenant(MouseEvent event) throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/AfficheEmploiTempsApprenant.fxml"));
         Parent root = loader.load();
         Emploidetemps pc = loader.getController();
@@ -424,22 +444,15 @@ public class Emploidetemps extends Component {
     public Integer testquery3() {
         Connection connection = getConnection();
         String query = "SELECT id_apprenant FROM apprenant where email =('" + test998.getText() + "')";
-        Statement st;
-        ResultSet rs;
-
+        Statement st; ResultSet rs;
         try {
             st = connection.createStatement();
             rs = st.executeQuery(query);
             while (rs.next()) {
                 Integer lool = rs.getInt("id_apprenant");
-                return lool;
+                return lool; }
+        } catch (Exception e) { e.printStackTrace(); }  return 0; }
 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
 
     @FXML
     void GoToEvenement(MouseEvent event) {
@@ -487,8 +500,6 @@ public class Emploidetemps extends Component {
         }
         borderpanneProf.setCenter(root);
     }
-
-
 
 
 }

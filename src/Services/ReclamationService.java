@@ -18,16 +18,17 @@ public class ReclamationService implements IReclamation<Reclamation> {
 
     @Override
     public void ajouterReclamation(Reclamation r) {
-        String requete = "INSERT INTO `reclamation`(`title`, `date` ,`recl` ,`reclmodif` ,`exp` ,`msg` ,`msgA`) VALUES (?,?,?,?,?,?,?)";
+        String requete = "INSERT INTO `reclamation`(`id_user` ,`title`, `date` ,`recl` ,`reclmodif` ,`exp` ,`msg` ,`msgA`) VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
-            pst.setString(1, r.getTitle());
-            pst.setString(2, String.valueOf(r.getDate()));
-            pst.setString(3, r.getRecl());
-            pst.setString(4, r.getReclmodif());
-            pst.setString(5, r.getExp());
-            pst.setString(6, r.getMsg());
-            pst.setString(7, r.getMsgA());
+            pst.setInt(1, r.getId_user());
+            pst.setString(2, r.getTitle());
+            pst.setString(3, String.valueOf(r.getDate()));
+            pst.setString(4, r.getRecl());
+            pst.setString(5, r.getReclmodif());
+            pst.setString(6, r.getExp());
+            pst.setString(7, r.getMsg());
+            pst.setString(8, r.getMsgA());
             pst.executeUpdate();
             System.out.println("Reclamation ajouté");
         } catch (SQLException ex) {
@@ -53,25 +54,26 @@ public class ReclamationService implements IReclamation<Reclamation> {
     @Override
     public void updateReclamation(Reclamation r,int id) {
         try {
-            String req = "UPDATE `reclamation` SET `etat`=?, `date`=?, `recl`=?, `reclmodif`=?, `exp`=? , `msg`=? , `msgA`=?WHERE id='"+id+"'";
+            String req = "UPDATE `reclamation` SET `id_user`=?, `title`=?, `date`=?, `recl`=?, `reclmodif`=?, `exp`=? , `msg`=? , `msgA`=?WHERE id='"+id+"'";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(req);
-            pst.setString(1, r.getEtat());
-            pst.setString(2, String.valueOf(r.getDate()));
-            pst.setString(3, r.getRecl());
-            pst.setString(4, r.getReclmodif());
-            pst.setString(5, r.getExp());
-            pst.setString(6, r.getMsg());
-            pst.setString(7, r.getMsgA());
+            pst.setInt(1, r.getId_user());
+            pst.setString(2, r.getTitle());
+            pst.setString(3, String.valueOf(r.getDate()));
+            pst.setString(4, r.getRecl());
+            pst.setString(5, r.getReclmodif());
+            pst.setString(6, r.getExp());
+            pst.setString(7, r.getMsg());
+            pst.setString(8, r.getMsgA());
             int rowsUpdated = pst.executeUpdate();
             if (rowsUpdated > 0) { System.out.println("Reponse ajouté"); } } catch (SQLException ex) {
             System.out.println(ex.getMessage()); } }
 
 
     @Override
-    public List<Reclamation> displayReclamation() {
+    public List<Reclamation> displayReclamation(int idu) {
         List<Reclamation> reclamationList = new ArrayList<>();
         try {
-            String req = "SELECT * FROM reclamation WHERE (msgA = 'ABR') " ;
+            String req = "SELECT * FROM reclamation WHERE (msg = 'BR') AND ( id_user = '"+idu+"')";
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -82,7 +84,7 @@ public class ReclamationService implements IReclamation<Reclamation> {
                 ct.setEtat(rs.getString("etat"));
                 ct.setRecl(rs.getString("recl"));
                 ct.setReclmodif(rs.getString("reclmodif"));
-                ct.setNom_user(rs.getString("nom_user"));
+                ct.setId_user(rs.getInt("id_user"));
                 ct.setExp(rs.getString("exp"));
                 ct.setMsg(rs.getString("msg"));
                 ct.setMsgA(rs.getString("msgA"));
@@ -94,10 +96,10 @@ public class ReclamationService implements IReclamation<Reclamation> {
         return reclamationList; }
 
 
-    public List<Reclamation> displayRC() {
+    public List<Reclamation> displayRC(int idu) {
         List<Reclamation> reclamationList = new ArrayList<>();
         try {
-            String req = "SELECT * FROM reclamation WHERE msgA IN ('ACORBEILLE','ACORBEILLE2') " ;
+            String req = "SELECT * FROM reclamation WHERE msg IN ('UCORBEILLE','UCORBEILLE2') AND ( id_user = '"+idu+"')" ;
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -108,7 +110,7 @@ public class ReclamationService implements IReclamation<Reclamation> {
                 ct.setEtat(rs.getString("etat"));
                 ct.setRecl(rs.getString("recl"));
                 ct.setReclmodif(rs.getString("reclmodif"));
-                ct.setNom_user(rs.getString("nom_user"));
+                ct.setId_user(rs.getInt("id_user"));
                 ct.setExp(rs.getString("exp"));
                 ct.setMsg(rs.getString("msg"));
                 ct.setMsgA(rs.getString("msgA"));
@@ -120,10 +122,10 @@ public class ReclamationService implements IReclamation<Reclamation> {
         return reclamationList; }
 
 
-    public List<Reclamation> displayRA() {
+    public List<Reclamation> displayRA(int idu) {
         List<Reclamation> reclamationList = new ArrayList<>();
         try {
-            String req = "SELECT * FROM reclamation WHERE (msgA = 'AARCHIVE') " ;
+            String req = "SELECT * FROM reclamation WHERE (msgA = 'UARCHIVE')  AND ( id_user = '"+idu+"') " ;
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -134,7 +136,7 @@ public class ReclamationService implements IReclamation<Reclamation> {
                 ct.setEtat(rs.getString("etat"));
                 ct.setRecl(rs.getString("recl"));
                 ct.setReclmodif(rs.getString("reclmodif"));
-                ct.setNom_user(rs.getString("nom_user"));
+                ct.setId_user(rs.getInt("id_user"));
                 ct.setExp(rs.getString("exp"));
                 ct.setMsg(rs.getString("msg"));
                 ct.setMsgA(rs.getString("msgA"));
@@ -144,4 +146,5 @@ public class ReclamationService implements IReclamation<Reclamation> {
             System.out.println(ex.getMessage());
         }
         return reclamationList; }
+
 }
