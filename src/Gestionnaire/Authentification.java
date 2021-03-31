@@ -1,4 +1,5 @@
 package Gestionnaire;
+
 import Modele.ApprenantEntity;
 import Modele.Professeur;
 import Modele.administrateur;
@@ -55,8 +56,6 @@ import java.util.regex.Pattern;
 
 
 public class Authentification implements Initializable {
-
-
 
 
     @FXML
@@ -444,10 +443,11 @@ public class Authentification implements Initializable {
         sendEmail();
 
     }
-    public void sendEmail(){
-String mail=tfmail1.getText();
-        String emailToField=mail;
-        String emailFromField="m.benzarti.1996@gmail.com";
+
+    public void sendEmail() {
+        String mail = tfmail1.getText();
+        String emailToField = mail;
+        String emailFromField = "m.benzarti.1996@gmail.com";
         String to = tfmail1.getText();
         String from = emailFromField;
         String host = "smtp.gmail.com";
@@ -462,14 +462,14 @@ String mail=tfmail1.getText();
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", "587");
 
-        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
+        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
         });
 
-        try{
+        try {
 
             //create mail
             MimeMessage m = new MimeMessage(session);
@@ -484,7 +484,7 @@ String mail=tfmail1.getText();
 
             System.out.println("Message sent!");
 
-        }   catch (MessagingException e){
+        } catch (MessagingException e) {
             e.printStackTrace();
         }
 
@@ -525,15 +525,14 @@ String mail=tfmail1.getText();
     }
 
     public void RestPasswordoneApprenant(MouseEvent event) throws IOException {
-        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText()) && EmailTest(tfemailreset.getText())==true) {
+        String i=testqueryEmailApprenant();
+        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText()) && EmailTest(tfemailreset.getText()) == true && i!="") {
+
             String query = "UPDATE apprenant SET password='" + tfpasswordreset.getText() + "' WHERE nom = '" + tfnomreset.getText() + "' and prenom ='" + tfprenom.getText() + "' and email ='" + tfemailreset.getText() + "';";
 
 
             executeQuery(query);
-
-            if (executeQuery(query)) {
-
-                String title = "Congratulations sir";
+            String title = "Congratulations sir";
                 String message = "You've successfully Changed your Password  ";
                 NotificationType notification = NotificationType.CUSTOM.SUCCESS;
                 TrayNotification tray = new TrayNotification();
@@ -542,10 +541,10 @@ String mail=tfmail1.getText();
                 tray.setNotificationType(notification);
                 tray.showAndWait();
                 sendEmail2();
-            }
+
         } else {
             String title = "Congratulations sir";
-            String message = "You've successfully Entred wrong password  or your accound dont exist    ";
+            String message = "You Entred wrong password  or your accound dont exist    ";
             NotificationType notification = NotificationType.ERROR;
 
             TrayNotification tray = new TrayNotification();
@@ -555,13 +554,14 @@ String mail=tfmail1.getText();
             tray.showAndWait();
         }
     }
-    public void sendEmail2(){
-        String mail=tfemailreset.getText();
 
-        String pass=tfconfirmpassword.getText();
+    public void sendEmail2() {
+        String mail = tfemailreset.getText();
 
-        String emailToField=mail;
-        String emailFromField="m.benzarti.1996@gmail.com";
+        String pass = tfconfirmpassword.getText();
+
+        String emailToField = mail;
+        String emailFromField = "m.benzarti.1996@gmail.com";
         String to = tfemailreset.getText();
         String from = emailFromField;
         String host = "smtp.gmail.com";
@@ -576,21 +576,21 @@ String mail=tfmail1.getText();
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", "587");
 
-        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
+        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
         });
 
-        try{
+        try {
 
             //create mail
             MimeMessage m = new MimeMessage(session);
             m.setFrom(new InternetAddress(from));
             m.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(to));
             m.setSubject("Your password have been changed");
-            m.setText("Your Password have been changed to "+pass);
+            m.setText("Your Password have been changed to " + pass);
 
             //send mail
 
@@ -598,14 +598,15 @@ String mail=tfmail1.getText();
 
             System.out.println("Message sent!");
 
-        }   catch (MessagingException e){
+        } catch (MessagingException e) {
             e.printStackTrace();
         }
 
     }
 
     public void RestPasswordoneProf(MouseEvent event) {
-        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText()) && EmailTest(tfemailreset.getText())==true) {
+        String i=testqueryEmailProf();
+        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText()) && EmailTest(tfemailreset.getText()) == true && i!="") {
 
             String query = "UPDATE professeur SET password='" + tfpasswordreset.getText() + "' WHERE nom = '" + tfnomreset.getText() + "' and prenom ='" + tfprenom.getText() + "' and email ='" + tfemailreset.getText() + "';";
 
@@ -621,56 +622,97 @@ String mail=tfmail1.getText();
             tray.setNotificationType(notification);
             tray.showAndWait();
             sendEmail2();
+        } else {
+
+            String title = "Congratulations sir";
+            String message = "You've successfully Entred wrong password  or your accound dont exist    ";
+            NotificationType notification = NotificationType.ERROR;
+
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndWait();
         }
-
-            else {
-
-                String title = "Congratulations sir";
-                String message = "You've successfully Entred wrong password  or your accound dont exist    ";
-                NotificationType notification = NotificationType.ERROR;
-
-                TrayNotification tray = new TrayNotification();
-                tray.setTitle(title);
-                tray.setMessage(message);
-                tray.setNotificationType(notification);
-                tray.showAndWait();
-            }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-  /*  public void hoho(MouseEvent event) {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        VideoCapture camera = new VideoCapture(0);
+    /*  public void hoho(MouseEvent event) {
+          System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+          VideoCapture camera = new VideoCapture(0);
 
-        if(!camera.isOpened()){
-            System.out.println("Error");
-        }
-        else {
-            Mat frame = new Mat();
-            while(true){
-                if (camera.read(frame)){
-                    System.out.println("Frame Obtained");
-                    System.out.println("Captured Frame Width " +
-                            frame.width() + " Height " + frame.height());
-                    Highgui.imwrite("camera.jpg", frame);
-                    System.out.println("OK");
-                    break;
-                }
-            }
-        }
-        camera.release();
+          if(!camera.isOpened()){
+              System.out.println("Error");
+          }
+          else {
+              Mat frame = new Mat();
+              while(true){
+                  if (camera.read(frame)){
+                      System.out.println("Frame Obtained");
+                      System.out.println("Captured Frame Width " +
+                              frame.width() + " Height " + frame.height());
+                      Highgui.imwrite("camera.jpg", frame);
+                      System.out.println("OK");
+                      break;
+                  }
+              }
+          }
+          camera.release();
+      }
+  */
+    public boolean EmailTest(String testmail) {
+        String email = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        Pattern emailpat = Pattern.compile(email, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = emailpat.matcher(testmail);
+        return matcher.find();
     }
-*/
-public boolean EmailTest(String testmail)
-{
-   String email="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
-    Pattern emailpat=Pattern.compile(email,Pattern.CASE_INSENSITIVE);
-    Matcher matcher=emailpat.matcher(testmail);
-   return matcher.find();
-}
+
+
+
+    public String testqueryEmailApprenant() {
+        Connection connection = getConnection();
+        String query = "SELECT email FROM apprenant where (nom='" +tfnomreset.getText()+"' and prenom='" + tfprenom.getText() + "' and email='" + tfemailreset.getText() + "')";
+
+
+        Statement st;
+        ResultSet rs;
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                String lool = rs.getString("email");
+                return lool;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+    public String testqueryEmailProf() {
+        Connection connection = getConnection();
+        String query = "SELECT email FROM professeur where (nom='" +tfnomreset.getText()+"' and prenom='" + tfprenom.getText() + "' and email='" + tfemailreset.getText() + "')";
+
+
+        Statement st;
+        ResultSet rs;
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                String lool = rs.getString("email");
+                return lool;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
 
 }

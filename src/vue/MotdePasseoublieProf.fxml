@@ -55,13 +55,13 @@
             <Button fx:id="passwordforgetButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#GoToApprenantRestPasswrd2" prefHeight="25.0" prefWidth="134.0" text="Apprenant Space" />
          </children>
       </HBox>
-        <TextField fx:id="tfpasswordreset" layoutX="483.0" layoutY="469.0" prefHeight="34.0" prefWidth="391.0" />
+        <PasswordField fx:id="tfpasswordreset" layoutX="483.0" layoutY="469.0" prefHeight="34.0" prefWidth="391.0" />
         <Label layoutX="483.0" layoutY="436.0" prefHeight="21.0" prefWidth="134.0" text="New Password">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="tfconfirmpassword" layoutX="476.0" layoutY="544.0" prefHeight="34.0" prefWidth="391.0" />
+        <PasswordField fx:id="tfconfirmpassword" layoutX="476.0" layoutY="544.0" prefHeight="34.0" prefWidth="391.0" />
         <Label layoutX="483.0" layoutY="517.0" prefHeight="21.0" prefWidth="175.0" text="Confirm your password">
             <font>
                 <Font size="15.0" />
