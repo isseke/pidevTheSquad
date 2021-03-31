@@ -1,5 +1,4 @@
 package Gestionnaire;
-
 import Modele.ApprenantEntity;
 import Modele.Professeur;
 import Modele.administrateur;
@@ -10,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -25,6 +25,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+//import org.opencv.highgui.*;
+//import org.opencv.core.*;
+//import org.opencv.core.Mat;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
@@ -47,9 +50,14 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Authentification implements Initializable {
+
+
+
 
     @FXML
     public Hyperlink passwordforget;
@@ -517,7 +525,7 @@ String mail=tfmail1.getText();
     }
 
     public void RestPasswordoneApprenant(MouseEvent event) throws IOException {
-        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText())) {
+        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText()) && EmailTest(tfemailreset.getText())==true) {
             String query = "UPDATE apprenant SET password='" + tfpasswordreset.getText() + "' WHERE nom = '" + tfnomreset.getText() + "' and prenom ='" + tfprenom.getText() + "' and email ='" + tfemailreset.getText() + "';";
 
 
@@ -597,7 +605,7 @@ String mail=tfmail1.getText();
     }
 
     public void RestPasswordoneProf(MouseEvent event) {
-        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText())) {
+        if (tfconfirmpassword.getText().equals(tfpasswordreset.getText()) && EmailTest(tfemailreset.getText())==true) {
 
             String query = "UPDATE professeur SET password='" + tfpasswordreset.getText() + "' WHERE nom = '" + tfnomreset.getText() + "' and prenom ='" + tfprenom.getText() + "' and email ='" + tfemailreset.getText() + "';";
 
@@ -616,6 +624,7 @@ String mail=tfmail1.getText();
         }
 
             else {
+
                 String title = "Congratulations sir";
                 String message = "You've successfully Entred wrong password  or your accound dont exist    ";
                 NotificationType notification = NotificationType.ERROR;
@@ -631,4 +640,37 @@ String mail=tfmail1.getText();
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+  /*  public void hoho(MouseEvent event) {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        VideoCapture camera = new VideoCapture(0);
+
+        if(!camera.isOpened()){
+            System.out.println("Error");
+        }
+        else {
+            Mat frame = new Mat();
+            while(true){
+                if (camera.read(frame)){
+                    System.out.println("Frame Obtained");
+                    System.out.println("Captured Frame Width " +
+                            frame.width() + " Height " + frame.height());
+                    Highgui.imwrite("camera.jpg", frame);
+                    System.out.println("OK");
+                    break;
+                }
+            }
+        }
+        camera.release();
+    }
+*/
+public boolean EmailTest(String testmail)
+{
+   String email="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+    Pattern emailpat=Pattern.compile(email,Pattern.CASE_INSENSITIVE);
+    Matcher matcher=emailpat.matcher(testmail);
+   return matcher.find();
+}
+
+
 }

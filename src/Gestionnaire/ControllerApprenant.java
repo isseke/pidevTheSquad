@@ -29,7 +29,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 
 import java.io.File;
@@ -41,6 +42,8 @@ import java.net.URL;
 
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ControllerApprenant implements Initializable {
     @FXML
@@ -108,13 +111,26 @@ public class ControllerApprenant implements Initializable {
 
     @FXML
     public void insertButtonAdmin() {
+        if(EmailTest(tfemail.getText())==true)
+        {
 
-        // String query = "insert into professeur values (nom='"+tfnom.getText()+"',prenom='"+tfprenom.getText()+"',photo='"+tfphoto.getText()+"',email='"+tfemail.getText()+",password='"+tfpassword.getText()+"',specialite='"+tfspecialite.getText()+"',profil='"+tfprofil.getText()+"')";
         String query = "insert into apprenant (nom,prenom,photo,email,password,status) values ('" + tfnom.getText() + "','" + tfprenom.getText() + "','" + imagePath + "','" + tfemail.getText() + "','" + tfpassword.getText() + "','" + status + "')";
 
 
         executeQuery(query);
-        showApprenant();
+        showApprenant();}
+        else {
+            String title = "NOOO sir";
+            String message = "You've successfully Entred Wrong Mail Format    ";
+            NotificationType notification = NotificationType.WARNING;
+
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndWait();
+
+        }
     }
 
     @FXML
@@ -340,5 +356,13 @@ public class ControllerApprenant implements Initializable {
         stmt.close();
         connection.close();
     }
+    public boolean EmailTest(String testmail)
+    {
+        String email="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        Pattern emailpat=Pattern.compile(email,Pattern.CASE_INSENSITIVE);
+        Matcher matcher=emailpat.matcher(testmail);
+        return matcher.find();
+    }
+
 
 }

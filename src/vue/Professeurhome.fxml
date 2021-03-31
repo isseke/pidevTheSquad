@@ -84,11 +84,11 @@
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="directReclProf" layoutY="116.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#DirectRP" prefHeight="58.0" prefWidth="306.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="          Reclamation" textFill="WHITE">
+                       <!-- <Button fx:id="directReclProf" layoutY="116.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#DirectRP" prefHeight="58.0" prefWidth="306.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="          Reclamation" textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>
-                        </Button>
+                        </Button>-->
                         <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="74.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../iconspicture/icons8_edit_property_26px.png" />

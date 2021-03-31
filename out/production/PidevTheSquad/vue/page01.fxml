@@ -5,154 +5,172 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1370.0" style="-fx-background-color: #14242B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Controller">
+<GridPane alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1370.0"
+          style="-fx-background-color: #14242B;" xmlns="http://javafx.com/javafx/11.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.Controller">
     <children>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1470.0" GridPane.columnIndex="6">
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                    prefHeight="700.0" prefWidth="1470.0" GridPane.columnIndex="6">
 
             <children>
                 <VBox fx:id="Mainepane" layoutX="14.0" layoutY="298.0" spacing="15.0">
                     <children>
                         <Label text="Id_professeur " textFill="#f8f8f8" textOverrun="CLIP">
                             <font>
-                                <Font size="15.0" />
+                                <Font size="15.0"/>
                             </font>
                         </Label>
                         <Label text="nom" textFill="#f8f8f8">
                             <font>
-                                <Font size="15.0" />
+                                <Font size="15.0"/>
                             </font>
                         </Label>
                         <Label text="prenom" textFill="#f8f8f8">
                             <font>
-                                <Font size="15.0" />
+                                <Font size="15.0"/>
                             </font>
                         </Label>
 
                         <Label text="email" textFill="#f8f8f8">
                             <font>
-                                <Font size="15.0" />
+                                <Font size="15.0"/>
                             </font>
                         </Label>
-                  <Label layoutX="10.0" layoutY="154.0" text="password" textFill="#f8f8f8">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="190.0" text="specialite" textFill="#f8f8f8">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="226.0" text="profil" textFill="#f8f8f8">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
+                        <Label layoutX="10.0" layoutY="154.0" text="password" textFill="#f8f8f8">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="190.0" text="specialite" textFill="#f8f8f8">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="226.0" text="profil" textFill="#f8f8f8">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
                     </children>
                 </VBox>
-                <TableView fx:id="tvprof" layoutX="-145.0" layoutY="23.0" onMouseClicked="#mouseclickgogogogogo" onScrollFinished="#mouseclickgogogogogo" prefHeight="253.0" prefWidth="742.0">
+                <TableView fx:id="tvprof" layoutX="-145.0" layoutY="23.0" onMouseClicked="#mouseclickgogogogogo"
+                           onScrollFinished="#mouseclickgogogogogo" prefHeight="253.0" prefWidth="742.0">
                     <columns>
-                        <TableColumn fx:id="colid" prefWidth="102.0" text="Id_professeur " />
-                        <TableColumn fx:id="colnom" prefWidth="112.0" text="nom" />
-                        <TableColumn fx:id="colprenom" prefWidth="95.0" text="prenom" />
-                        <TableColumn fx:id="colphoto" prefWidth="97.0" text="photo" />
-                        <TableColumn fx:id="colemail" prefWidth="78.0" text="email" />
-                  <TableColumn fx:id="colpassword" prefWidth="74.0" text="password" />
-                  <TableColumn fx:id="colspecialite" prefWidth="81.0" text="specialite" />
-                  <TableColumn fx:id="colprofil" prefWidth="100.0" text="profil" />
+                        <TableColumn fx:id="colid" prefWidth="102.0" text="Id_professeur "/>
+                        <TableColumn fx:id="colnom" prefWidth="112.0" text="nom"/>
+                        <TableColumn fx:id="colprenom" prefWidth="95.0" text="prenom"/>
+                        <TableColumn fx:id="colphoto" prefWidth="97.0" text="photo"/>
+                        <TableColumn fx:id="colemail" prefWidth="78.0" text="email"/>
+                        <TableColumn fx:id="colpassword" prefWidth="74.0" text="password"/>
+                        <TableColumn fx:id="colspecialite" prefWidth="81.0" text="specialite"/>
+                        <TableColumn fx:id="colprofil" prefWidth="100.0" text="profil"/>
                     </columns>
                 </TableView>
-                <HBox layoutX="14.0" layoutY="589.0" prefHeight="59.0" prefWidth="511.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="589.0">
+                <HBox layoutX="14.0" layoutY="589.0" prefHeight="59.0" prefWidth="511.0" spacing="20.0"
+                      AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="589.0">
                     <children>
-                        <Button fx:id="btndelete" mnemonicParsing="false" onAction="#deleteButton" prefHeight="25.0" prefWidth="100.0" text="Delete">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../iconspicture/icons8_delete_bin_16px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                        <Button fx:id="btndelete" mnemonicParsing="false" onAction="#deleteButton" prefHeight="25.0"
+                                prefWidth="100.0" text="Delete">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../iconspicture/icons8_delete_bin_16px.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
                         </Button>
-                        <Button fx:id="btnupdate" lineSpacing="10.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="25.0" prefWidth="100.0" text="Update">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../iconspicture/icons8_refresh_16px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                        <Button fx:id="btnupdate" lineSpacing="10.0" mnemonicParsing="false" onAction="#updateButton"
+                                prefHeight="25.0" prefWidth="100.0" text="Update">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../iconspicture/icons8_refresh_16px.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
                         </Button>
-                        <Button fx:id="btninsert" mnemonicParsing="false" onAction="#insertButton" prefHeight="25.0" prefWidth="100.0" text="Insert">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../iconspicture/iconadd.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                        <Button fx:id="btninsert" mnemonicParsing="false" onAction="#insertButton" prefHeight="25.0"
+                                prefWidth="100.0" text="Insert">
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../iconspicture/iconadd.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
                         </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#Listbouton" prefWidth="100.0" text="Liste">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../iconspicture/icons8_list_26px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
+
+                        <Button mnemonicParsing="false" onMouseClicked="#Listbouton" prefWidth="100.0" text="Liste">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../iconspicture/icons8_list_26px.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
                     </children>
                 </HBox>
                 <VBox layoutX="175.0" layoutY="299.0" prefHeight="191.0" prefWidth="258.0" spacing="10.0">
                     <children>
-                        <TextField fx:id="tfid" disable="true" />
-                        <TextField fx:id="tfnom" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="280.0" />
-                        <TextField fx:id="tfprenom" prefHeight="25.0" prefWidth="232.0" />
-                        <TextField fx:id="tfemail" />
-                  <TextField fx:id="tfpassword" />
-                  <TextField fx:id="tfspecialite" />
-                  <TextField fx:id="tfprofil" />
+                        <TextField fx:id="tfid" disable="true"/>
+                        <TextField fx:id="tfnom" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="280.0"/>
+                        <TextField fx:id="tfprenom" prefHeight="25.0" prefWidth="232.0"/>
+                        <TextField fx:id="tfemail"/>
+                        <TextField fx:id="tfpassword"/>
+                        <TextField fx:id="tfspecialite"/>
+                        <TextField fx:id="tfprofil"/>
                     </children>
                 </VBox>
-                <Button id="button" fx:id="BtnChoose" layoutX="542.0" layoutY="334.0" mnemonicParsing="false" onAction="#FileChooser" prefHeight="32.0" prefWidth="146.0" text="Upload File" />
-              <ImageView fx:id="imageTactor" fitHeight="141.0" fitWidth="164.0" layoutX="533.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" />
-                <Button fx:id="testpro" layoutX="630.0" layoutY="638.0" mnemonicParsing="false" onMouseClicked="#homeClick" prefHeight="63.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Return" textFill="WHITE">
+                <Button id="button" fx:id="BtnChoose" layoutX="542.0" layoutY="334.0" mnemonicParsing="false"
+                        onAction="#FileChooser" prefHeight="32.0" prefWidth="146.0" text="Upload File"/>
+                <ImageView fx:id="imageTactor" fitHeight="141.0" fitWidth="164.0" layoutX="533.0" layoutY="394.0"
+                           pickOnBounds="true" preserveRatio="true"/>
+                <Button fx:id="testpro" layoutX="630.0" layoutY="638.0" mnemonicParsing="false"
+                        onMouseClicked="#homeClick" prefHeight="63.0" prefWidth="300.0"
+                        style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;"
+                        text="Return" textFill="WHITE">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../iconspicture/icons8_exit_24px.png" />
+                                <Image url="@../iconspicture/icons8_exit_24px.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-            <TextField fx:id="filterField" layoutX="773.0" layoutY="95.0" />
-            <Label layoutX="646.0" layoutY="93.0" prefHeight="30.0" prefWidth="134.0" text="Search box :" textFill="WHITE">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="614.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../iconspicture/icons8_search_26px.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="697.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#PDFProf" prefHeight="25.0" prefWidth="149.0" text="Convert to PDF" />
+                <TextField fx:id="filterField" layoutX="773.0" layoutY="95.0"/>
+                <Label layoutX="646.0" layoutY="93.0" prefHeight="30.0" prefWidth="134.0" text="Search box :"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="19.0"/>
+                    </font>
+                </Label>
+                <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="614.0" layoutY="99.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../iconspicture/icons8_search_26px.png"/>
+                    </image>
+                </ImageView>
+                <Button layoutX="697.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#PDFProf"
+                        prefHeight="25.0" prefWidth="149.0" text="Convert to PDF"/>
             </children>
 
         </AnchorPane>
 
     </children>
     <columnConstraints>
-        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
-        <ColumnConstraints maxWidth="304.0" minWidth="304.0" prefWidth="304.0" />
-        <ColumnConstraints />
-        <ColumnConstraints />
-        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
-      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
-      <ColumnConstraints maxWidth="808.0" minWidth="808.0" prefWidth="808.0" />
+        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0"/>
+        <ColumnConstraints maxWidth="304.0" minWidth="304.0" prefWidth="304.0"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0"/>
+        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0"/>
+        <ColumnConstraints maxWidth="808.0" minWidth="808.0" prefWidth="808.0"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints />
+        <RowConstraints/>
     </rowConstraints>
 </GridPane>

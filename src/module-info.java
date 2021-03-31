@@ -12,6 +12,8 @@ module PidevTheSquad {
     requires AnimateFX;
     requires java.mail;
     requires itextpdf;
+  //  requires opencv;
+
     //requires kotlin.stdlib;
     requires javafx.swt;
     requires javafx.base;

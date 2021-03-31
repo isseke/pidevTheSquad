@@ -15,6 +15,7 @@
       <root url="jar://$PROJECT_DIR$/../activation-1.1.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/../javax.mail.jar!/" />
       <root url="jar://$PROJECT_DIR$/../itextpdf-5.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../test2/opencv/build/java/opencv-2413.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

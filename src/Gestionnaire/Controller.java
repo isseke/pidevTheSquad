@@ -30,6 +30,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,6 +41,8 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Controller implements Initializable {
 
@@ -180,11 +184,27 @@ public class Controller implements Initializable {
     @FXML
     public void insertButton() {
 
+        if(EmailTest(tfemail.getText())==true)
+        {
+
         String query = "insert into professeur (nom,prenom,photo,email,password,specialite,profil) values ('"+tfnom.getText()+"','"+tfprenom.getText()+"','"+imagePath+"','"+tfemail.getText()+"','"+tfpassword.getText()+"','"+tfspecialite.getText()+"','"+tfprofil.getText()+"')";
 
 
         executeQuery(query);
         showProf();
+        }
+        else
+        {
+            String title = "NOOO sir";
+            String message = "You've successfully Entred Wrong Mail Format    ";
+            NotificationType notification = NotificationType.WARNING;
+
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndWait();
+        }
     }
 
     @FXML
@@ -199,6 +219,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void updateButton() {
+
         String query = "UPDATE professeur SET nom='"+tfnom.getText()+"',prenom='"+tfprenom.getText()+"',photo='"+imagePath+"',email='"+tfemail.getText()+"',password='"+tfpassword.getText()+"',specialite='"+tfspecialite.getText()+"',profil='"+tfprofil.getText()+"' WHERE Id_professeur ="+tfid.getText()+"";
 
         executeQuery(query);
@@ -471,6 +492,13 @@ window.setScene(new Scene(root,1370,700));
         query_set.close();
         stmt.close();
         connection.close();
+    }
+    public boolean EmailTest(String testmail)
+    {
+        String email="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        Pattern emailpat=Pattern.compile(email,Pattern.CASE_INSENSITIVE);
+        Matcher matcher=emailpat.matcher(testmail);
+        return matcher.find();
     }
 
 
