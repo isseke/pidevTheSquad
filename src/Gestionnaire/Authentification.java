@@ -320,9 +320,8 @@ public class Authentification implements Initializable {
 
         String query = "insert into apprenant (nom,prenom,photo,email,password) values ('" + tfnom.getText() + "','" + tfprenom.getText() + "','" + imagePath + "','" + tfemail.getText() + "','" + tfpassword.getText() + "')";
 
-
-        if (executeQuery(query)) {
-
+        executeQuery(query);
+        if (EmailTest(tfemail.getText())==true) {
             String title = "Congratulations sir";
             String message = "You've successfully created your Account ";
             NotificationType notification = NotificationType.CUSTOM.SUCCESS;
@@ -332,8 +331,20 @@ public class Authentification implements Initializable {
             tray.setMessage(message);
             tray.setNotificationType(notification);
             tray.showAndWait();
+        }else
+        {
+            String title = "Congratulations sir";
+            String message = "Vérifier votre mail Mr  ";
+            NotificationType notification = NotificationType.WARNING;
+
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndWait();
 
         }
+
 
 
     }
