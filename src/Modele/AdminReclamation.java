@@ -15,16 +15,10 @@ import javafx.beans.property.StringProperty;
 public class AdminReclamation {
     int id;
     int id_user , id_prof;
-    String email,title,etat,date,recl ,reclmodif ,exp ,msg ,msgA;
-   // final StringProperty email = new SimpleStringProperty();
+    String title,etat,date,recl ,reclmodif ,exp ,msg ,msgA;
 
-   // public final StringProperty Email() { return email; }
 
-    //public final String getNom_User() { return email.get(); }
-
-//    public final void setNom_user(String value) { email.set(value); }
-
-    public AdminReclamation(int id, String title, String date, String etat,int id_prof ,int id_user ,String recl ,String reclmodif ,String exp ,String msg ,String msgA) {
+    public AdminReclamation(int id,String title, String date, String etat,int id_prof ,int id_user ,String recl ,String reclmodif ,String exp ,String msg ,String msgA) {
         this.id = id;
         this.id_user = id_user;
         this.id_prof = id_prof;
@@ -48,15 +42,8 @@ public class AdminReclamation {
 
     public AdminReclamation() { }
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNom_User() {return email; }
-    public void setNom_user(String email) { this.email = email; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
     public int getId_user() { return id_user; }
     public void setId_user(int id_user) { this.id_user = id_user; }

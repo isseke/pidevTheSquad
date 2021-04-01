@@ -54,7 +54,7 @@
                               </Text>
                               <TextArea fx:id="tfReclAdd" layoutX="637.0" layoutY="420.0" prefHeight="190.0" prefWidth="561.0" scrollLeft="20.0" wrapText="true" />
                               <DatePicker fx:id="tfDate" layoutX="724.0" layoutY="379.0" prefHeight="25.0" prefWidth="193.0" />
-                              <Button layoutX="1130.0" layoutY="14.0" mnemonicParsing="false" onAction="#Refrech" text="REFRESH" underline="true">
+                              <Button layoutX="1130.0" layoutY="14.0" mnemonicParsing="false" onAction="#RefB" text="REFRESH" underline="true">
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
                                  </cursor>
@@ -85,7 +85,7 @@
                               </Button>
                               <TextArea fx:id="tfRecl" editable="false" layoutX="85.0" layoutY="69.0" prefHeight="546.0" prefWidth="520.0" scrollLeft="20.0" wrapText="true">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="13.0" />
                                  </font></TextArea>
                            </children>
                         </AnchorPane>
@@ -106,13 +106,16 @@
                               </TableView>
                               <Button layoutX="712.0" layoutY="620.0" mnemonicParsing="false" onAction="#restoreReclamation" prefHeight="25.0" prefWidth="133.0" text="Restore" />
                               <Button layoutX="867.0" layoutY="620.0" mnemonicParsing="false" onAction="#deleteReclamation" prefHeight="25.0" prefWidth="145.0" text="Delete" />
-                              <Button layoutX="1085.0" layoutY="14.0" mnemonicParsing="false" onAction="#Refrech" text="REFRESH" underline="true">
+                              <Button layoutX="1085.0" layoutY="14.0" mnemonicParsing="false" onAction="#RefB" text="REFRESH" underline="true">
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
                                  </cursor>
                               </Button>
                               <TextField fx:id="filterFieldRecl2" layoutX="931.0" layoutY="14.0" prefHeight="25.0" prefWidth="127.0" promptText="Recherche" />
-                              <TextArea fx:id="tfRecl2" editable="false" layoutX="38.0" layoutY="64.0" prefHeight="546.0" prefWidth="520.0" scrollLeft="20.0" wrapText="true" />
+                              <TextArea fx:id="tfRecl2" editable="false" layoutX="38.0" layoutY="64.0" prefHeight="546.0" prefWidth="520.0" scrollLeft="20.0" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></TextArea>
                            </children>
                         </AnchorPane>
                      </children>
@@ -146,13 +149,16 @@
                               <Button layoutX="860.0" layoutY="623.0" mnemonicParsing="false" onAction="#corbeilleReclamation2" prefHeight="25.0" prefWidth="126.0" text="Delete" />
                               <TextArea fx:id="tfReclAdd2" layoutX="581.0" layoutY="417.0" prefHeight="190.0" prefWidth="561.0" scrollLeft="20.0" wrapText="true" />
                               <DatePicker fx:id="tfDate2" layoutX="668.0" layoutY="376.0" prefHeight="25.0" prefWidth="193.0" />
-                              <Button layoutX="1085.0" layoutY="14.0" mnemonicParsing="false" onAction="#Refrech" text="REFRESH" underline="true">
+                              <Button layoutX="1085.0" layoutY="14.0" mnemonicParsing="false" onAction="#RefB" text="REFRESH" underline="true">
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
                                  </cursor>
                               </Button>
                               <TextField fx:id="filterFieldRecl3" layoutX="926.0" layoutY="14.0" prefHeight="25.0" prefWidth="127.0" promptText="Recherche" />
-                              <TextArea fx:id="tfRecl3" editable="false" layoutX="29.0" layoutY="66.0" prefHeight="546.0" prefWidth="520.0" scrollLeft="20.0" wrapText="true" />
+                              <TextArea fx:id="tfRecl3" editable="false" layoutX="29.0" layoutY="66.0" prefHeight="546.0" prefWidth="520.0" scrollLeft="20.0" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></TextArea>
                            </children>
                         </AnchorPane>
                      </children>

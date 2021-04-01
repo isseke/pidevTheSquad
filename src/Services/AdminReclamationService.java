@@ -69,7 +69,7 @@ public class AdminReclamationService implements IReclamationAdmin<AdminReclamati
     @Override
     public List<AdminReclamation> displayReclamation() {
         List<AdminReclamation> reclamationList = new ArrayList<>();
-        try { String req = "SELECT * FROM reclamation INNER JOIN apprenant ON reclamation.id_user = apprenant.id_apprenant WHERE (msgA = 'ABR') AND (id_prof IS NULL)" ;
+        try { String req = "SELECT * FROM reclamation WHERE (msgA = 'ABR') AND (id_prof IS NULL)" ;
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -81,14 +81,13 @@ public class AdminReclamationService implements IReclamationAdmin<AdminReclamati
                 ct.setRecl(rs.getString("recl"));
                 ct.setReclmodif(rs.getString("reclmodif"));
                 ct.setId_prof(rs.getInt("id_user"));
-                ct.setNom_user(rs.getString("email"));
                 ct.setExp(rs.getString("exp"));
                 ct.setMsg(rs.getString("msg"));
                 ct.setMsgA(rs.getString("msgA"));
                 reclamationList.add(ct); }
         } catch (SQLException ex) { System.out.println(ex.getMessage()); }
 
-        try { String req = "SELECT * FROM reclamation INNER JOIN professeur ON reclamation.id_prof = professeur.Id_professeur WHERE (msgA = 'ABR') AND (id_user IS NULL)" ;
+        try { String req = "SELECT * FROM reclamation WHERE (msgA = 'ABR') AND (id_user IS NULL)" ;
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -100,7 +99,6 @@ public class AdminReclamationService implements IReclamationAdmin<AdminReclamati
                 ct.setRecl(rs.getString("recl"));
                 ct.setReclmodif(rs.getString("reclmodif"));
                 ct.setId_prof(rs.getInt("id_prof"));
-                ct.setNom_user(rs.getString("email"));
                 ct.setExp(rs.getString("exp"));
                 ct.setMsg(rs.getString("msg"));
                 ct.setMsgA(rs.getString("msgA"));

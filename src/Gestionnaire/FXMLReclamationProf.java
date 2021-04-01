@@ -83,6 +83,14 @@ public class FXMLReclamationProf<label> implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        int idu = query();
+        ObservableList<ReclamationProf> ReclamationProf = FXCollections.observableArrayList();
+        ReclamationProfService ps = new ReclamationProfService();
+        for (ReclamationProf c : ps.displayReclamation(idu)) ReclamationProf.add(c);
+        tabTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        tabDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tabEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
+        tableReclamation.setItems(ReclamationProf);
         try { Notif(); } catch (MalformedURLException e) { e.printStackTrace(); }
         SearchReclamation(); SearchReclamationCorbeille(); SearchReclamationArchive(); }
 
@@ -109,7 +117,7 @@ public class FXMLReclamationProf<label> implements Initializable {
         SearchReclamationArchive(); }
 
 
-    public void loadData() throws MalformedURLException {
+    public void loadData()  {
         int idu = query();
         ObservableList<ReclamationProf> ReclamationProf = FXCollections.observableArrayList();
         ReclamationProfService ps = new ReclamationProfService();
@@ -175,7 +183,7 @@ public class FXMLReclamationProf<label> implements Initializable {
             ReclamationProf r = new ReclamationProf(id_prof ,title, date, recl, reclmodif, exp, msg, msgA);
             if (verifsupp(msgA) == true) alertsupp();
             else {
-                str = reclmodif + "\n" + "----------------------------- " + "USER" + " - " + date + " ---------------------------- "
+                str = reclmodif + "\n" + "-------------------------------- " + "USER" + " - " + date + " ------------------------------- "
                         + "\n" + recl;
                 r.setRecl(str);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -190,7 +198,7 @@ public class FXMLReclamationProf<label> implements Initializable {
             String msg = "BR";
             String msgA = "ABR";
             ReclamationProf r = new ReclamationProf(id_prof ,title, date, recl, reclmodif, exp, msg, msgA);
-            str2 = "----------------------------- " + "USER" + " - " + date + " ---------------------------- " + "\n" + recl;
+            str2 = "-------------------------------- " + "USER" + " - " + date + " ------------------------------- " + "\n" + recl;
             r.setRecl(str2);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("AJOUT");
@@ -225,7 +233,7 @@ public class FXMLReclamationProf<label> implements Initializable {
             if (verifsupp(msgA) == true) alertsupp();
             else {
                 String str, newtxt = tfReclAdd.getText();
-                str = recl + "\n" + "----------------------------- " + "USER" + " - " + date + " ---------------------------- "
+                str = recl + "\n" + "------------------------------- " + "USER" + " - " + date + " ------------------------------ "
                         + "\n" + newtxt;
                 r.setRecl(str);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -297,11 +305,10 @@ public class FXMLReclamationProf<label> implements Initializable {
     }
 
 
-    public void Refrech() throws MalformedURLException {
-        loadData();
-        loadDataArchive();
-        loadDataCorbeille();
-    }
+    public void Refrech() throws MalformedURLException { loadData();loadDataArchive();loadDataCorbeille(); }
+
+    public void RefB() throws MalformedURLException { loadData();loadDataArchive();loadDataCorbeille(); Notif(); }
+
 
 
     @FXML
@@ -469,7 +476,7 @@ public class FXMLReclamationProf<label> implements Initializable {
             ReclamationProf r = new ReclamationProf(id_prof ,title, date, recl, reclmodif, exp, msg, msgA);
             if (verifsupp(msgA) == true) alertsupp();
             else {
-                str = reclmodif + "\n" + "----------------------------- " + "USER" + " - " + date + " ---------------------------- "
+                str = reclmodif + "\n" + "------------------------------- " + "USER" + " - " + date + " ------------------------------ "
                         + "\n" + recl;
                 r.setRecl(str);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

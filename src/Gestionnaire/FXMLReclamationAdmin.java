@@ -78,7 +78,7 @@ public class FXMLReclamationAdmin implements Initializable {
     @FXML
     private TableColumn<AdminReclamation, String> tabExp ,tabExp2 ,tabExp3;
     @FXML
-    private TableColumn<AdminReclamation, String> tabNomUser ,tabNomUser2 ,tabNomUser3;
+    private TableColumn<AdminReclamation, Integer> tabIDU ,tabIDU2 ,tabIDU3;
     @FXML
     private ComboBox<String> comb;
     private static int id ,id2 ,id3;
@@ -92,6 +92,7 @@ public class FXMLReclamationAdmin implements Initializable {
     public void setid4(String text) { this.testrecl.setText("" + text); }
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<AdminReclamation> AdminReclamation = FXCollections.observableArrayList();
@@ -101,7 +102,7 @@ public class FXMLReclamationAdmin implements Initializable {
          tabTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
          tabDate.setCellValueFactory(new PropertyValueFactory<>("date"));
          tabExp.setCellValueFactory(new PropertyValueFactory<>("exp"));
-         tabNomUser.setCellValueFactory(new PropertyValueFactory<>("email"));
+         tabIDU.setCellValueFactory(new PropertyValueFactory<>("id_prof"));
          tableReclamation.setItems(AdminReclamation);
         try { Notif(); } catch (MalformedURLException e) { e.printStackTrace(); }
         SearchReclamation(); SearchReclamationCorbeille(); SearchReclamationArchive();}
@@ -115,7 +116,7 @@ public class FXMLReclamationAdmin implements Initializable {
         tabTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         tabDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         tabExp.setCellValueFactory(new PropertyValueFactory<>("exp"));
-        tabNomUser.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tabIDU.setCellValueFactory(new PropertyValueFactory<>("id_prof"));
         tableReclamation.setItems(AdminReclamation); SearchReclamation();
     }
 
@@ -127,7 +128,7 @@ public class FXMLReclamationAdmin implements Initializable {
         tabTitle2.setCellValueFactory(new PropertyValueFactory<>("title"));
         tabDate2.setCellValueFactory(new PropertyValueFactory<>("date"));
         tabExp2.setCellValueFactory(new PropertyValueFactory<>("exp"));
-        tabNomUser2.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tabIDU2.setCellValueFactory(new PropertyValueFactory<>("id_prof"));
         tableReclamation2.setItems(Reclamation);SearchReclamationCorbeille(); }
 
     public void loadDataArchive() {
@@ -137,7 +138,7 @@ public class FXMLReclamationAdmin implements Initializable {
         tabTitle3.setCellValueFactory(new PropertyValueFactory<>("title"));
         tabDate3.setCellValueFactory(new PropertyValueFactory<>("date"));
         tabExp3.setCellValueFactory(new PropertyValueFactory<>("exp"));
-        tabNomUser3.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tabIDU3.setCellValueFactory(new PropertyValueFactory<>("id_prof"));
         tableReclamation3.setItems(Reclamation);SearchReclamationArchive(); }
 
 
@@ -160,11 +161,10 @@ public class FXMLReclamationAdmin implements Initializable {
         String etat = comb.getValue(); String date = tfDate.getValue().toString();
         String recl = tfReclAdd.getText(); String reclmodif = r2.getRecl();
         String exp = "ADMIN"; String msgA = r2.getMsgA(); String msg = r2.getMsg();
-      //  String email = r2.getNom_User();
         AdminReclamation r = new AdminReclamation(etat, recl, date ,reclmodif ,exp ,msg ,msgA);
         if( verifsupp(msg) == true ) alertsupp(); else {
         String str; reclmodif = r2.getRecl(); recl = tfReclAdd.getText();
-        str = reclmodif +"\n" + "-------------------------------- "+"ADMIN"+ " - " + date + " ------------------------------- "
+        str = reclmodif +"\n" + "------------------------------- "+"ADMIN"+ " - " + date + " ------------------------------ "
          + "\n" + recl ; r.setRecl(str);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("AJOUT"); alert.setHeaderText(null);
@@ -184,7 +184,7 @@ public class FXMLReclamationAdmin implements Initializable {
         String date = tfDate.getValue().toString();
         String recl = r2.getReclmodif();
         String reclmodif = r2.getReclmodif();
-        String exp="ADMIN"; //String email = r2.getNom_User();
+        String exp="ADMIN";
         String msgA= r2.getMsgA(); String msg = r2.getMsg();
         AdminReclamation r = new AdminReclamation(etat, recl ,date ,reclmodif ,exp ,msg ,msgA);
             if( verifsupp(msg) == true ) alertsupp(); else {
@@ -352,10 +352,9 @@ public class FXMLReclamationAdmin implements Initializable {
             AdminReclamation r2 = tableReclamation3.getSelectionModel().getSelectedItem();
             String msgA= "ABR"; String reclmodif = r2.getRecl(); String recl = tfReclAdd2.getText(); String msg = r2.getMsg();
             String str; String etat = "En-Cours"; String date = tfDate2.getValue().toString(); String exp = r2.getExp();
-           // String email = r2.getNom_User();
             AdminReclamation r = new AdminReclamation(etat, recl ,date ,reclmodif ,exp ,msg ,msgA);
             if(verifsupp(msg)) alertsupp(); else {
-                str = reclmodif +"\n" + "----------------------------- "+"USER"+ " - " + date + " ---------------------------- "
+                str = reclmodif +"\n" + "----------------------------- "+"ADMIN"+ " - " + date + " ---------------------------- "
                         + "\n" + recl ; r.setRecl(str);Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("AJOUT"); alert.setHeaderText(null);
                 alert.setContentText("voulez vous vraiment Ajouter la reclamation ? ");

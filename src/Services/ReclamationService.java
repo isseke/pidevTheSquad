@@ -125,7 +125,7 @@ public class ReclamationService implements IReclamation<Reclamation> {
     public List<Reclamation> displayRA(int idu) {
         List<Reclamation> reclamationList = new ArrayList<>();
         try {
-            String req = "SELECT * FROM reclamation WHERE (msgA = 'UARCHIVE')  AND ( id_user = '"+idu+"') " ;
+            String req = "SELECT * FROM reclamation WHERE ( msg = 'UARCHIVE') AND ( id_user = '"+idu+"') " ;
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {

@@ -125,7 +125,7 @@ public class ReclamationProfService implements IReclamation<ReclamationProf> {
     public List<ReclamationProf> displayRA(int idu) {
         List<ReclamationProf> reclamationList = new ArrayList<>();
         try {
-            String req = "SELECT * FROM reclamation WHERE (msgA = 'PARCHIVE')  AND ( id_prof = '"+idu+"') " ;
+            String req = "SELECT * FROM reclamation WHERE (msg = 'PARCHIVE' ) AND ( id_prof = '"+idu+"')" ;
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
