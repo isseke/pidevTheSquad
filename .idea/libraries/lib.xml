@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="lib">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../PiDev" />
+      <root url="file://$PROJECT_DIR$/../pidev" />
       <root url="jar://$PROJECT_DIR$/../test2/opencv/build/java/opencv-2413.jar!/" />
       <root url="jar://$PROJECT_DIR$/../projects/javafx/javafx-sdk-15.0.1/lib/javafx-swt.jar!/" />
       <root url="jar://$PROJECT_DIR$/../projects/javafx/javafx-sdk-15.0.1/lib/javafx.base.jar!/" />
@@ -13,10 +13,23 @@
       <root url="jar://$PROJECT_DIR$/../projects/javafx/javafx-sdk-15.0.1/lib/javafx.web.jar!/" />
       <root url="file://$PROJECT_DIR$/../mysql-connector-java-8.0.23" />
       <root url="jar://$PROJECT_DIR$/../javax.mail.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/drive-download-20210331T200302Z-001/activation-1.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/drive-download-20210331T200302Z-001/AnimateFX-1.2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/drive-download-20210331T200302Z-001/itextpdf-5.5.9.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/drive-download-20210331T200302Z-001/javax.mail.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/drive-download-20210331T200302Z-001/TrayTester.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/javafx-swt.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/javafx.base.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/javafx.controls.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/javafx.fxml.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/javafx.graphics.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/javafx.media.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/javafx.swing.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/javafx.web.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/../PiDev/src" />
+      <root url="file://$PROJECT_DIR$/../pidev/src" />
       <root url="file://$PROJECT_DIR$/../mysql-connector-java-8.0.23/src/build/java" />
       <root url="file://$PROJECT_DIR$/../mysql-connector-java-8.0.23/src/demo/java" />
       <root url="file://$PROJECT_DIR$/../mysql-connector-java-8.0.23/src/generated/java" />
@@ -27,6 +40,13 @@
       <root url="file://$PROJECT_DIR$/../mysql-connector-java-8.0.23/src/main/user-api/java" />
       <root url="file://$PROJECT_DIR$/../mysql-connector-java-8.0.23/src/main/user-impl/java" />
       <root url="file://$PROJECT_DIR$/../mysql-connector-java-8.0.23/src/test/java" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/src.zip!/javafx.base" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/src.zip!/javafx.controls" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/src.zip!/javafx.fxml" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/src.zip!/javafx.graphics" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/src.zip!/javafx.media" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/src.zip!/javafx.swing" />
+      <root url="jar://$USER_HOME$/Desktop/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib/src.zip!/javafx.web" />
     </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/../mysql-connector-java-8.0.23" recursive="false" />
   </library>

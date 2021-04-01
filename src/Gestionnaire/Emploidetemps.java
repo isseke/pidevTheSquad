@@ -59,11 +59,6 @@ public class Emploidetemps extends Component {
     public DatePicker dp2;
     @FXML
     public DatePicker dp3;
-    @FXML
-    private Button btnevenement;
-
-    @FXML
-    private Button btnPromotion;
 
     @FXML
     public Label test999;
@@ -109,6 +104,9 @@ public class Emploidetemps extends Component {
     public Button directReclProf;
     @FXML
     public Button directRecl;
+    @FXML
+    public  Button directRecl1;
+
 
 
     @FXML
@@ -128,6 +126,8 @@ public class Emploidetemps extends Component {
         ru.setid4(test999.getText());
         Stage window=(Stage) directRecl.getScene().getWindow();
         window.setScene(new Scene(root,1370,720)); }
+
+
 
 
     public void GoToEmploideTempsprof(MouseEvent event) throws IOException {
@@ -473,38 +473,53 @@ public class Emploidetemps extends Component {
 
     @FXML
     void GoToEvenementProf(MouseEvent event) {
-        loadMainPaneProf("FXMLProchaineEvenemen");
+        loadMainPaneProf("FXMLProchaineEvenement");
     }
 
     @FXML
     void GoToPromotionProf(MouseEvent event) {
-        loadMainPaneProf("ProchainPromotio");
 
     }
 
     public void loadMainPane(String fichierFxml) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/vue/"+fichierFxml+".fxml"));
+
+            root = FXMLLoader.load(getClass().getResource("/vue/" + fichierFxml + ".fxml"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Stage window=(Stage) btnevenement.getScene().getWindow();
-        window.setScene(new Scene(root,1370,700));
+        borderPane.setCenter(root);
 
     }
 
     public void loadMainPaneProf(String fichierFxml) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/vue/"+fichierFxml+".fxml"));
+
+            root = FXMLLoader.load(getClass().getResource("/vue/" + fichierFxml + ".fxml"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+        borderpanneProf.setCenter(root);
+    }
 
-        Stage window=(Stage) btnPromotionprof.getScene().getWindow();
-        window.setScene(new Scene(root,1370,700));
+
+    public void goFormationApprenant(MouseEvent mouseEvent) throws IOException {
 
 
-}}
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/FXMLFormationApprenant.fxml"));
+        Parent root = loader.load();
+
+        ControllerFormation pc = loader.getController();
+        pc.setid(test999.getText());
+        //  URL url = Paths.get("./src/sample/Views/login.fxml").toUri().toURL();
+        //  Parent root = FXMLLoader.load(url);
+
+        Stage window = (Stage) directRecl1.getScene().getWindow();
+        window.setScene(new Scene(root, 1370, 700));
+
+    }
+}

@@ -571,7 +571,8 @@ public class FXMLReclamationUser<label> implements Initializable {
       ResultSet rs = st.executeQuery(req);
       while (rs.next()) { String e = rs.getString("email"); return e; }
     }catch (SQLException ex) { System.out.println(ex.getMessage()); }
-    return null ;}
+    return null ;
+   }
 
 
     @FXML
