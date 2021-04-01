@@ -44,14 +44,15 @@ public class ServiceEvenement implements InterCrud <Evenement>{
     @Override
     public void ajouter(Evenement e) {
         try {
-            PreparedStatement prest = cnx.prepareStatement("INSERT INTO evenement(lien,theme,date_evenement, presentateur ) VALUES (?,?,?,?)");
+            PreparedStatement prest = cnx.prepareStatement("INSERT INTO evenement(lien,theme,date_evenement, presentateur,image ) VALUES (?,?,?,?,?)");
             prest.setString(1,e.getLien());
             prest.setString(2,e.getTheme());
             prest.setString(3,e.getDate());
             prest.setString(4,e.getPresentateur());
-            
+            prest.setBinaryStream(5,e.getInputStream());
+
             prest.executeUpdate();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -73,23 +74,25 @@ public class ServiceEvenement implements InterCrud <Evenement>{
 
     @Override
     public void modifier(Evenement e) {
-        
+
         try {
 
-            PreparedStatement st = cnx.prepareStatement("UPDATE evenement set lien = ?, theme = ? , date_evenement = ? , presentateur = ? where Id_evenement = ?");
+            PreparedStatement st = cnx.prepareStatement("UPDATE evenement set lien = ?, theme = ? , date_evenement = ? , presentateur = ?, image = ? where Id_evenement = ?");
             st.setString(1, e.getLien());
             st.setString(2, e.getTheme());
             st.setString(3, e.getDate());
             st.setString(4, e.getPresentateur());
-            st.setInt(5, e.getId_evenement());
-            
+            st.setBinaryStream(5,e.getInputStream());
+            st.setInt(6, e.getId_evenement());
+
             st.executeUpdate();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+
 
     @Override
     public ObservableList<Evenement> Consulter() {
