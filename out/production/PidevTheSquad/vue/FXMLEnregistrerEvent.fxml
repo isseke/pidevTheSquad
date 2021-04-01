@@ -7,18 +7,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="426.0" prefWidth="623.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLEnregistrerEventController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="626.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLEnregistrerEventController">
    <children>
       <TextField fx:id="etheme" layoutX="100.0" layoutY="107.0" prefHeight="32.0" prefWidth="149.0" promptText="Le theme de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
       <TextField fx:id="elien" layoutX="100.0" layoutY="220.0" promptText="Lien de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
       <TextField fx:id="epresentateur" layoutX="100.0" layoutY="275.0" onAction="#bt" promptText="Presentateur de l'evenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <Button fx:id="btnenregistrer" layoutX="100.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#fEnregistrer" prefHeight="25.0" prefWidth="155.0" text="Enregistrer" />
-      <Button fx:id="btnannuler" layoutX="349.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#fAnnuler" prefHeight="25.0" prefWidth="174.0" text="Annuler" />
+      <Button fx:id="btnenregistrer" layoutX="100.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#fEnregistrer" prefHeight="25.0" prefWidth="155.0" text="Enregistrer" />
+      <Button fx:id="btnannuler" layoutX="352.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#fAnnuler" prefHeight="25.0" prefWidth="174.0" text="Annuler" />
       <DatePicker fx:id="edate" layoutX="100.0" layoutY="169.0" promptText="Date de l'évenement" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
       <Label layoutX="194.0" layoutY="37.0" text="Enregistrer Evenement" textFill="WHITE">
          <font>
             <Font name="Monotype Corsiva" size="29.0" />
          </font>
       </Label>
+      <TextField layoutX="100.0" layoutY="340.0" prefHeight="25.0" prefWidth="313.0" />
+      <Button fx:id="btnparcourir" layoutX="413.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#choisirFichier" prefHeight="25.0" prefWidth="115.0" text="Parcourir" />
    </children>
 </AnchorPane>
