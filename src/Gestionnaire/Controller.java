@@ -334,8 +334,6 @@ public class Controller implements Initializable {
 
       Parent root = FXMLLoader.load(getClass().getResource("/vue/page01.fxml"));
 
-    //    URL url = Paths.get("./src/sample/Views/page01.fxml").toUri().toURL();
-       //  Parent root = FXMLLoader.load(url);
 
 
         Stage window=(Stage) testpro.getScene().getWindow();

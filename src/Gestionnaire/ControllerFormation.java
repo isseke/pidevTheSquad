@@ -107,12 +107,11 @@ public TextField mohamed;
 
 
     public void homeClickApprenant(MouseEvent event) throws IOException {
-        //  Parent root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Apprenanthome.fxml"));
         Parent root = loader.load();
-        ControllerFormation pc = new ControllerFormation();
+        Emploidetemps pc = new Emploidetemps();
         pc = loader.getController();
-
+        pc.setid(id_formation.getText());
         Stage window = (Stage) dreturn.getScene().getWindow();
         window.setScene(new Scene(root, 1370, 700));  }
 
@@ -451,4 +450,5 @@ cblangue.setItems(k);
         //UpdateTable2();
         // Code Source in description
     }
+
 }

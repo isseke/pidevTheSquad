@@ -17,7 +17,7 @@
                     <children>
                         <Label text="Id_professeur " textFill="#f8f8f8" textOverrun="CLIP">
                             <font>
-yo                                <Font size="15.0"/>
+                                <Font size="15.0"/>
                             </font>
                         </Label>
                         <Label text="nom" textFill="#f8f8f8">
