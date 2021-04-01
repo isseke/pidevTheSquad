@@ -29,8 +29,8 @@ public class PidevTheSquad extends Application{
     @Override
     public void start(Stage stage) throws Exception {
 
-       // URL url = Paths.get("./src/iconspicture/img.png").toUri().toURL();
-       // Parent root = FXMLLoader.load(url);
+        // URL url = Paths.get("./src/iconspicture/img.png").toUri().toURL();
+        // Parent root = FXMLLoader.load(url);
 
 
 
@@ -47,8 +47,8 @@ public class PidevTheSquad extends Application{
 
 
     }
-    
-      /**
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {

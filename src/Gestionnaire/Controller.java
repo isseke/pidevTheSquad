@@ -166,15 +166,17 @@ public class Controller implements Initializable {
     }
 
     public void loadMainPaneAdmin(String fichierFxml){
+
         Parent root = null;
         try {
-
             root = FXMLLoader.load(getClass().getResource("/vue/"+fichierFxml+".fxml"));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-        borderPane.setCenter(root);
+
+        Stage window=(Stage) testapp.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700));
+
 
     }
 

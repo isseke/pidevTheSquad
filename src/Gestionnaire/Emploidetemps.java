@@ -59,6 +59,11 @@ public class Emploidetemps extends Component {
     public DatePicker dp2;
     @FXML
     public DatePicker dp3;
+    @FXML
+    private Button btnevenement;
+
+    @FXML
+    private Button btnPromotion;
 
     @FXML
     public Label test999;
@@ -468,38 +473,38 @@ public class Emploidetemps extends Component {
 
     @FXML
     void GoToEvenementProf(MouseEvent event) {
-        loadMainPaneProf("FXMLProchaineEvenement");
+        loadMainPaneProf("FXMLProchaineEvenemen");
     }
 
     @FXML
     void GoToPromotionProf(MouseEvent event) {
+        loadMainPaneProf("ProchainPromotio");
 
     }
 
     public void loadMainPane(String fichierFxml) {
         Parent root = null;
         try {
-
-            root = FXMLLoader.load(getClass().getResource("/vue/" + fichierFxml + ".fxml"));
-
+            root = FXMLLoader.load(getClass().getResource("/vue/"+fichierFxml+".fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        borderPane.setCenter(root);
+
+        Stage window=(Stage) btnevenement.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700));
 
     }
 
     public void loadMainPaneProf(String fichierFxml) {
         Parent root = null;
         try {
-
-            root = FXMLLoader.load(getClass().getResource("/vue/" + fichierFxml + ".fxml"));
-
+            root = FXMLLoader.load(getClass().getResource("/vue/"+fichierFxml+".fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        borderpanneProf.setCenter(root);
-    }
+
+        Stage window=(Stage) btnPromotionprof.getScene().getWindow();
+        window.setScene(new Scene(root,1370,700));
 
 
-}
+}}

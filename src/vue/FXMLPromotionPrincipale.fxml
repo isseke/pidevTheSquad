@@ -4,12 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="534.0" prefWidth="800.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLPromotionPrincipaleController">
+<AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="740.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.FXMLPromotionPrincipaleController">
    <children>
-      <TableView fx:id="promotion_table" layoutY="170.0" prefHeight="364.0" prefWidth="800.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="170.0">
+      <TableView fx:id="promotion_table" layoutX="31.0" layoutY="170.0" prefHeight="236.0" prefWidth="699.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="170.0">
         <columns>
           <TableColumn fx:id="id_promo" prefWidth="57.0" text="ID" />
           <TableColumn fx:id="promotion" prefWidth="131.0" text="PROMOTION" />
@@ -22,11 +24,23 @@
       <Button fx:id="btn_ajoute_prmotion" layoutX="58.0" layoutY="105.0" mnemonicParsing="false" onMouseClicked="#AjouterPromotion" prefHeight="25.0" prefWidth="127.0" text="Ajouter" />
       <Button fx:id="btn_rafraichir_promotion" layoutX="201.0" layoutY="105.0" mnemonicParsing="false" onMouseClicked="#RachaichirPromo" prefHeight="25.0" prefWidth="167.0" text="Rafraichir" />
       <Button fx:id="btn_supprimer_promo" layoutX="385.0" layoutY="105.0" mnemonicParsing="false" onMouseClicked="#supprimer_promo" prefHeight="25.0" prefWidth="167.0" text="supprimer" />
-      <Button fx:id="btn_modifier_promo" layoutX="584.0" layoutY="105.0" mnemonicParsing="false" onMouseClicked="#modifier_promo" prefHeight="25.0" prefWidth="156.0" text="Modifier" />
+      <Button fx:id="btn_modifier_promo" layoutX="570.0" layoutY="105.0" mnemonicParsing="false" onMouseClicked="#modifier_promo" prefHeight="25.0" prefWidth="156.0" text="Modifier" />
       <Label layoutX="304.0" layoutY="39.0" text="Gestion Evenements" textFill="WHITE">
          <font>
             <Font name="Monotype Corsiva" size="33.0" />
          </font>
       </Label>
+      <Button fx:id="testpro" layoutX="640.0" layoutY="648.0" mnemonicParsing="false" onMouseClicked="#homeClick" prefHeight="63.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Return" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../iconspicture/icons8_exit_24px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

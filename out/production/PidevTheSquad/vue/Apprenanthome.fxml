@@ -47,14 +47,14 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                  <Button fx:id="emploidetempsapprenant" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#GoToemploidetempsApprenant" prefHeight="58.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="      Emploi de temps " textFill="WHITE">
+                  <Button fx:id="emploidetempsapprenant" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#GoToemploidetempsApprenant" prefHeight="58.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="     Emploi de temps " textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../iconspicture/icons8_edit_property_26px.png" />
+                              <Image url="@../iconspicture/icons8_calendar_26px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -80,19 +80,19 @@
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../iconspicture/icons8_edit_property_26px.png" />
+                                    <Image url="@../iconspicture/icons8_superman_24px.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="directRecl" layoutX="-14.0" layoutY="131.0" minWidth="-Infinity" mnemonicParsing="false"  onMouseClicked="#DirectRU" prefHeight="58.0" prefWidth="313.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="            Reclamation" textFill="WHITE">
+                        <Button fx:id="directRecl" layoutX="-14.0" layoutY="131.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#DirectRU" prefHeight="58.0" prefWidth="313.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="            Reclamation" textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
                         <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="67.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../iconspicture/icons8_edit_property_26px.png" />
+                              <Image url="@../iconspicture/icons8_notification_24px.png" />
                            </image>
                         </ImageView>
                      </children></Pane>

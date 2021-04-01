@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author gicke
  */
-public class ProchainPromotionController implements Initializable {
+public class ProchainPromotion implements Initializable {
     ServicePromotion srPro;
     @FXML
     private Button btnpromoAnnee;
@@ -63,7 +63,7 @@ public class ProchainPromotionController implements Initializable {
     void homeClick(MouseEvent event) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/vue/Apprenanthome.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/vue/Professeurhome.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

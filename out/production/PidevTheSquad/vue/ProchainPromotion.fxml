@@ -4,13 +4,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="485.0" prefWidth="740.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionnaire.ProchainPromotionController">
    <children>
-      <TableView fx:id="prochainePromo" layoutX="14.0" layoutY="214.0" prefHeight="259.0" prefWidth="722.0">
+      <TableView fx:id="prochainePromo" layoutX="14.0" layoutY="214.0" prefHeight="210.0" prefWidth="722.0">
         <columns>
           <TableColumn fx:id="clPromotion" prefWidth="127.0" text="PROMOTION" />
           <TableColumn fx:id="clRaison" prefWidth="193.0" text="RAISON PROMOTION" />
@@ -26,5 +28,17 @@
             <Font name="Constantia" size="30.0" />
          </font>
       </Text>
+      <Button fx:id="testpro" layoutX="650.0" layoutY="658.0" mnemonicParsing="false" onMouseClicked="#homeClick" prefHeight="63.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Return" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../iconspicture/icons8_exit_24px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

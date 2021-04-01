@@ -12,6 +12,8 @@ import Interface.InterCrud;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -34,6 +36,10 @@ public class ServiceEvenement implements InterCrud <Evenement>{
     private ObservableList<Evenement> prochainEvents = FXCollections.observableArrayList();
     private ObservableList<Evenement> semaineEvent = FXCollections.observableArrayList();
     private ObservableList<Evenement> rechercheEvent = FXCollections.observableArrayList();
+    private ArrayList<Evenement>   prochainEventP = new ArrayList<Evenement>();
+    private ArrayList<Evenement>   prochainEventR = new ArrayList<Evenement>();
+    private ArrayList<Evenement>   prochainEventPP = new ArrayList<Evenement>();
+
 
     @Override
     public void ajouter(Evenement e) {
@@ -115,7 +121,7 @@ public class ServiceEvenement implements InterCrud <Evenement>{
             ResultSet prochainEvenementSelect = prEvt.executeQuery();
             while(prochainEvenementSelect.next()){
       
-                prochainEvent.add(new Evenement(prochainEvenementSelect.getString("lien"),prochainEvenementSelect.getString("theme"),prochainEvenementSelect.getString("presentateur"),prochainEvenementSelect.getString("date_evenement")));
+                prochainEvent.add(new Evenement(prochainEvenementSelect.getString("theme"),prochainEvenementSelect.getString("lien"),prochainEvenementSelect.getString("presentateur"),prochainEvenementSelect.getString("date_evenement")));   
              }
  
         } catch (SQLException ex) {
@@ -124,11 +130,69 @@ public class ServiceEvenement implements InterCrud <Evenement>{
 
         return prochainEvent;
     }
+
+
+   
     
     /**
      * la liste des prochains evenement
      */
-    public ObservableList<Evenement> prochainEvenements(){
+    public ArrayList<Evenement> prochainEvenementp(){
+        
+        try {
+            PreparedStatement prEvt = cnx.prepareStatement("SELECT * from evenement ");
+            ResultSet prochainEvenementSelect = prEvt.executeQuery();
+            while(prochainEvenementSelect.next()){
+      
+                prochainEventP.add(new Evenement(prochainEvenementSelect.getString("theme"),prochainEvenementSelect.getString("lien"),prochainEvenementSelect.getString("presentateur"),prochainEvenementSelect.getString("date_evenement"),prochainEvenementSelect.getBinaryStream("image")));   
+             }
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return prochainEventP;
+    }
+
+    /**
+     * prochaine event non pr
+     * @return
+     */
+    public ArrayList<Evenement> prochainEvenementpp(){
+
+        try {
+            PreparedStatement prEvt = cnx.prepareStatement("SELECT * from evenement where date_evenement > CURRENT_DATE ");
+            ResultSet prochainEvenementSelect = prEvt.executeQuery();
+            while(prochainEvenementSelect.next()){
+
+                prochainEventPP.add(new Evenement(prochainEvenementSelect.getString("theme"),prochainEvenementSelect.getString("lien"),prochainEvenementSelect.getString("presentateur"),prochainEvenementSelect.getString("date_evenement"),prochainEvenementSelect.getBinaryStream("image")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return prochainEventPP;
+    }
+    public ArrayList<Evenement> prochainEvenementR(String date){
+
+        try {
+            PreparedStatement prEvt = cnx.prepareStatement("SELECT * from evenement where date_evenement = ? ");
+            prEvt.setString(1, date);
+
+            ResultSet prochainEvenementSelect = prEvt.executeQuery();
+            while(prochainEvenementSelect.next()){
+
+                prochainEventR.add(new Evenement(prochainEvenementSelect.getString("theme"),prochainEvenementSelect.getString("lien"),prochainEvenementSelect.getString("presentateur"),prochainEvenementSelect.getString("date_evenement"),prochainEvenementSelect.getBinaryStream("image")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return prochainEventR;
+    }
+     public ObservableList<Evenement> prochainEvenements(){
         
         try {
             PreparedStatement prEvt = cnx.prepareStatement("SELECT * from evenement where date_evenement > CURRENT_DATE ");
@@ -144,6 +208,7 @@ public class ServiceEvenement implements InterCrud <Evenement>{
 
         return prochainEvents;
     }
+    
     
     /**
      * les evenements recherché par date

@@ -5,11 +5,11 @@
  */
 package Modele;
 
+import java.io.InputStream;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.Hyperlink;
 
 /**
  *
@@ -18,21 +18,27 @@ import javafx.scene.control.Hyperlink;
 public class Evenement {
     private IntegerProperty id_evenement;
     private StringProperty lien;
-    private Hyperlink hyperlinkLien ;
     private StringProperty theme;
     private StringProperty presentateur;
     private StringProperty date;
     private StringProperty afficheEvenement;
-
-
+    private InputStream inputStream;
     public Evenement(String lien, String theme, String presentateur, String date) {
         this.lien = new SimpleStringProperty(lien);
         this.theme = new SimpleStringProperty(theme);
         this.presentateur = new SimpleStringProperty(presentateur);
         this.date = new SimpleStringProperty(date);
-        this.hyperlinkLien = new Hyperlink(lien);
         
     }
+        public Evenement(String theme, String lien, String presentateur, String date, InputStream inputStream) {
+        this.lien = new SimpleStringProperty(lien);
+        this.theme = new SimpleStringProperty(theme);
+        this.presentateur = new SimpleStringProperty(presentateur);
+        this.date = new SimpleStringProperty(date);
+        this.inputStream = inputStream;
+        
+    }
+    
 
     public Evenement(int id_evenement, String lien, String theme, String presentateur, String date) {
         this.id_evenement = new SimpleIntegerProperty(id_evenement);
@@ -40,6 +46,14 @@ public class Evenement {
         this.theme = new SimpleStringProperty(theme);
         this.presentateur = new SimpleStringProperty(presentateur);
         this.date = new SimpleStringProperty(date);
+    }
+     public Evenement(int id_evenement, String lien, String theme, String presentateur, String date,InputStream inputStream) {
+        this.id_evenement = new SimpleIntegerProperty(id_evenement);
+        this.lien = new SimpleStringProperty(lien);
+        this.theme = new SimpleStringProperty(theme);
+        this.presentateur = new SimpleStringProperty(presentateur);
+        this.date = new SimpleStringProperty(date);
+        this.inputStream = inputStream;
     }
 
     public int getId_evenement() {
@@ -56,15 +70,22 @@ public class Evenement {
         return lien.get();
     }
 
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+    
+    
+    
+
     public void setLien(String lien) {
         this.lien.set(lien);
     }
-
     public StringProperty LienProperty() {
 		return lien;
-    }
-    public Hyperlink hyperTextProperty(){
-        return hyperlinkLien;
     }
     public String getTheme() {
         return theme.get();

@@ -66,6 +66,21 @@ public class FXMLPromotionPrincipaleController implements Initializable {
     private Button btn_modifier_promo;
     
     ServicePromotion pro;
+    @FXML
+    private Button testpro;
+    @FXML
+    void homeClick(MouseEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/vue/SideBar.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage window=(Stage) testpro.getScene().getWindow();
+
+        window.setScene(new Scene(root,1370,700));
+
+    }
 
     @FXML
     void AjouterPromotion(MouseEvent event) {
